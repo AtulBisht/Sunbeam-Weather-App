@@ -1,0 +1,38 @@
+@import 'src/styles';
+
+mat-card{
+    width:90%;
+    height:90%;
+}
+
+mat-spinner{
+    margin-left: 45%;
+    margin-top:20%;
+}
+
+.btn-pos{
+    margin-left:80%;
+}
+
+
+.bg-grid{
+   background-color: #F5F5F5
+}
+
+chart{
+    width: 100%;
+    padding-top:10%;
+}
+
+.is-left{
+    margin-left:30%;
+    font-size:16px;
+}
+
+//Table
+tr,th,td{
+    padding: 2px;
+    font-size: 14px;  
+    border: 1px solid black;
+}
+

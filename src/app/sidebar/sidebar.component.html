@@ -1,0 +1,56 @@
+<mat-sidenav-container class="nav-height">
+  <mat-sidenav #sidenav mode="side">
+
+    <img src="assets/img/AppSunbeam.png">
+
+    <mat-list>
+
+      <mat-list-item>
+
+        <a mat-button (click)="onClick('/currnet')">
+          <mat-icon>home</mat-icon> &nbsp; &nbsp;
+          <strong>Current Weather</strong>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+
+        <a mat-button (click)="onClick('/hourly')">
+          <mat-icon>wb_sunny</mat-icon> &nbsp; &nbsp;
+          <strong>Hourly Weather Forecast</strong>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+
+        <a mat-button (click)="onClick('/forecast')">
+          <mat-icon>wb_cloudy</mat-icon> &nbsp; &nbsp;
+          <strong>5 Days Forecast</strong>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+
+        <a [ngClass]="{'is-active': step==='/dashboard'}" mat-button (click)="onClick('/chart')">
+          <mat-icon>show_chart</mat-icon> &nbsp; &nbsp;
+          <strong>Chart</strong>
+        </a>
+      </mat-list-item>
+      <mat-list-item>
+
+        <a mat-button (click)="onClick('/map')">
+          <mat-icon>map</mat-icon> &nbsp; &nbsp;
+          <strong>Weather Map</strong>
+        </a>
+      </mat-list-item>
+    </mat-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </mat-toolbar>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,0 +1,29 @@
+@import 'src/styles';
+
+mat-card{
+    width:95%;
+    height:95%;
+}
+
+.forecast{
+    font-size: 18px;
+    font-variant: bold;
+}
+
+chart{
+    width:90%;
+}
+
+.maxTemp,.minTemp{
+    padding:3px;
+    border-radius: 2px;
+}
+
+.maxTemp{
+    background-color: orange;
+}
+
+.minTemp{
+    background-color: grey;
+    color:white;
+}
