@@ -10,7 +10,6 @@ import { AlertService } from '../service/alert.service';
 @Injectable()
 export class ForecastService {
 
-  location
   loading: boolean;
   myCityForecast: Forecast[] = [];
   forecast: Forecast[] = [];
@@ -44,120 +43,130 @@ export class ForecastService {
 
   constructor(private http: Http, public alertService: AlertService) { }
 
-
-
   public localForecast() {
 
-    window.navigator.geolocation.getCurrentPosition((pos) => {
+    this.http.get("http://ip-api.com/json")
+      .map((response: Response) => response.json())
+      .subscribe(
+        (data) => {
+          const lat = data.lat;
+          const lon = data.lon;
+          // navigator.geolocation.getCurrentPosition((pos) => {
 
-      console.log("success");
+          //   console.log("success");
 
-      // this.loading = true;
-      this.location = pos.coords;
+          //   // this.loading = true;
+          //   this.location = pos.coords;
 
-      const lat = this.location.latitude;
-      const lon = this.location.longitude;
+          //   const lat = this.location.latitude;
+          //   const lon = this.location.longitude;
 
-      return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
-        .map((response: Response) => response.json())
-        .subscribe(
-          (data) => {
+          return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
+            .map((response: Response) => response.json())
+            .subscribe(
+              (data) => {
 
-            console.log(data);
+                console.log(data);
 
-            //Chart
-            for (let i = 0; i < data.list.length - 30; i++) {
+                //Chart
+                this.tempValue.splice(0, this.tempValue.length);
+                this.timeValue.splice(0, this.timeValue.length);
+                this.windValue.splice(0, this.timeValue.length);
+                this.pressureValue.splice(0, this.pressureValue.length);
+                this.humidityValue.splice(0, this.humidityValue.length);
 
-              const temp = data.list[i].main.temp;
-              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-              const wind = data.list[i].wind.speed;
-              const humidity = data.list[i].main.humidity;
-              const pressure = (data.list[i].main.pressure);
+                for (let i = 0; i < data.list.length - 30; i++) {
 
-              this.tempValue.push(temp);
-              this.timeValue.push(time);
-              this.windValue.push(wind);
-              this.pressureValue.push(pressure);
-              this.humidityValue.push(humidity);
-            }
+                  const temp = data.list[i].main.temp;
+                  const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
+                  const wind = data.list[i].wind.speed;
+                  const humidity = data.list[i].main.humidity;
+                  const pressure = (data.list[i].main.pressure);
 
-            //Temp Wind Humidity Graph
-            this.getTWHChartData(this.timeValue, this.tempValue, this.windValue, this.humidityValue);
+                  this.tempValue.push(temp);
+                  this.timeValue.push(time);
+                  this.windValue.push(wind);
+                  this.pressureValue.push(pressure);
+                  this.humidityValue.push(humidity);
+                }
 
-            //Temperature Graph
-            this.getTChart(this.timeValue, this.tempValue);
+                //Temp Wind Humidity Graph
+                this.getTWHChartData(this.timeValue, this.tempValue, this.windValue, this.humidityValue);
 
-            //Wind Graph
-            this.getWChart(this.timeValue, this.windValue);
+                //Temperature Graph
+                this.getTChart(this.timeValue, this.tempValue);
 
-            //Humidity Graph
-            this.getHChart(this.timeValue, this.humidityValue);
+                //Wind Graph
+                this.getWChart(this.timeValue, this.windValue);
 
-            //Pressure Graph
-            this.getPChart(this.timeValue, this.pressureValue);
+                //Humidity Graph
+                this.getHChart(this.timeValue, this.humidityValue);
+
+                //Pressure Graph
+                this.getPChart(this.timeValue, this.pressureValue);
 
 
-            //local Hourly Forecast
-            this.myCityForecast.splice(0, this.myCityForecast.length);
+                //local Hourly Forecast
+                this.myCityForecast.splice(0, this.myCityForecast.length);
 
-            for (let i = 0; i < data.list.length - 33; i++) {
+                for (let i = 0; i < data.list.length - 33; i++) {
 
-              const temporary = new Forecast(
-                data.list[i].dt_txt,
-                data.list[i].dt_txt,
-                data.list[i].weather[0].icon,
-                data.list[i].main.temp,
-                data.list[i].main.humidity,
-                data.list[i].main.temp_max,
-                data.list[i].main.temp_min,
-                data.list[i].weather[0].description,
-                data.list[i].rain,
-                data.list[i].wind.speed,
-                data.list[i].clouds.all,
-                data.list[i].main.pressure)
+                  const temporary = new Forecast(
+                    data.list[i].dt_txt,
+                    data.list[i].dt_txt,
+                    data.list[i].weather[0].icon,
+                    data.list[i].main.temp,
+                    data.list[i].main.humidity,
+                    data.list[i].main.temp_max,
+                    data.list[i].main.temp_min,
+                    data.list[i].weather[0].description,
+                    data.list[i].rain,
+                    data.list[i].wind.speed,
+                    data.list[i].clouds.all,
+                    data.list[i].main.pressure)
 
-              this.myCityForecast.push(temporary);
-            }
-            console.log("My Local Forecast", this.myCityForecast);
+                  this.myCityForecast.push(temporary);
+                }
+                console.log("My Local Forecast", this.myCityForecast);
 
-            //Five Days Forecast
-            this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
-            for (let i = 0; i < data.list.length; i = i + 8) {
+                //Five Days Forecast
+                this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
+                for (let i = 0; i < data.list.length; i = i + 8) {
 
-              const temporary = new Forecast(
-                data.list[i].dt = moment.unix(data.list[i].dt).format('LL'),
-                data.list[i].dt_txt,
-                data.list[i].weather[0].icon,
-                data.list[i].main.temp,
-                data.list[i].main.humidity,
-                data.list[i].main.temp_max,
-                data.list[i].main.temp_min,
-                data.list[i].weather[0].description,
-                data.list[i].rain,
-                data.list[i].wind.speed,
-                data.list[i].clouds.all,
-                data.list[i].main.pressure)
+                  const temporary = new Forecast(
+                    data.list[i].dt = moment.unix(data.list[i].dt).format('LL'),
+                    data.list[i].dt_txt,
+                    data.list[i].weather[0].icon,
+                    data.list[i].main.temp,
+                    data.list[i].main.humidity,
+                    data.list[i].main.temp_max,
+                    data.list[i].main.temp_min,
+                    data.list[i].weather[0].description,
+                    data.list[i].rain,
+                    data.list[i].wind.speed,
+                    data.list[i].clouds.all,
+                    data.list[i].main.pressure)
 
-              this.fiveDaysForecast.push(temporary)
-            }
+                  this.fiveDaysForecast.push(temporary)
+                }
 
-          },
-          error => {
+              },
+              error => {
 
-            if (error.status === 0) {
+                if (error.status === 0) {
 
-              console.log('service down ', error);
+                  console.log('service down ', error);
 
-            } else {
+                } else {
 
-              console.log('error in response ', error);
-              this.alertService.error(error.statusText);
+                  console.log('error in response ', error);
+                  this.alertService.error(error.statusText);
 
-            }
-            console.log('error', error);
-          }
-        );
-    })
+                }
+                console.log('error', error);
+              }
+            );
+        })
 
   }
 
@@ -173,6 +182,12 @@ export class ForecastService {
 
 
           //Temp Wind Graph
+          this.tempValue.splice(0, this.tempValue.length);
+          this.timeValue.splice(0, this.timeValue.length);
+          this.windValue.splice(0, this.timeValue.length);
+          this.pressureValue.splice(0, this.pressureValue.length);
+          this.humidityValue.splice(0, this.humidityValue.length);
+
           for (let i = 0; i < data.list.length - 30; i++) {
 
             const temp = data.list[i].main.temp;

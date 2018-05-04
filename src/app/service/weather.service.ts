@@ -10,72 +10,82 @@ import { AlertService } from '../service/alert.service';
 @Injectable()
 export class WeatherService {
 
-  location
   myWeather: CurrentWeather;
+  city: string;
 
-  constructor(private http: Http, public alertService: AlertService) { }
+  constructor(private http: Http, public alertService: AlertService) {
+  }
 
 
   public localWeather() {
-    window.navigator.geolocation.getCurrentPosition((pos) => {
+    this.http.get("http://ip-api.com/json")
+      .map((response: Response) => response.json())
+      .subscribe(
+        (data) => {
+          const lat = data.lat;
+          const lon = data.lon;
 
-      console.log("success");
+          this.city = data.city;
 
-      this.location = pos.coords;
+          // navigator.geolocation.getCurrentPosition((pos) => {
 
-      const lat = this.location.latitude;
-      const lon = this.location.longitude;
+          //   console.log("success");
 
-      return this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
-        .map((response: Response) => response.json())
-        .subscribe(
-          (data) => {
+          //   this.location = pos.coords;
 
-            console.log(data);
+          //   const lat = this.location.latitude;
+          //   const lon = this.location.longitude;
 
-            const date = moment.unix(data.dt).format('LL');
-            const sunrise = moment.unix(data.sys.sunrise).format('h:mm A');
-            const sunset = moment.unix(data.sys.sunset).format('h:mm A');
+          return this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
+            .map((response: Response) => response.json())
+            .subscribe(
+              (data) => {
 
-            this.myWeather = new CurrentWeather(data.name,
-              data.sys.country,
-              data.main.temp,
-              data.main.humidity,
-              data.main.pressure,
-              data.weather[0].icon,
-              data.clouds.all,
-              data.weather[0].description,
-              data.dt = date,
-              data.main.temp_max,
-              data.main.temp_min,
-              data.sys.sunrise = sunrise,
-              data.sys.sunset = sunset,
-              data.coord,
-              data.wind.speed,
-              data.wind.deg
+                console.log(data);
+
+                const date = moment.unix(data.dt).format('LL');
+                const sunrise = moment.unix(data.sys.sunrise).format('h:mm A');
+                const sunset = moment.unix(data.sys.sunset).format('h:mm A');
+
+                this.myWeather = new CurrentWeather(data.name,
+                  data.sys.country,
+                  data.main.temp,
+                  data.main.humidity,
+                  data.main.pressure,
+                  data.weather[0].icon,
+                  data.clouds.all,
+                  data.weather[0].description,
+                  data.dt = date,
+                  data.main.temp_max,
+                  data.main.temp_min,
+                  data.sys.sunrise = sunrise,
+                  data.sys.sunset = sunset,
+                  data.coord,
+                  data.wind.speed,
+                  data.wind.deg
+                );
+              },
+              error => {
+
+                if (error.status === 0) {
+
+                  console.log('service down ', error);
+                } else {
+
+                  console.log('error in response ', error);
+                  this.alertService.error(error.statusText);
+                }
+
+                console.log('error', error);
+              }
             );
-          },
-          error => {
-
-            if (error.status === 0) {
-
-              console.log('service down ', error);
-            } else {
-
-              console.log('error in response ', error);
-              this.alertService.error(error.statusText);
-            }
-
-            console.log('error', error);
-          }
-        );
-    })
+        })
   }
 
   public cityWeather(city) {
 
     console.log(city);
-
+    this.city = city;
     return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
       .map((response: Response) => response.json())
       .subscribe(

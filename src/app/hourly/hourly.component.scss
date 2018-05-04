@@ -20,11 +20,16 @@ chart{
     padding-top:15%;
 }
 
-.Temp{
+.maxTemp,.minTemp{
     padding:3px;
     border-radius: 2px;
 }
 
-.Temp{
+.maxTemp{
     background-color: orange;
+}
+
+.minTemp{
+    background-color: grey;
+    color:white;
 }
