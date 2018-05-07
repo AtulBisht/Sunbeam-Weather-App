@@ -45,21 +45,13 @@ export class ForecastService {
 
   public localForecast() {
 
+    //Get Latitude and longitude
     this.http.get("http://ip-api.com/json")
       .map((response: Response) => response.json())
       .subscribe(
         (data) => {
           const lat = data.lat;
           const lon = data.lon;
-          // navigator.geolocation.getCurrentPosition((pos) => {
-
-          //   console.log("success");
-
-          //   // this.loading = true;
-          //   this.location = pos.coords;
-
-          //   const lat = this.location.latitude;
-          //   const lon = this.location.longitude;
 
           return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
             .map((response: Response) => response.json())
