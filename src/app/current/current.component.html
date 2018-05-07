@@ -1,18 +1,15 @@
-<ng-progress [showSpinner]="true" [direction]="'leftToRightIncreased'" [color]="'#1B95E0'" [trickleSpeed]="300" [ease]="'linear'">
+<ng-progress [showSpinner]="true" [direction]="'leftToRightIncreased'" [color]="'#B2DFDB'" [trickleSpeed]="300" [ease]="'linear'">
 </ng-progress>
-
-
-
 
 <button mat-button class="btn-pos" (click)='OnClickCurrentLocation()'>
   <mat-icon>my_location</mat-icon>&nbsp;
   <strong>Current Location</strong>
 </button>
 
-<mat-grid-list cols="2" rowHeight="1:1" class="bg-grid">
+<mat-grid-list cols="2" rowHeight="1:1">
   <mat-grid-tile>
 
-    <mat-card class="bg-card">
+    <mat-card>
       <mat-card-title>
 
         <strong>Current Weather {{ws.myWeather?.city}}, {{ws.myWeather?.country}} </strong>
@@ -85,7 +82,7 @@
 
   <mat-grid-tile>
 
-    <mat-card class="bg-card">
+    <mat-card>
 
       <mat-card-title>
         <strong>Weather And Forecast {{ws.myWeather?.city}}, {{ws.myWeather?.country}}</strong>

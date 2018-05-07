@@ -10,6 +10,7 @@ import { AlertService } from '../service/alert.service';
 @Injectable()
 export class ForecastService {
 
+  apiKey = "25a84d6eb510a6e0dc95c703507e31a6";
   myCityForecast: Forecast[] = [];
   forecast: Forecast[] = [];
   fiveDaysForecast: Forecast[] = [];
@@ -52,12 +53,13 @@ export class ForecastService {
           const lat = data.lat;
           const lon = data.lon;
 
-          return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
+          return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
             .map((response: Response) => response.json())
             .subscribe(
               (data) => {
 
                 console.log(data);
+                console.log("Rain value", data.list[0].rain);
 
                 //Chart
                 this.tempValue.splice(0, this.tempValue.length);
@@ -170,13 +172,12 @@ export class ForecastService {
 
   public cityForecast(city) {
 
-    return this.http.get('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
+    return this.http.get('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json())
       .subscribe(
         (data) => {
 
           console.log(data);
-
 
           //Temp Wind Graph
           this.tempValue.splice(0, this.tempValue.length);
