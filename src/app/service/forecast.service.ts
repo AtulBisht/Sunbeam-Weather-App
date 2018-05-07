@@ -10,7 +10,6 @@ import { AlertService } from '../service/alert.service';
 @Injectable()
 export class ForecastService {
 
-  loading: boolean;
   myCityForecast: Forecast[] = [];
   forecast: Forecast[] = [];
   fiveDaysForecast: Forecast[] = [];
@@ -67,7 +66,10 @@ export class ForecastService {
                 this.pressureValue.splice(0, this.pressureValue.length);
                 this.humidityValue.splice(0, this.humidityValue.length);
 
-                for (let i = 0; i < data.list.length - 30; i++) {
+
+                //Get Chart/Graph Values
+                const gLen = data.list.length - 30;
+                for (let i = 0; i < gLen; i++) {
 
                   const temp = data.list[i].main.temp;
                   const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
@@ -101,7 +103,9 @@ export class ForecastService {
                 //local Hourly Forecast
                 this.myCityForecast.splice(0, this.myCityForecast.length);
 
-                for (let i = 0; i < data.list.length - 33; i++) {
+                const lLen = data.list.length - 33;
+
+                for (let i = 0; i < lLen; i++) {
 
                   const temporary = new Forecast(
                     data.list[i].dt_txt,
@@ -123,7 +127,9 @@ export class ForecastService {
 
                 //Five Days Forecast
                 this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
-                for (let i = 0; i < data.list.length; i = i + 8) {
+
+                const fLen = data.list.length;
+                for (let i = 0; i < fLen; i = i + 8) {
 
                   const temporary = new Forecast(
                     data.list[i].dt = moment.unix(data.list[i].dt).format('LL'),
@@ -169,7 +175,6 @@ export class ForecastService {
       .subscribe(
         (data) => {
 
-          this.loading = false;
           console.log(data);
 
 
@@ -180,7 +185,9 @@ export class ForecastService {
           this.pressureValue.splice(0, this.pressureValue.length);
           this.humidityValue.splice(0, this.humidityValue.length);
 
-          for (let i = 0; i < data.list.length - 30; i++) {
+          //Get Chart/Graph Values
+          const gLen = data.list.length - 30;
+          for (let i = 0; i < gLen; i++) {
 
             const temp = data.list[i].main.temp;
             const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
@@ -213,7 +220,9 @@ export class ForecastService {
           //city hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
-          for (let i = 0; i < data.list.length - 33; i++) {
+          const lLen = data.list.length - 33;
+
+          for (let i = 0; i < lLen; i++) {
 
             const temporary = new Forecast(
               data.list[i].dt_txt,
@@ -235,7 +244,10 @@ export class ForecastService {
 
           //Five Days Forecast
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
-          for (let i = 0; i < data.list.length; i = i + 8) {
+
+          const fLen = data.list.length;
+
+          for (let i = 0; i < fLen; i = i + 8) {
 
             const temporary = new Forecast(
               data.list[i].dt = moment.unix(data.list[i].dt).format('LL'),
