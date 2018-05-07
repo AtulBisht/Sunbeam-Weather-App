@@ -10,6 +10,7 @@ import { AlertService } from '../service/alert.service';
 @Injectable()
 export class WeatherService {
 
+  apiKey = "25a84d6eb510a6e0dc95c703507e31a6";
   myWeather: CurrentWeather;
   city: string;
 
@@ -27,16 +28,7 @@ export class WeatherService {
 
           this.city = data.city;
 
-          // navigator.geolocation.getCurrentPosition((pos) => {
-
-          //   console.log("success");
-
-          //   this.location = pos.coords;
-
-          //   const lat = this.location.latitude;
-          //   const lon = this.location.longitude;
-
-          return this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
+          return this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
             .map((response: Response) => response.json())
             .subscribe(
               (data) => {
@@ -86,7 +78,7 @@ export class WeatherService {
 
     console.log(city);
     this.city = city;
-    return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
+    return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json())
       .subscribe(
         (data) => {

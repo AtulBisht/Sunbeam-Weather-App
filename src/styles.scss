@@ -24,7 +24,16 @@ h1, h2, h3, h4 {
     font-weight: normal;
 }
 
+$maxTemp-color:rgb(255, 207, 74);
+$minTemp-color:rgb(161,161,161);
+$minTemp-text-color:rgb(255,255,255);
 
-// $navigation-bar-color:#3F51B5;
-// $header-color:whitesmoke;
-// $card-color:rgb(165, 165, 165);
+mat-card{
+    width:95%;
+    height:95%;
+}
+
+chart{
+    width: 100%;
+    padding-top:5%;
+}

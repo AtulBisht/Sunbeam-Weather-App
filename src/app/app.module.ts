@@ -8,7 +8,6 @@ import { ChartModule } from 'angular2-chartjs';
 import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CurrentComponent } from './current/current.component';
 import { ChartComponent } from './chart/chart.component';
@@ -43,7 +42,6 @@ import { PressureGraphComponent } from './pressure-graph/pressure-graph.componen
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     SidebarComponent,
     CurrentComponent,
     ChartComponent,

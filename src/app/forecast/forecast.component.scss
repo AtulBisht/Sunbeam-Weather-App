@@ -1,24 +1,7 @@
 @import 'src/styles';
 
-mat-card{
-    width:95%;
-    height:95%;
-}
-
-.forecast{
-    font-size: 18px;
-    font-variant: bold;
-}
-
-chart{
-    width:90%;
-}
-
 .Temp{
     padding:3px;
     border-radius: 2px;
-}
-
-.Temp{
-    background-color: orange;
+    background-color: $maxTemp-color;
 }

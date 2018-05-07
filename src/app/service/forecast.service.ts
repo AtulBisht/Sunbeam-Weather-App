@@ -10,7 +10,7 @@ import { AlertService } from '../service/alert.service';
 @Injectable()
 export class ForecastService {
 
-  loading: boolean;
+  apiKey = "25a84d6eb510a6e0dc95c703507e31a6";
   myCityForecast: Forecast[] = [];
   forecast: Forecast[] = [];
   fiveDaysForecast: Forecast[] = [];
@@ -45,28 +45,21 @@ export class ForecastService {
 
   public localForecast() {
 
+    //Get Latitude and longitude
     this.http.get("http://ip-api.com/json")
       .map((response: Response) => response.json())
       .subscribe(
         (data) => {
           const lat = data.lat;
           const lon = data.lon;
-          // navigator.geolocation.getCurrentPosition((pos) => {
 
-          //   console.log("success");
-
-          //   // this.loading = true;
-          //   this.location = pos.coords;
-
-          //   const lat = this.location.latitude;
-          //   const lon = this.location.longitude;
-
-          return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
+          return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
             .map((response: Response) => response.json())
             .subscribe(
               (data) => {
 
                 console.log(data);
+                console.log("Rain value", data.list[0].rain);
 
                 //Chart
                 this.tempValue.splice(0, this.tempValue.length);
@@ -75,7 +68,10 @@ export class ForecastService {
                 this.pressureValue.splice(0, this.pressureValue.length);
                 this.humidityValue.splice(0, this.humidityValue.length);
 
-                for (let i = 0; i < data.list.length - 30; i++) {
+
+                //Get Chart/Graph Values
+                const gLen = data.list.length - 30;
+                for (let i = 0; i < gLen; i++) {
 
                   const temp = data.list[i].main.temp;
                   const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
@@ -109,7 +105,9 @@ export class ForecastService {
                 //local Hourly Forecast
                 this.myCityForecast.splice(0, this.myCityForecast.length);
 
-                for (let i = 0; i < data.list.length - 33; i++) {
+                const lLen = data.list.length - 33;
+
+                for (let i = 0; i < lLen; i++) {
 
                   const temporary = new Forecast(
                     data.list[i].dt_txt,
@@ -131,7 +129,9 @@ export class ForecastService {
 
                 //Five Days Forecast
                 this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
-                for (let i = 0; i < data.list.length; i = i + 8) {
+
+                const fLen = data.list.length;
+                for (let i = 0; i < fLen; i = i + 8) {
 
                   const temporary = new Forecast(
                     data.list[i].dt = moment.unix(data.list[i].dt).format('LL'),
@@ -172,14 +172,12 @@ export class ForecastService {
 
   public cityForecast(city) {
 
-    return this.http.get('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
+    return this.http.get('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json())
       .subscribe(
         (data) => {
 
-          this.loading = false;
           console.log(data);
-
 
           //Temp Wind Graph
           this.tempValue.splice(0, this.tempValue.length);
@@ -188,7 +186,9 @@ export class ForecastService {
           this.pressureValue.splice(0, this.pressureValue.length);
           this.humidityValue.splice(0, this.humidityValue.length);
 
-          for (let i = 0; i < data.list.length - 30; i++) {
+          //Get Chart/Graph Values
+          const gLen = data.list.length - 30;
+          for (let i = 0; i < gLen; i++) {
 
             const temp = data.list[i].main.temp;
             const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
@@ -221,7 +221,9 @@ export class ForecastService {
           //city hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
-          for (let i = 0; i < data.list.length - 33; i++) {
+          const lLen = data.list.length - 33;
+
+          for (let i = 0; i < lLen; i++) {
 
             const temporary = new Forecast(
               data.list[i].dt_txt,
@@ -243,7 +245,10 @@ export class ForecastService {
 
           //Five Days Forecast
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
-          for (let i = 0; i < data.list.length; i = i + 8) {
+
+          const fLen = data.list.length;
+
+          for (let i = 0; i < fLen; i = i + 8) {
 
             const temporary = new Forecast(
               data.list[i].dt = moment.unix(data.list[i].dt).format('LL'),

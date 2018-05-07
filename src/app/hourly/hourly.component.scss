@@ -1,35 +1,16 @@
 @import 'src/styles';
 
-mat-card{
-    width:95%;
-    height:95%;
-}
-
-.bg-grid{
-    background-color: #F5F5F5
- }
-
-.forecast{
-    font-size: 18px;
-    font-variant: bold;
-}
-
-chart{
-    width: 100%;
-    height:100%;
-    padding-top:15%;
-}
-
 .maxTemp,.minTemp{
     padding:3px;
     border-radius: 2px;
 }
 
 .maxTemp{
-    background-color: orange;
+    background-color: $maxTemp-color;
 }
 
 .minTemp{
-    background-color: grey;
-    color:white;
+    background-color: $minTemp-color;
+    color:$minTemp-text-color;
 }
+

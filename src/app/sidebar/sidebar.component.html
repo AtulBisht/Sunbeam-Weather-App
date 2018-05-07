@@ -28,7 +28,7 @@
       </mat-list-item>
       <mat-list-item>
 
-        <a [ngClass]="{'is-active': step==='/dashboard'}" mat-button (click)="onClick('/chart')">
+        <a mat-button (click)="onClick('/chart')">
           <mat-icon>show_chart</mat-icon> &nbsp; &nbsp;
           <strong>Chart</strong>
         </a>
@@ -46,7 +46,8 @@
 
   <mat-sidenav-content>
     <mat-toolbar>
-      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>&nbsp;
+      <strong>Sunbeam Weather App</strong>
     </mat-toolbar>
 
     <router-outlet></router-outlet>

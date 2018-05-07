@@ -1,14 +1,15 @@
-<mat-grid-list cols="1" rowHeight="1:1" class="bg-grid">
+<mat-grid-list cols="1" rowHeight="1:1">
   <mat-grid-tile>
 
-    <mat-card class="bg-card">
+    <mat-card>
       <mat-card-title>
         <strong>Map</strong>
       </mat-card-title>
       <mat-card-content>
 
         <agm-map [latitude]="this.lat" [longitude]="this.lon">
-          <agm-marker [latitude]="this.lat" [longitude]="this.lon">
+          <agm-marker [latitude]="this.lat" [longitude]="this.lon" iconUrl="http://openweathermap.org/img/w/{{ws.myWeather?.icon}}.png"
+            title="{{ws.myWeather?.weatherKind}}">
           </agm-marker>
         </agm-map>
 
