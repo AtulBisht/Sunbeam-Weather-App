@@ -3,7 +3,7 @@
 
     <mat-card class="bg-card">
       <mat-card-title>
-        <strong>Weather Map</strong>
+        <strong>Map</strong>
       </mat-card-title>
       <mat-card-content>
 
@@ -11,31 +11,6 @@
           <agm-marker [latitude]="this.lat" [longitude]="this.lon">
           </agm-marker>
         </agm-map>
-
-        <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzD9phXc7MIN5hQgQ2w_lPMuRxyIFIHzI" async defer></script>
-
-        <div id="map"></div>
-
-        <script>
-
-          function initMap() {
-            var myLatLng = { lat: 28.65, lng: 77.22 };
-            var options = {
-              center: myLatLng,
-              zoom: 8
-
-            }
-            var map = new google.maps.Map(document.getElementById('map'), options);
-
-            //Create a marker and set its position.
-            var marker = new google.maps.Marker({
-              map: map,
-              position: myLatLng,
-              icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-            });
-          }
-
-        </script> -->
 
       </mat-card-content>
 
