@@ -1,124 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import * as moment from 'moment';
-import { NgProgress } from 'ngx-progressbar';
-import 'rxjs/Rx';
-import { CurrentWeather } from '../class/current-weather';
-import { MatInkBar } from '@angular/material';
-import { AlertService } from '../service/alert.service';
-
+import { environment } from '../../environments/environment';
 @Injectable()
 export class WeatherService {
 
-  apiKey = "25a84d6eb510a6e0dc95c703507e31a6";
-  myWeather: CurrentWeather;
+  apiKey = environment.apiKey;
+  lat: string;
+  lon: string;
   city: string;
 
-  constructor(private http: Http, public alertService: AlertService) {
+  constructor(private http: Http) {
   }
 
+  public localWeather(lat, lon) {
+    this.lat = lat;
+    this.lon = lon;
 
-  public localWeather() {
-    this.http.get("http://ip-api.com/json")
-      .map((response: Response) => response.json())
-      .subscribe(
-        (data) => {
-          const lat = data.lat;
-          const lon = data.lon;
+    return this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
+      .map((response: Response) => response.json());
 
-          this.city = data.city;
-
-          return this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
-            .map((response: Response) => response.json())
-            .subscribe(
-              (data) => {
-
-                console.log(data);
-
-                const date = moment.unix(data.dt).format('LL');
-                const sunrise = moment.unix(data.sys.sunrise).format('h:mm A');
-                const sunset = moment.unix(data.sys.sunset).format('h:mm A');
-
-                this.myWeather = new CurrentWeather(data.name,
-                  data.sys.country,
-                  data.main.temp,
-                  data.main.humidity,
-                  data.main.pressure,
-                  data.weather[0].icon,
-                  data.clouds.all,
-                  data.weather[0].description,
-                  data.dt = date,
-                  data.main.temp_max,
-                  data.main.temp_min,
-                  data.sys.sunrise = sunrise,
-                  data.sys.sunset = sunset,
-                  data.coord,
-                  data.wind.speed,
-                  data.wind.deg
-                );
-              },
-              error => {
-
-                if (error.status === 0) {
-
-                  console.log('service down ', error);
-                } else {
-
-                  console.log('error in response ', error);
-                  this.alertService.error(error.statusText);
-                }
-
-                console.log('error', error);
-              }
-            );
-        })
   }
 
   public cityWeather(city) {
-
-    console.log(city);
     this.city = city;
+    localStorage.setItem('city', this.city);
     return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + this.apiKey + '&units=metric')
-      .map((response: Response) => response.json())
-      .subscribe(
-        (data) => {
-
-          console.log(data);
-          const date = moment.unix(data.dt).format('LL');
-          const sunrise = moment.unix(data.sys.sunrise).format('h:mm A');
-          const sunset = moment.unix(data.sys.sunset).format('h:mm A');
-
-          this.myWeather = new CurrentWeather(data.name,
-            data.sys.country,
-            data.main.temp,
-            data.main.humidity,
-            data.main.pressure,
-            data.weather[0].icon,
-            data.clouds.all,
-            data.weather[0].description,
-            data.dt = date,
-            data.main.temp_max,
-            data.main.temp_min,
-            data.sys.sunrise = sunrise,
-            data.sys.sunset = sunset,
-            data.coord,
-            data.wind.speed,
-            data.wind.deg
-          );
-        },
-        error => {
-
-          if (error.status === 0) {
-
-            console.log('service down ', error);
-          } else {
-
-            console.log('error in response ', error);
-            this.alertService.error(error.statusText);
-          }
-          console.log('error', error);
-        }
-      );
+      .map((response: Response) => response.json());
   }
 
 }

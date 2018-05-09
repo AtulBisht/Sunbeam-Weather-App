@@ -8,8 +8,7 @@
       <mat-card-content>
 
         <agm-map [latitude]="this.lat" [longitude]="this.lon">
-          <agm-marker [latitude]="this.lat" [longitude]="this.lon" iconUrl="http://openweathermap.org/img/w/{{ws.myWeather?.icon}}.png"
-            title="{{ws.myWeather?.weatherKind}}">
+          <agm-marker [latitude]="this.lat" [longitude]="this.lon" iconUrl="http://openweathermap.org/img/w/{{this.icon}}.png" title={{this.title}}>
           </agm-marker>
         </agm-map>
 

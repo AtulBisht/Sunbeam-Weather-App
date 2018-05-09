@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../service/weather.service';
-import { Http, Response } from '@angular/http';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-map',
@@ -9,35 +9,35 @@ import { Http, Response } from '@angular/http';
 })
 export class MapComponent implements OnInit {
 
-  lat: number;
-  lon: number;
+  apiKey = environment.apiKey;
+  lat: string;
+  lon: string;
+  icon: string;
+  title: string;
 
-  constructor(private ws: WeatherService, private http: Http) { }
+  constructor(private ws: WeatherService) { }
 
   ngOnInit() {
 
     if (this.ws.city) {
-      this.http.get('http://api.openweathermap.org/data/2.5/weather?q=' + this.ws.city + '&appid=25a84d6eb510a6e0dc95c703507e31a6&units=metric')
-        .map((response: Response) => response.json())
+      this.ws.cityWeather(this.ws.city)
         .subscribe(
           (data) => {
             this.lat = data.coord.lat;
             this.lon = data.coord.lon;
+            this.icon = data.weather[0].icon;
+            this.title = data.weather[0].description;
           });
     }
-    else if (this.ws.city == 'delhi') {
-      this.lat = 28.65;
-      this.lon = 77.22;
-    }
-
     else {
-      this.http.get("http://ip-api.com/json")
-        .map((response: Response) => response.json())
+      this.lat = this.ws.lat;
+      this.lon = this.ws.lon;
+      this.ws.localWeather(this.ws.lat, this.ws.lon)
         .subscribe(
           (data) => {
-            this.lat = data.lat;
-            this.lon = data.lon;
-          })
+            this.icon = data.weather[0].icon;
+            this.title = data.weather[0].description;
+          });
     }
 
 

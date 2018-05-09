@@ -7,7 +7,7 @@
       </mat-card-title>
       <mat-card-content>
 
-        <mat-card *ngFor="let data of fs.myCityForecast">
+        <mat-card *ngFor="let data of myCityForecast">
           <mat-card-content>
             <strong> {{data?.dt|date:'d MMM, y'}}</strong>
             <hr> {{data?.time|date:'h:mm a'}} &nbsp;

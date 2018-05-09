@@ -7,6 +7,7 @@ export class ShowGraphService {
   showWind: boolean = false;
   showHumid: boolean = false;
   showPressure: boolean = false;
+  
   constructor() { }
 
   showGraphTemp(key: string) {

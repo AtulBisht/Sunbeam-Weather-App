@@ -1,7 +1,9 @@
 <mat-sidenav-container class="nav-height">
   <mat-sidenav #sidenav mode="side">
 
-    <img src="assets/img/AppSunbeam.png">
+    <!-- <img src="assets/img/AppSunbeam.png"> -->
+
+    <strong class="img">SunBeam</strong>
 
     <mat-list>
 
@@ -14,18 +16,12 @@
       </mat-list-item>
       <mat-list-item>
 
-        <a mat-button (click)="onClick('/hourly')">
+        <a mat-button (click)="onClick('/weatherForecast')">
           <mat-icon>wb_sunny</mat-icon> &nbsp; &nbsp;
-          <strong>Hourly Weather Forecast</strong>
+          <strong>Forecast</strong>
         </a>
       </mat-list-item>
-      <mat-list-item>
 
-        <a mat-button (click)="onClick('/forecast')">
-          <mat-icon>wb_cloudy</mat-icon> &nbsp; &nbsp;
-          <strong>5 Days Forecast</strong>
-        </a>
-      </mat-list-item>
       <mat-list-item>
 
         <a mat-button (click)="onClick('/chart')">
@@ -47,7 +43,7 @@
   <mat-sidenav-content>
     <mat-toolbar>
       <mat-icon (click)="sidenav.toggle()">menu</mat-icon>&nbsp;
-      <strong>Sunbeam Weather App</strong>
+      <strong>SunBeam Weather App</strong>
     </mat-toolbar>
 
     <router-outlet></router-outlet>

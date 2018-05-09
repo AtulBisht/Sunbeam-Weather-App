@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrentWeather } from '../class/current-weather';
-import { Forecast } from '../class/forecast';
+import { CurrentWeather } from '../models/current-weather';
+import { Forecast } from '../models/forecast';
 import { WeatherService } from '../service/weather.service';
 import { Router } from '@angular/router';
 import { ShowGraphService } from '../service/show-graph.service';
@@ -16,7 +16,6 @@ export class ChartComponent implements OnInit {
 
 
   ngOnInit() {
-
     this.showGraphService.showGraphPressure('pressureComponent');
     this.showGraphService.showGraphWind('windComponent');
     this.showGraphService.showGraphHumidity('humidityComponent');

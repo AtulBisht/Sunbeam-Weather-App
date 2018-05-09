@@ -4,21 +4,22 @@ import * as moment from 'moment';
 import { AlertService } from '../service/alert.service';
 
 @Component({
-  selector: 'app-pressure-graph',
-  templateUrl: './pressure-graph.component.html',
-  styleUrls: ['./pressure-graph.component.scss']
+  selector: 'app-temp-graph',
+  templateUrl: './temp-graph.component.html',
+  styleUrls: ['./temp-graph.component.scss']
 })
-export class PressureGraphComponent implements OnInit {
+export class TempGraphComponent implements OnInit {
 
-  pressureChart: string;
-  pressureValues: any;
-  pressureOptions: any;
 
+  tempChart: string;
+  tempValues: any;
+  tempOptions: any;
+  
+  tempValue = [];
   timeValue = [];
-  pressureValue = [];
 
-
-  constructor(private fs: ForecastService,
+  constructor(
+    private fs: ForecastService,
     private alertService: AlertService) { }
 
   ngOnInit() {
@@ -28,32 +29,33 @@ export class PressureGraphComponent implements OnInit {
     else {
       this.localForecast();
     }
-
-
   }
 
   localForecast() {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
+
+          console.log(data);
+
           //Chart
+          this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
 
-          this.pressureValue.splice(0, this.pressureValue.length);
 
           //Get Chart/Graph Values
           const gLen = data.list.length - 30;
           for (let i = 0; i < gLen; i++) {
 
+            const temp = data.list[i].main.temp;
             const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-            const pressure = (data.list[i].main.pressure);
-            this.timeValue.push(time);
-            this.pressureValue.push(pressure);
 
+            this.tempValue.push(temp);
+            this.timeValue.push(time);
           }
 
-          //Pressure Graph
-          this.getPChart(this.timeValue, this.pressureValue);
+          //Temperature Graph
+          this.getTChart(this.timeValue, this.tempValue);
         },
         error => {
 
@@ -68,8 +70,8 @@ export class PressureGraphComponent implements OnInit {
 
           }
           console.log('error', error);
-        });
 
+        });
   }
 
   cityForecast() {
@@ -79,24 +81,23 @@ export class PressureGraphComponent implements OnInit {
 
           console.log(data);
 
-          //Temp Wind Graph
+          //Temp Graph
+          this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
-          this.pressureValue.splice(0, this.pressureValue.length);
-
 
           //Get Chart/Graph Values
           const gLen = data.list.length - 30;
           for (let i = 0; i < gLen; i++) {
+
+            const temp = data.list[i].main.temp;
             const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-            const pressure = (data.list[i].main.pressure);
 
+            this.tempValue.push(temp);
             this.timeValue.push(time);
-            this.pressureValue.push(pressure);
-
           }
 
-          this.getPChart(this.timeValue, this.pressureValue);
-
+          //Temperature Graph
+          this.getTChart(this.timeValue, this.tempValue);
         },
         error => {
 
@@ -111,26 +112,24 @@ export class PressureGraphComponent implements OnInit {
         }
       );
   }
-
-
-  //Pressure Graph
-  getPChart(time, value) {
-    this.pressureChart = 'horizontalBar';
-    this.pressureValues = {
+  //Temp Graph 
+  getTChart(time, value) {
+    this.tempChart = 'horizontalBar';
+    this.tempValues = {
       labels: time,
       datasets: [
         {
-          label: 'Pressure',
+          label: 'Temperature',
           data: value,
-          backgroundColor: 'rgb(153,153,255)',
+          backgroundColor: 'rgb(255,153,51)',
           fill: false,
         }
       ]
     };
-    this.pressureOptions = {
+    this.tempOptions = {
       title: {
         display: true,
-        text: 'PRESSURE GRAPH ( hpa )'
+        text: 'TEMPERATURE GRAPH ( C )'
       },
       legend: {
         display: true
@@ -146,3 +145,4 @@ export class PressureGraphComponent implements OnInit {
   }
 
 }
+
