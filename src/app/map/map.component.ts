@@ -19,7 +19,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
 
-    if (this.ws.city) {
+    if (sessionStorage.getItem('city') != null) {
       this.ws.cityWeather(this.ws.city)
         .subscribe(
           (data) => {
