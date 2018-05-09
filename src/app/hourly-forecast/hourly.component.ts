@@ -15,6 +15,8 @@ import { Http, Response } from '@angular/http';
 export class HourlyComponent implements OnInit {
 
   myCityForecast: Forecast[] = [];
+
+  city: string;
   constructor(
     private ws: WeatherService,
     private fs: ForecastService,
@@ -35,11 +37,11 @@ export class HourlyComponent implements OnInit {
 
   localForecast() {
 
-    //local Forecast
+    //Local Forecast
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
-
+          this.city=data.city.name;
           //local Hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
@@ -85,8 +87,8 @@ export class HourlyComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          console.log(data);
-
+          this.city=data.city.name;
+          
           //local Hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 

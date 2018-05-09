@@ -14,7 +14,7 @@ import { AlertService } from '../service/alert.service';
 export class ForecastComponent implements OnInit {
 
   fiveDaysForecast: Forecast[] = [];
-
+  city: string;
   constructor(
     private fs: ForecastService,
     private showForecastService: ShowForecastService,
@@ -36,8 +36,7 @@ export class ForecastComponent implements OnInit {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
-          console.log(data);
-
+          this.city = data.city.name;
           //Five Days Forecast
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
 
@@ -84,6 +83,7 @@ export class ForecastComponent implements OnInit {
       .subscribe(
         (data) => {
 
+          this.city = data.city.name;
           //Five Days Forecast
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
 
