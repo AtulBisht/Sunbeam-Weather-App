@@ -36,8 +36,6 @@ export class TempGraphComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          console.log(data);
-
           //Chart
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
@@ -78,8 +76,6 @@ export class TempGraphComponent implements OnInit {
     this.fs.cityForecast(this.fs.city)
       .subscribe(
         (data) => {
-
-          console.log(data);
 
           //Temp Graph
           this.tempValue.splice(0, this.tempValue.length);

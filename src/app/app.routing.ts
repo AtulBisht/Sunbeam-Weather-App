@@ -14,6 +14,7 @@ import { WeatherForecastComponent } from './weather-forecast/weather-forecast.co
 
 
 const WeatherRoutes: Routes = [
+    
     { path: '', component: CurrentComponent },
     { path: 'weatherForecast', component: WeatherForecastComponent },
     { path: 'hourly', component: HourlyComponent },

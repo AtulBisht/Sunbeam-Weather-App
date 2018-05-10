@@ -14,7 +14,6 @@ export class ChartComponent implements OnInit {
 
   constructor(public showGraphService: ShowGraphService) { }
 
-
   ngOnInit() {
     this.showGraphService.showGraphPressure('pressureComponent');
     this.showGraphService.showGraphWind('windComponent');

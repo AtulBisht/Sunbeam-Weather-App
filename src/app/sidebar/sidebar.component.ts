@@ -1,8 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { WeatherService } from '../service/weather.service';
-import { ForecastService } from '../service/forecast.service';
-
 
 @Component({
   selector: 'app-sidebar',
@@ -10,10 +7,11 @@ import { ForecastService } from '../service/forecast.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+
   public path: string = '';
 
   @Output() click: EventEmitter<any> = new EventEmitter();
-  constructor(private router: Router, private ws: WeatherService, private fs: ForecastService) { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.router.events.subscribe((res) => {
