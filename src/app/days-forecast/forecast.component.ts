@@ -26,7 +26,7 @@ export class ForecastComponent implements OnInit {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
     }
-    else {
+    else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
     }
   }

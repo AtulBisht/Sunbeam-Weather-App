@@ -29,7 +29,7 @@ export class HourlyComponent implements OnInit {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
     }
-    else {
+    else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
     }
 
@@ -41,11 +41,11 @@ export class HourlyComponent implements OnInit {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
-          this.city=data.city.name;
+          this.city = data.city.name;
           //local Hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
-          const lLen = data.list.length - 34;
+          const lLen = data.list.length - 33;
 
           for (let i = 0; i < lLen; i++) {
 
@@ -87,12 +87,12 @@ export class HourlyComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          this.city=data.city.name;
-          
+          this.city = data.city.name;
+
           //local Hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
-          const lLen = data.list.length - 34;
+          const lLen = data.list.length - 33;
 
           for (let i = 0; i < lLen; i++) {
 

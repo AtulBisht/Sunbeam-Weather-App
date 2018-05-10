@@ -16,6 +16,8 @@ export class ForecastService {
   public localForecast(lat, lon) {
     this.lat = lat;
     this.lon = lon;
+    sessionStorage.setItem('latitude', this.lat);
+    sessionStorage.setItem('longitude', this.lon);
     return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json());
 
