@@ -45,7 +45,7 @@ export class HourlyComponent implements OnInit {
           //local Hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
-          const lLen = data.list.length - 33;
+          const lLen = data.list.length - 34;
 
           for (let i = 0; i < lLen; i++) {
 
@@ -92,7 +92,7 @@ export class HourlyComponent implements OnInit {
           //local Hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
-          const lLen = data.list.length - 33;
+          const lLen = data.list.length - 34;
 
           for (let i = 0; i < lLen; i++) {
 
