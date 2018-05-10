@@ -17,7 +17,6 @@ import { CurrentWeather } from '../models/current-weather';
 
 export class CurrentComponent implements OnInit {
 
-
   myWeather: CurrentWeather;
 
   Chart: string;
@@ -83,7 +82,6 @@ export class CurrentComponent implements OnInit {
 
               (data) => {
                 this.loading = false;
-                console.log(data);
 
                 //Chart
                 this.tempValue.splice(0, this.tempValue.length);
@@ -150,7 +148,6 @@ export class CurrentComponent implements OnInit {
               (data) => {
 
                 this.loading = false;
-                console.log(data);
 
                 const date = moment.unix(data.dt).format('LL');
                 const sunrise = moment.unix(data.sys.sunrise).format('h:mm A');
@@ -195,7 +192,6 @@ export class CurrentComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          console.log(data);
           const date = moment.unix(data.dt).format('LL');
           const sunrise = moment.unix(data.sys.sunrise).format('h:mm A');
           const sunset = moment.unix(data.sys.sunset).format('h:mm A');
@@ -237,8 +233,6 @@ export class CurrentComponent implements OnInit {
     this.fs.cityForecast(city)
       .subscribe(
         (data) => {
-
-          console.log(data);
 
           //Chart
           this.tempValue.splice(0, this.tempValue.length);

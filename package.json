@@ -1,6 +1,6 @@
 {
   "name": "sunbeam-weather-app",
-  "productName": "Sunbeam Weather App",
+  "productName": "Sunbeam-Weather-App",
   "version": "0.0.0",
   "license": "MIT",
   "main": "main.js",
@@ -12,7 +12,10 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "ng build --dev && electron ./dist/index.html",
-    "electron-build": "ng build --prod && electron ./dist/index.html"
+    "electron-build": "ng build --prod && electron ./dist/index.html",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/SWA.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager .  Sunbeam-Weather-App --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/SWA.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Sunbeam Weather App\"",
+    "package-linux": "electron-packager . Sunbeam-Weather-App --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/SWA.png --prune=true --out=release-builds"
   },
   "private": true,
   "dependencies": {

@@ -83,8 +83,6 @@ export class HumidityGraphComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          console.log(data);
-
           //Temp Wind Graph
           this.timeValue.splice(0, this.timeValue.length);
           this.humidityValue.splice(0, this.humidityValue.length);
@@ -100,8 +98,7 @@ export class HumidityGraphComponent implements OnInit {
             this.humidityValue.push(humidity);
 
           }
-
-
+          //Humidity Graph
           this.getHChart(this.timeValue, this.humidityValue);
 
         },

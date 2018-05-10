@@ -10,7 +10,6 @@ export class ForecastService {
   lat: string;
   lon: string;
 
-
   constructor(private http: Http) { }
 
   public localForecast(lat, lon) {

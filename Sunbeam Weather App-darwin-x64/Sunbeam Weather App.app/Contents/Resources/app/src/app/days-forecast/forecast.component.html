@@ -1,0 +1,35 @@
+<mat-grid-list cols="1" rowHeight="1:1">
+  <mat-grid-tile>
+
+    <mat-card class="bg-card">
+
+      <mat-card-title>
+        <strong>5 Days Weather Forecast ({{this.city}})</strong>
+      </mat-card-title>
+
+      <mat-card-content>
+
+        <mat-card *ngFor="let data of fiveDaysForecast">
+          <mat-card-content>
+            <strong>
+              {{data?.dt}}
+            </strong>
+            &nbsp; &nbsp;
+            <img src="http://openweathermap.org/img/w/{{data?.icon}}.png"> &nbsp; &nbsp;
+            <hr>
+            <strong> {{data?.des}}</strong> &nbsp; &nbsp;
+            <span class="Temp">
+              <strong>{{data?.temp}}</strong>&deg;C
+            </span> &nbsp; &nbsp; Wind:
+            <strong>{{data?.wind_speed}} m/s </strong>&nbsp; &nbsp; Clouds:
+            <strong>{{data?.clouds}}%</strong>&nbsp; &nbsp; Humidity:
+            <strong>{{data?.humidity}}%</strong>&nbsp; &nbsp; Pressure:
+            <strong>{{data?.pressure}} hpa</strong>
+          </mat-card-content>
+        </mat-card>
+
+      </mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>

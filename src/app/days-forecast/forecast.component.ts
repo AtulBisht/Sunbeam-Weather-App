@@ -15,6 +15,7 @@ export class ForecastComponent implements OnInit {
 
   fiveDaysForecast: Forecast[] = [];
   city: string;
+  
   constructor(
     private fs: ForecastService,
     private showForecastService: ShowForecastService,
@@ -37,6 +38,7 @@ export class ForecastComponent implements OnInit {
       .subscribe(
         (data) => {
           this.city = data.city.name;
+
           //Five Days Forecast
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
 

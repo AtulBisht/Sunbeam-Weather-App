@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../service/weather.service';
-import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-map',
@@ -9,7 +8,6 @@ import { environment } from '../../environments/environment';
 })
 export class MapComponent implements OnInit {
 
-  apiKey = environment.apiKey;
   lat: string;
   lon: string;
   icon: string;
@@ -39,8 +37,6 @@ export class MapComponent implements OnInit {
             this.title = data.weather[0].description;
           });
     }
-
-
   }
 
 }

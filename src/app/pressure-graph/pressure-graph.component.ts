@@ -18,7 +18,8 @@ export class PressureGraphComponent implements OnInit {
   pressureValue = [];
 
 
-  constructor(private fs: ForecastService,
+  constructor(
+    private fs: ForecastService,
     private alertService: AlertService) { }
 
   ngOnInit() {
@@ -28,7 +29,6 @@ export class PressureGraphComponent implements OnInit {
     else if((sessionStorage.getItem('longitude')&& sessionStorage.getItem('latitude')!=null)){
       this.localForecast();
     }
-
 
   }
 
@@ -76,8 +76,6 @@ export class PressureGraphComponent implements OnInit {
     this.fs.cityForecast(this.fs.city)
       .subscribe(
         (data) => {
-
-          console.log(data);
 
           //Temp Wind Graph
           this.timeValue.splice(0, this.timeValue.length);
