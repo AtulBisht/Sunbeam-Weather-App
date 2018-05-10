@@ -41,6 +41,7 @@ import { PressureGraphComponent } from './pressure-graph/pressure-graph.componen
 import { WeatherForecastComponent } from './weather-forecast/weather-forecast.component';
 import { ShowForecastService } from './service/show-forecast.service';
 import { environment } from './../environments/environment';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { environment } from './../environments/environment';
     HumidityGraphComponent,
     PressureGraphComponent,
     WeatherForecastComponent,
+    FooterComponent,
 
   ],
   imports: [
