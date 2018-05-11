@@ -85,21 +85,19 @@ export class WindGraphComponent implements OnInit {
 
 
           //Get Chart/Graph Values
-          const gLen = data.list.length - 30;
-          for (let i = 0; i < gLen; i++) {
-
+          for (let i = 0; i <  data.list.length; i++) {
+            if (i < 10) {
             const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
             const wind = data.list[i].wind.speed;
 
-
             this.timeValue.push(time);
             this.windValue.push(wind);
+            }
           }
 
           //Wind Graph
           this.getWChart(this.timeValue, this.windValue);
         },
-
 
         error => {
 

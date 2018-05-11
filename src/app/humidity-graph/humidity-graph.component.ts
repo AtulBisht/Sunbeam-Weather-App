@@ -45,15 +45,14 @@ export class HumidityGraphComponent implements OnInit {
           this.humidityValue.splice(0, this.humidityValue.length);
 
           //Get Chart/Graph Values
-          const gLen = data.list.length - 30;
-          for (let i = 0; i < gLen; i++) {
-
+          for (let i = 0; i < data.list.length; i++) {
+            if (i < 10) {
             const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
             const humidity = (data.list[i].main.humidity);
 
             this.timeValue.push(time);
             this.humidityValue.push(humidity);
-
+            }
           }
 
           //humidity Graph
@@ -86,7 +85,6 @@ export class HumidityGraphComponent implements OnInit {
           //Temp Wind Graph
           this.timeValue.splice(0, this.timeValue.length);
           this.humidityValue.splice(0, this.humidityValue.length);
-
 
           //Get Chart/Graph Values
           for (let i = 0; i < data.list.length; i++) {
