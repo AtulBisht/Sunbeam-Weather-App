@@ -83,14 +83,14 @@ export class PressureGraphComponent implements OnInit {
 
 
           //Get Chart/Graph Values
-          const gLen = data.list.length - 30;
-          for (let i = 0; i < gLen; i++) {
+          for (let i = 0; i < data.list.length ; i++) {
+            if (i < 10) {
             const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
             const pressure = (data.list[i].main.pressure);
 
             this.timeValue.push(time);
             this.pressureValue.push(pressure);
-
+            }
           }
 
           this.getPChart(this.timeValue, this.pressureValue);
