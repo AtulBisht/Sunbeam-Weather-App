@@ -13,9 +13,9 @@
     "e2e": "ng e2e",
     "electron": "ng build --dev && electron ./dist/index.html",
     "electron-build": "ng build --prod && electron ./dist/index.html",
-    "package-mac": "electron-packager . --version 1.8.6 --platform darwin --icon ./assets/img/icons/SWA.icns --out ./dist --overwrite",
-    "package-win": "electron-packager . --version 1.8.6 --platform win32 --icon ./assets/img/icons/SWA.ico --out ./dist --overwrite",
-    "package-linux": "electron-packager . --version 1.8.6 --platform  linux --icon ./assets/img/icons/SWA.png --out ./dist --overwrite "
+    "package-mac": "electron-packager . sunbeam-weather-app --version 1.8.6 --platform darwin --icon ./assets/img/icons/SWA.icns --out ./dist --overwrite",
+    "package-win": "electron-packager . sunbeam-weather-app --version 1.8.6 --platform win32 --icon ./assets/img/icons/SWA.ico --out ./dist --overwrite",
+    "package-linux": "electron-packager . sunbeam-weather-app --version 1.8.6 --platform linux --icon ./assets/img/icons/SWA.png --out ./dist --overwrite"
   },
   "private": true,
   "dependencies": {
