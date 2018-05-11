@@ -4,7 +4,7 @@ let win;
 function createWindow() {
 
   win = new BrowserWindow({
-    width: 600,
+    width: 800,
     height: 600,
     backgroundColor: '#ffffff',
     icon: `file://${__dirname}/dist/assets/logo.png`
@@ -14,8 +14,8 @@ function createWindow() {
   win.loadURL(`file://${__dirname}/dist/index.html`)
 
   //// uncomment below to open the DevTools.
-  
- // win.webContents.openDevTools()
+
+  // win.webContents.openDevTools()
 
   // Event when the window is closed.
   win.on('closed', function () {
@@ -36,7 +36,6 @@ app.on('window-all-closed', function () {
 })
 
 app.on('activate', function () {
-  process.env.GOOGLE_API_KEY = "AIzaSyCzD9phXc7MIN5hQgQ2w_lPMuRxyIFIHzI";
   // macOS specific close process
   if (win === null) {
     createWindow()
