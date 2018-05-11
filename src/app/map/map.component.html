@@ -6,11 +6,21 @@
         <strong>Map</strong>
       </mat-card-title>
       <mat-card-content>
+        <mat-card>
+          <mat-card-title>
+            <strong>{{this.city}}</strong> &nbsp;
+            <strong>
+              <img src="http://openweathermap.org/img/w/{{this.icon}}.png">
+            </strong> &nbsp;
+            <strong>{{this.temperature}} &deg;C</strong> &nbsp;
+            <strong>{{this.title}}</strong> &nbsp;
 
-        <agm-map [latitude]="this.lat" [longitude]="this.lon">
-          <agm-marker [latitude]="this.lat" [longitude]="this.lon" iconUrl="http://openweathermap.org/img/w/{{this.icon}}.png" title={{this.title}}>
-          </agm-marker>
-        </agm-map>
+          </mat-card-title>
+          <agm-map [latitude]="this.lat" [longitude]="this.lon">
+            <agm-marker [latitude]="this.lat" [longitude]="this.lon" iconUrl="http://openweathermap.org/img/w/{{this.icon}}.png" title={{this.title}}>
+            </agm-marker>
+          </agm-map>
+        </mat-card>
 
       </mat-card-content>
 

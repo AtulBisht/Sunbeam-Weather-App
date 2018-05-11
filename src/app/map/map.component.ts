@@ -12,6 +12,8 @@ export class MapComponent implements OnInit {
   lon: string;
   icon: string;
   title: string;
+  temperature: string;
+  city: string;
 
   constructor(private ws: WeatherService) { }
 
@@ -25,6 +27,8 @@ export class MapComponent implements OnInit {
             this.lon = data.coord.lon;
             this.icon = data.weather[0].icon;
             this.title = data.weather[0].description;
+            this.city = data.name;
+            this.temperature = data.main.temp
           });
     }
     else {
@@ -35,6 +39,8 @@ export class MapComponent implements OnInit {
           (data) => {
             this.icon = data.weather[0].icon;
             this.title = data.weather[0].description;
+            this.city = data.name;
+            this.temperature = data.main.temp
           });
     }
   }
