@@ -25,7 +25,7 @@ export class WindGraphComponent implements OnInit {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
     }
-    else if((sessionStorage.getItem('longitude')&& sessionStorage.getItem('latitude')!=null)){
+    else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
     }
   }
@@ -42,14 +42,14 @@ export class WindGraphComponent implements OnInit {
           this.windValue.splice(0, this.timeValue.length);
 
           //Get Chart/Graph Values
-          const gLen = data.list.length - 30;
-          for (let i = 0; i < gLen; i++) {
+          for (let i = 0; i < data.list.length; i++) {
+            if (i < 10) {
+              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
+              const wind = data.list[i].wind.speed;
 
-            const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-            const wind = data.list[i].wind.speed;
-
-            this.timeValue.push(time);
-            this.windValue.push(wind);
+              this.timeValue.push(time);
+              this.windValue.push(wind);
+            }
           }
 
           //Wind Graph

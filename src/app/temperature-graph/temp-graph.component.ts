@@ -14,7 +14,7 @@ export class TempGraphComponent implements OnInit {
   tempChart: string;
   tempValues: any;
   tempOptions: any;
-  
+
   tempValue = [];
   timeValue = [];
 
@@ -26,7 +26,7 @@ export class TempGraphComponent implements OnInit {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
     }
-    else if((sessionStorage.getItem('longitude')&& sessionStorage.getItem('latitude')!=null)){
+    else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
     }
   }
@@ -42,14 +42,14 @@ export class TempGraphComponent implements OnInit {
 
 
           //Get Chart/Graph Values
-          const gLen = data.list.length - 30;
-          for (let i = 0; i < gLen; i++) {
+          for (let i = 0; i < data.list.length; i++) {
+            if (i < 10) {
+              const temp = data.list[i].main.temp;
+              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
 
-            const temp = data.list[i].main.temp;
-            const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-
-            this.tempValue.push(temp);
-            this.timeValue.push(time);
+              this.tempValue.push(temp);
+              this.timeValue.push(time);
+            }
           }
 
           //Temperature Graph

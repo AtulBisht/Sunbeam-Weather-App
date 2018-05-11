@@ -27,7 +27,7 @@ export class HumidityGraphComponent implements OnInit {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
     }
-    else if((sessionStorage.getItem('longitude')&& sessionStorage.getItem('latitude')!=null)){
+    else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
     }
 
@@ -89,13 +89,14 @@ export class HumidityGraphComponent implements OnInit {
 
 
           //Get Chart/Graph Values
-          const gLen = data.list.length - 30;
-          for (let i = 0; i < gLen; i++) {
-            const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-            const humidity = (data.list[i].main.humidity);
+          for (let i = 0; i < data.list.length; i++) {
+            if (i < 10) {
+              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
+              const humidity = (data.list[i].main.humidity);
 
-            this.timeValue.push(time);
-            this.humidityValue.push(humidity);
+              this.timeValue.push(time);
+              this.humidityValue.push(humidity);
+            }
 
           }
           //Humidity Graph

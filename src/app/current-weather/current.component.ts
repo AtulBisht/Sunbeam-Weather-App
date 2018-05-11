@@ -92,20 +92,20 @@ export class CurrentComponent implements OnInit {
 
 
                 //Getting Graph Values
-                const gLen = data.list.length - 30;
-                for (let i = 0; i < gLen; i++) {
+                for (let i = 0; i < data.list.length; i++) {
+                  if (i < 10) {
+                    const temp = data.list[i].main.temp;
+                    const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
+                    const wind = data.list[i].wind.speed;
+                    const humidity = data.list[i].main.humidity;
+                    const pressure = (data.list[i].main.pressure);
 
-                  const temp = data.list[i].main.temp;
-                  const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-                  const wind = data.list[i].wind.speed;
-                  const humidity = data.list[i].main.humidity;
-                  const pressure = (data.list[i].main.pressure);
-
-                  this.tempValue.push(temp);
-                  this.timeValue.push(time);
-                  this.windValue.push(wind);
-                  this.pressureValue.push(pressure);
-                  this.humidityValue.push(humidity);
+                    this.tempValue.push(temp);
+                    this.timeValue.push(time);
+                    this.windValue.push(wind);
+                    this.pressureValue.push(pressure);
+                    this.humidityValue.push(humidity);
+                  }
                 }
 
                 //Wind Humidity Graph
@@ -243,20 +243,20 @@ export class CurrentComponent implements OnInit {
 
 
           //Getting Graph Values
-          const gLen = data.list.length - 30;
-          for (let i = 0; i < gLen; i++) {
+          for (let i = 0; i < data.list.length; i++) {
+            if (i < 10) {
+              const temp = data.list[i].main.temp;
+              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
+              const wind = data.list[i].wind.speed;
+              const humidity = data.list[i].main.humidity;
+              const pressure = (data.list[i].main.pressure);
 
-            const temp = data.list[i].main.temp;
-            const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-            const wind = data.list[i].wind.speed;
-            const humidity = data.list[i].main.humidity;
-            const pressure = (data.list[i].main.pressure);
-
-            this.tempValue.push(temp);
-            this.timeValue.push(time);
-            this.windValue.push(wind);
-            this.pressureValue.push(pressure);
-            this.humidityValue.push(humidity);
+              this.tempValue.push(temp);
+              this.timeValue.push(time);
+              this.windValue.push(wind);
+              this.pressureValue.push(pressure);
+              this.humidityValue.push(humidity);
+            }
           }
 
           //Wind Humidity Graph

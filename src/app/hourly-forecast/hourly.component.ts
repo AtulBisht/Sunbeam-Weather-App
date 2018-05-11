@@ -42,31 +42,30 @@ export class HourlyComponent implements OnInit {
       .subscribe(
         (data) => {
           this.city = data.city.name;
-          
+
           //local Hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
-          const lLen = data.list.length - 33;
+          for (let i = 0; i < data.list.length; i++) {
+            if (i < 6) {
+              const temporary = new Forecast(
+                data.list[i].dt_txt,
+                data.list[i].dt_txt,
+                data.list[i].weather[0].icon,
+                data.list[i].main.temp,
+                data.list[i].main.humidity,
+                data.list[i].main.temp_max,
+                data.list[i].main.temp_min,
+                data.list[i].weather[0].description,
+                data.list[i].rain,
+                data.list[i].wind.speed,
+                data.list[i].clouds.all,
+                data.list[i].main.pressure)
 
-          for (let i = 0; i < lLen; i++) {
-
-            const temporary = new Forecast(
-              data.list[i].dt_txt,
-              data.list[i].dt_txt,
-              data.list[i].weather[0].icon,
-              data.list[i].main.temp,
-              data.list[i].main.humidity,
-              data.list[i].main.temp_max,
-              data.list[i].main.temp_min,
-              data.list[i].weather[0].description,
-              data.list[i].rain,
-              data.list[i].wind.speed,
-              data.list[i].clouds.all,
-              data.list[i].main.pressure)
-
-            this.myCityForecast.push(temporary);
+              this.myCityForecast.push(temporary);
+            }
+            console.log("My Local Forecast", this.myCityForecast);
           }
-          console.log("My Local Forecast", this.myCityForecast);
         },
         error => {
 
@@ -93,27 +92,26 @@ export class HourlyComponent implements OnInit {
           //local Hourly Forecast
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
-          const lLen = data.list.length - 33;
+          for (let i = 0; i < data.list.length; i++) {
+            if (i < 6) {
+              const temporary = new Forecast(
+                data.list[i].dt_txt,
+                data.list[i].dt_txt,
+                data.list[i].weather[0].icon,
+                data.list[i].main.temp,
+                data.list[i].main.humidity,
+                data.list[i].main.temp_max,
+                data.list[i].main.temp_min,
+                data.list[i].weather[0].description,
+                data.list[i].rain,
+                data.list[i].wind.speed,
+                data.list[i].clouds.all,
+                data.list[i].main.pressure)
 
-          for (let i = 0; i < lLen; i++) {
-
-            const temporary = new Forecast(
-              data.list[i].dt_txt,
-              data.list[i].dt_txt,
-              data.list[i].weather[0].icon,
-              data.list[i].main.temp,
-              data.list[i].main.humidity,
-              data.list[i].main.temp_max,
-              data.list[i].main.temp_min,
-              data.list[i].weather[0].description,
-              data.list[i].rain,
-              data.list[i].wind.speed,
-              data.list[i].clouds.all,
-              data.list[i].main.pressure)
-
-            this.myCityForecast.push(temporary);
+              this.myCityForecast.push(temporary);
+            }
+            console.log("My City Forecast", this.myCityForecast);
           }
-          console.log("My City Forecast", this.myCityForecast);
         },
         error => {
           if (error.status === 0) {
