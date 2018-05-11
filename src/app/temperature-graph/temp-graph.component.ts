@@ -82,14 +82,14 @@ export class TempGraphComponent implements OnInit {
           this.timeValue.splice(0, this.timeValue.length);
 
           //Get Chart/Graph Values
-          const gLen = data.list.length - 30;
-          for (let i = 0; i < gLen; i++) {
+          for (let i = 0; i < data.list.length; i++) {
+            if (i < 10) {
+              const temp = data.list[i].main.temp;
+              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
 
-            const temp = data.list[i].main.temp;
-            const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-
-            this.tempValue.push(temp);
-            this.timeValue.push(time);
+              this.tempValue.push(temp);
+              this.timeValue.push(time);
+            }
           }
 
           //Temperature Graph
