@@ -1,7 +1,7 @@
 <ng-progress [showSpinner]="true" [direction]="'leftToRightIncreased'" [color]="'#B2DFDB'" [trickleSpeed]="300" [ease]="'linear'">
 </ng-progress>
 
-<mat-spinner class="spinner" *ngIf='loading'></mat-spinner>
+<mat-spinner *ngIf='loading'></mat-spinner>
 
 <div *ngIf='!loading'>
   <mat-grid-list cols="2" rowHeight='420px'>
@@ -9,9 +9,7 @@
 
       <mat-card>
         <mat-card-title>
-
           <strong>Current Weather {{myWeather?.city}}, {{myWeather?.country}} </strong>
-
         </mat-card-title>
         <mat-card-content>
           <h2>

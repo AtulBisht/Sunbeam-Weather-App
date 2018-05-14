@@ -1,1 +1,5 @@
-<chart [type]="tempChart" [data]="tempValues" [options]="tempOptions"></chart>
+<mat-spinner *ngIf='loading'></mat-spinner>
+
+<div *ngIf='!loading'>
+    <chart [type]="tempChart" [data]="tempValues" [options]="tempOptions"></chart>
+</div>

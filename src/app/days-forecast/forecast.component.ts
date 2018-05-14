@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../service/forecast.service';
 import { Forecast } from '../models/forecast';
-import { ShowForecastService } from '../service/show-forecast.service';
-import { Http, Response } from '@angular/http';
 import * as moment from 'moment';
 import { AlertService } from '../service/alert.service';
 
@@ -14,21 +12,22 @@ import { AlertService } from '../service/alert.service';
 export class ForecastComponent implements OnInit {
 
   fiveDaysForecast: Forecast[] = [];
+  loading: boolean;
   city: string;
-  
+
   constructor(
     private fs: ForecastService,
-    private showForecastService: ShowForecastService,
-    private http: Http,
     public alertService: AlertService) { }
 
   ngOnInit() {
 
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
+      this.loading = true;
     }
     else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
+      this.loading = true;
     }
   }
 
@@ -37,6 +36,8 @@ export class ForecastComponent implements OnInit {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
+
+          this.loading = false;
           this.city = data.city.name;
 
           //Five Days Forecast
@@ -85,6 +86,7 @@ export class ForecastComponent implements OnInit {
       .subscribe(
         (data) => {
 
+          this.loading = false;
           this.city = data.city.name;
           //Five Days Forecast
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);

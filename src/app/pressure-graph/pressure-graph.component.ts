@@ -13,6 +13,7 @@ export class PressureGraphComponent implements OnInit {
   pressureChart: string;
   pressureValues: any;
   pressureOptions: any;
+  loading: boolean;
 
   timeValue = [];
   pressureValue = [];
@@ -25,9 +26,11 @@ export class PressureGraphComponent implements OnInit {
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
+      this.loading = true;
     }
-    else if((sessionStorage.getItem('longitude')&& sessionStorage.getItem('latitude')!=null)){
+    else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
+      this.loading = true;
     }
 
   }
@@ -36,6 +39,8 @@ export class PressureGraphComponent implements OnInit {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
+
+          this.loading = false;
           //Chart
           this.timeValue.splice(0, this.timeValue.length);
 
@@ -44,10 +49,10 @@ export class PressureGraphComponent implements OnInit {
           //Get Chart/Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
-            const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-            const pressure = (data.list[i].main.pressure);
-            this.timeValue.push(time);
-            this.pressureValue.push(pressure);
+              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
+              const pressure = (data.list[i].main.pressure);
+              this.timeValue.push(time);
+              this.pressureValue.push(pressure);
             }
           }
 
@@ -76,6 +81,7 @@ export class PressureGraphComponent implements OnInit {
       .subscribe(
         (data) => {
 
+          this.loading = false;
           //Temp Wind Graph
           this.timeValue.splice(0, this.timeValue.length);
           this.pressureValue.splice(0, this.pressureValue.length);
@@ -84,11 +90,11 @@ export class PressureGraphComponent implements OnInit {
           //Get Chart/Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
-            const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-            const pressure = (data.list[i].main.pressure);
+              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
+              const pressure = (data.list[i].main.pressure);
 
-            this.timeValue.push(time);
-            this.pressureValue.push(pressure);
+              this.timeValue.push(time);
+              this.pressureValue.push(pressure);
             }
           }
 

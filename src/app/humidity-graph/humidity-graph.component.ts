@@ -17,6 +17,8 @@ export class HumidityGraphComponent implements OnInit {
   timeValue = [];
   humidityValue = [];
 
+  loading: boolean;
+
   constructor(
     private fs: ForecastService,
     private alertService: AlertService,
@@ -26,9 +28,11 @@ export class HumidityGraphComponent implements OnInit {
 
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
+      this.loading = true;
     }
     else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
+      this.loading = true;
     }
 
   }
@@ -40,6 +44,7 @@ export class HumidityGraphComponent implements OnInit {
       .subscribe(
         (data) => {
 
+          this.loading = false;
           //Chart
           this.timeValue.splice(0, this.timeValue.length);
           this.humidityValue.splice(0, this.humidityValue.length);
@@ -47,11 +52,11 @@ export class HumidityGraphComponent implements OnInit {
           //Get Chart/Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
-            const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-            const humidity = (data.list[i].main.humidity);
+              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
+              const humidity = (data.list[i].main.humidity);
 
-            this.timeValue.push(time);
-            this.humidityValue.push(humidity);
+              this.timeValue.push(time);
+              this.humidityValue.push(humidity);
             }
           }
 
@@ -82,6 +87,7 @@ export class HumidityGraphComponent implements OnInit {
       .subscribe(
         (data) => {
 
+          this.loading = false;
           //Temp Wind Graph
           this.timeValue.splice(0, this.timeValue.length);
           this.humidityValue.splice(0, this.humidityValue.length);

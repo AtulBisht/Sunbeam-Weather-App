@@ -14,6 +14,7 @@ export class WindGraphComponent implements OnInit {
   windChart: string;
   windValues: any;
   windOptions: any;
+  loading: boolean;
 
   timeValue = [];
   windValue = [];
@@ -24,9 +25,11 @@ export class WindGraphComponent implements OnInit {
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
+      this.loading = true;
     }
     else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
+      this.loading = true;
     }
   }
 
@@ -35,7 +38,7 @@ export class WindGraphComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          console.log(data);
+          this.loading = false;
 
           //Chart
           this.timeValue.splice(0, this.timeValue.length);
@@ -77,7 +80,7 @@ export class WindGraphComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          console.log(data);
+          this.loading = false;
 
           //Temp Wind Graph
           this.timeValue.splice(0, this.timeValue.length);
@@ -85,13 +88,13 @@ export class WindGraphComponent implements OnInit {
 
 
           //Get Chart/Graph Values
-          for (let i = 0; i <  data.list.length; i++) {
+          for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
-            const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-            const wind = data.list[i].wind.speed;
+              const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
+              const wind = data.list[i].wind.speed;
 
-            this.timeValue.push(time);
-            this.windValue.push(wind);
+              this.timeValue.push(time);
+              this.windValue.push(wind);
             }
           }
 

@@ -14,15 +14,18 @@ export class MapComponent implements OnInit {
   title: string;
   temperature: string;
   city: string;
+  loading: boolean;
 
   constructor(private ws: WeatherService) { }
 
   ngOnInit() {
 
     if (sessionStorage.getItem('city') != null) {
+      this.loading = true;
       this.ws.cityWeather(this.ws.city)
         .subscribe(
           (data) => {
+            this.loading = false;
             this.lat = data.coord.lat;
             this.lon = data.coord.lon;
             this.icon = data.weather[0].icon;
@@ -34,9 +37,11 @@ export class MapComponent implements OnInit {
     else {
       this.lat = this.ws.lat;
       this.lon = this.ws.lon;
+      this.loading = true;
       this.ws.localWeather(this.ws.lat, this.ws.lon)
         .subscribe(
           (data) => {
+            this.loading = false;
             this.icon = data.weather[0].icon;
             this.title = data.weather[0].description;
             this.city = data.name;
