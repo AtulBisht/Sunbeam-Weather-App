@@ -15,6 +15,8 @@ export class TempGraphComponent implements OnInit {
   tempValues: any;
   tempOptions: any;
 
+  loading: boolean;
+
   tempValue = [];
   timeValue = [];
 
@@ -25,9 +27,11 @@ export class TempGraphComponent implements OnInit {
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
+      this.loading = true;
     }
     else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
+      this.loading = true;
     }
   }
 
@@ -36,6 +40,7 @@ export class TempGraphComponent implements OnInit {
       .subscribe(
         (data) => {
 
+          this.loading = false;
           //Chart
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
@@ -77,6 +82,7 @@ export class TempGraphComponent implements OnInit {
       .subscribe(
         (data) => {
 
+          this.loading = false;
           //Temp Graph
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);

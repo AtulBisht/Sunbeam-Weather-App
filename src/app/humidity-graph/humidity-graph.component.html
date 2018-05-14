@@ -1,1 +1,6 @@
-<chart [type]="humidityChart" [data]="humidityValues" [options]="humidityOptions"></chart>
+
+<mat-spinner *ngIf='loading'></mat-spinner>
+
+<div *ngIf='!loading'>
+    <chart [type]="humidityChart" [data]="humidityValues" [options]="humidityOptions"></chart>
+    </div>

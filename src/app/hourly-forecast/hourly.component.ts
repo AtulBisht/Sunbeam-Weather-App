@@ -12,6 +12,7 @@ export class HourlyComponent implements OnInit {
 
   myCityForecast: Forecast[] = [];
   city: string;
+  loading: boolean;
 
   constructor(
     private fs: ForecastService,
@@ -21,9 +22,11 @@ export class HourlyComponent implements OnInit {
 
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
+      this.loading = true;
     }
     else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
+      this.loading = true;
     }
 
   }
@@ -34,6 +37,8 @@ export class HourlyComponent implements OnInit {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
+
+          this.loading = false;
           this.city = data.city.name;
 
           //local Hourly Forecast
@@ -80,6 +85,7 @@ export class HourlyComponent implements OnInit {
       .subscribe(
         (data) => {
 
+          this.loading = false;
           this.city = data.city.name;
 
           //local Hourly Forecast

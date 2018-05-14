@@ -1,1 +1,6 @@
-<chart [type]="pressureChart" [data]="pressureValues" [options]="pressureOptions"></chart>
+<mat-spinner *ngIf='loading'>
+</mat-spinner>
+
+<div *ngIf='!loading'>
+    <chart [type]="pressureChart" [data]="pressureValues" [options]="pressureOptions"></chart>
+</div>

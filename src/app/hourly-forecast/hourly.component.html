@@ -1,34 +1,38 @@
-<mat-grid-list cols="1" rowHeight="1:1">
-  <mat-grid-tile>
+<mat-spinner *ngIf='loading'></mat-spinner>
 
-    <mat-card>
-      <mat-card-title>
-        <strong>Hourly Weather Forecast ({{this.city}})</strong>
-      </mat-card-title>
-      <mat-card-content>
+<div *ngIf='!loading'>
+  <mat-grid-list cols="1" rowHeight="1:1">
+    <mat-grid-tile>
 
-        <mat-card *ngFor="let data of myCityForecast">
-          <mat-card-content>
-            <strong> {{data?.dt|date:'d MMM, y'}}</strong>
-            <hr> {{data?.time|date:'h:mm a'}} &nbsp;
-            <img src="http://openweathermap.org/img/w/{{data?.icon}}.png"> &nbsp; High:
-            <span class="maxTemp">
-              <strong>{{data?.tempMax}} </strong>&deg;C
-            </span> &nbsp; Low:
-            <span class="minTemp">
-              <strong>{{data?.tempMin}} </strong>&deg;C
-            </span> &nbsp;
-            <strong>{{data?.des}} </strong>&nbsp; Wind:
-            <strong>{{data?.wind_speed}} m/s</strong> &nbsp; Clouds:
-            <strong>{{data?.clouds}}%</strong> &nbsp; Humidity:
-            <strong>{{data?.humidity}} %</strong> &nbsp; Pressure:
-            <strong>{{data?.pressure}} hpa</strong>
-          </mat-card-content>
-        </mat-card>
+      <mat-card>
+        <mat-card-title>
+          <strong>Hourly Weather Forecast &nbsp; {{this.city}}</strong>
+        </mat-card-title>
+        <mat-card-content>
 
-      </mat-card-content>
+          <mat-card *ngFor="let data of myCityForecast">
+            <mat-card-content>
+              <strong> {{data?.dt|date:'d MMM, y'}}</strong>
+              <hr> {{data?.time|date:'h:mm a'}} &nbsp;
+              <img src="http://openweathermap.org/img/w/{{data?.icon}}.png"> &nbsp; High:
+              <span class="maxTemp">
+                <strong>{{data?.tempMax}} </strong>&deg;C
+              </span> &nbsp; Low:
+              <span class="minTemp">
+                <strong>{{data?.tempMin}} </strong>&deg;C
+              </span> &nbsp;
+              <strong>{{data?.des}} </strong>&nbsp; Wind:
+              <strong>{{data?.wind_speed}} m/s</strong> &nbsp; Clouds:
+              <strong>{{data?.clouds}}%</strong> &nbsp; Humidity:
+              <strong>{{data?.humidity}} %</strong> &nbsp; Pressure:
+              <strong>{{data?.pressure}} hpa</strong>
+            </mat-card-content>
+          </mat-card>
 
-    </mat-card>
+        </mat-card-content>
 
-  </mat-grid-tile>
-</mat-grid-list>
+      </mat-card>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

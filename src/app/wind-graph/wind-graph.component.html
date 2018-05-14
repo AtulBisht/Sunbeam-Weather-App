@@ -1,1 +1,5 @@
-<chart [type]="windChart" [data]="windValues" [options]="windOptions"></chart>
+<mat-spinner *ngIf='loading'></mat-spinner>
+
+<div *ngIf='!loading'>
+    <chart [type]="windChart" [data]="windValues" [options]="windOptions"></chart>
+</div>

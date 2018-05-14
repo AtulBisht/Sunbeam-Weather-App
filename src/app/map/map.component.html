@@ -1,29 +1,33 @@
-<mat-grid-list cols="1" rowHeight="1:1">
-  <mat-grid-tile>
+<mat-spinner *ngIf='loading'></mat-spinner>
 
-    <mat-card>
-      <mat-card-title>
-        <strong>Map</strong>
-      </mat-card-title>
-      <mat-card-content>
-        <mat-card>
-          <mat-card-title>
-            <strong>{{this.city}}</strong> &nbsp;
-            <strong>
-              <img src="http://openweathermap.org/img/w/{{this.icon}}.png">
-            </strong> &nbsp;
-            <strong>{{this.temperature}} &deg;C</strong> &nbsp;
-            <strong>{{this.title}}</strong> &nbsp;
+<div *ngIf='!loading'>
+  <mat-grid-list cols="1" rowHeight="1:1">
+    <mat-grid-tile>
 
-          </mat-card-title>
-          <agm-map [latitude]="this.lat" [longitude]="this.lon">
-            <agm-marker [latitude]="this.lat" [longitude]="this.lon" iconUrl="http://openweathermap.org/img/w/{{this.icon}}.png" title={{this.title}}>
-            </agm-marker>
-          </agm-map>
-        </mat-card>
+      <mat-card>
+        <mat-card-title>
+          <strong>Map</strong>
+        </mat-card-title>
+        <mat-card-content>
+          <mat-card>
+            <mat-card-title>
+              <strong>{{this.city}}</strong> &nbsp;
+              <strong>
+                <img src="http://openweathermap.org/img/w/{{this.icon}}.png">
+              </strong> &nbsp;
+              <strong>{{this.temperature}} &deg;C</strong> &nbsp;
+              <strong>{{this.title}}</strong> &nbsp;
 
-      </mat-card-content>
+            </mat-card-title>
+            <agm-map [latitude]="this.lat" [longitude]="this.lon">
+              <agm-marker [latitude]="this.lat" [longitude]="this.lon" iconUrl="http://openweathermap.org/img/w/{{this.icon}}.png" title={{this.title}}>
+              </agm-marker>
+            </agm-map>
+          </mat-card>
 
-    </mat-card>
-  </mat-grid-tile>
-</mat-grid-list>
+        </mat-card-content>
+
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
