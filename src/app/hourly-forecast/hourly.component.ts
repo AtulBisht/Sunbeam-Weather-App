@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../service/weather.service';
 import { ForecastService } from '../service/forecast.service';
-import { CurrentWeather } from '../models/current-weather';
 import { Forecast } from '../models/forecast';
-import { ShowForecastService } from '../service/show-forecast.service';
 import { AlertService } from '../service/alert.service';
-import { Http, Response } from '@angular/http';
 
 @Component({
   selector: 'app-hourly',
@@ -18,11 +14,8 @@ export class HourlyComponent implements OnInit {
   city: string;
 
   constructor(
-    private ws: WeatherService,
     private fs: ForecastService,
-    private showWeatherForecast: ShowForecastService,
-    private alertService: AlertService,
-    private http: Http) { }
+    private alertService: AlertService) { }
 
   ngOnInit() {
 

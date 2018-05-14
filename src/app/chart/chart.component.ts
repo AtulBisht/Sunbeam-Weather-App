@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrentWeather } from '../models/current-weather';
-import { Forecast } from '../models/forecast';
-import { WeatherService } from '../service/weather.service';
-import { Router } from '@angular/router';
 import { ShowGraphService } from '../service/show-graph.service';
 
 @Component({
