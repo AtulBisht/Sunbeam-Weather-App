@@ -62,7 +62,7 @@ export class HourlyComponent implements OnInit {
 
               this.myCityForecast.push(temporary);
             }
-            console.log("My Local Forecast", this.myCityForecast);
+            //console.log("My Local Forecast", this.myCityForecast);
           }
         },
         error => {
@@ -109,7 +109,7 @@ export class HourlyComponent implements OnInit {
 
               this.myCityForecast.push(temporary);
             }
-            console.log("My City Forecast", this.myCityForecast);
+            //console.log("My City Forecast", this.myCityForecast);
           }
         },
         error => {
