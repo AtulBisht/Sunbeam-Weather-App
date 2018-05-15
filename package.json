@@ -3,6 +3,7 @@
   "productName": "Sunbeam-Weather-App",
   "version": "0.0.0",
   "license": "MIT",
+  "author":"Atul Bisht",
   "main": "main.js",
   "scripts": {
     "ng": "ng",
@@ -13,9 +14,11 @@
     "e2e": "ng e2e",
     "electron": "ng build --dev && electron ./dist/index.html",
     "electron-build": "ng build --prod && electron ./dist/index.html",
-    "package-mac": "electron-packager . sunbeam-weather-app --platform=darwin --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite",
+    "package": "asar pack release-builds/sunbeam-weather-app-darwin-x64/sunbeam-weather-app.app/Contents/Resources/app release-builds/sunbeam-weather-app-darwin-x64/sunbeam-weather-app.app/Contents/Resources/app.asar",
+    "package-mac": "electron-packager . sunbeam-weather-app --platform=darwin --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite --ignore=node_modules/electron-*",
     "package-linux": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/img/icons/SWA.png --prune=true --out=release-builds",
-    "package-win": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/icon.ico --prune=true --out=release-builds --version-string.CompanyName=NAL --version-string.FileDescription=NAL --version-string.ProductName='Sunbeam Weather App'"
+    "package-win": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/icon.ico --prune=true --out=release-builds --version-string.CompanyName=NAL --version-string.FileDescription=NAL --version-string.ProductName='Sunbeam Weather App'",
+    "dist":"electron-builder"
   },
   "private": true,
   "dependencies": {
@@ -50,6 +53,7 @@
     "@types/node": "^6.0.109",
     "codelyzer": "^4.3.0",
     "electron": "^1.8.6",
+    "electron-builder": "^20.13.3",
     "electron-packager": "^12.0.2",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -62,5 +66,17 @@
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
+  },
+  "build":{
+    "aapId":"com.atulbisht.app",
+    "productName":"Sunbeam Weather App",
+    "target":"NSIS",
+    "directory":{
+      "output":"build"
+    },
+    "nsis":{
+      "allowToChangeInstallationDirectory":true,
+      "oneClick":false
+    }
   }
 }
