@@ -2,6 +2,7 @@
   <mat-grid-tile>
 
     <mat-card>
+
       <mat-card-title>
         Weather Graphs
       </mat-card-title>
@@ -22,10 +23,9 @@
       </mat-card-subtitle>
 
       <mat-card-content>
-
         <app-temp-graph *ngIf="showGraphService.showTemp">
         </app-temp-graph>
-
+        
         <app-wind-graph *ngIf="showGraphService.showWind">
         </app-wind-graph>
 
@@ -34,8 +34,8 @@
 
         <app-pressure-graph *ngIf="showGraphService.showPressure">
         </app-pressure-graph>
-
       </mat-card-content>
+
     </mat-card>
 
   </mat-grid-tile>

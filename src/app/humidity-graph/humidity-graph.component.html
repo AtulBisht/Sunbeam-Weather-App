@@ -1,6 +1,6 @@
-
-<mat-spinner *ngIf='loading'></mat-spinner>
+<mat-spinner *ngIf='loading'>
+</mat-spinner>
 
 <div *ngIf='!loading'>
     <chart [type]="humidityChart" [data]="humidityValues" [options]="humidityOptions"></chart>
-    </div>
+</div>
