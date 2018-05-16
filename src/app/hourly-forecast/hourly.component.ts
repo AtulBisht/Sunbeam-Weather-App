@@ -41,9 +41,10 @@ export class HourlyComponent implements OnInit {
           this.loading = false;
           this.city = data.city.name;
 
-          //local Hourly Forecast
+         //clean previous data
           this.myCityForecast.splice(0, this.myCityForecast.length);
 
+          // Hourly weather Forecast
           for (let i = 0; i < data.list.length; i++) {
             if (i < 6) {
               const temporary = new Forecast(
@@ -62,7 +63,6 @@ export class HourlyComponent implements OnInit {
 
               this.myCityForecast.push(temporary);
             }
-            //console.log("My Local Forecast", this.myCityForecast);
           }
         },
         error => {
@@ -88,9 +88,9 @@ export class HourlyComponent implements OnInit {
           this.loading = false;
           this.city = data.city.name;
 
-          //local Hourly Forecast
+          //clean previous data
           this.myCityForecast.splice(0, this.myCityForecast.length);
-
+          //Hourly Weather Forecast
           for (let i = 0; i < data.list.length; i++) {
             if (i < 6) {
               const temporary = new Forecast(
@@ -109,7 +109,6 @@ export class HourlyComponent implements OnInit {
 
               this.myCityForecast.push(temporary);
             }
-            //console.log("My City Forecast", this.myCityForecast);
           }
         },
         error => {

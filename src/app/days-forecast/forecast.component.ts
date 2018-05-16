@@ -32,7 +32,6 @@ export class ForecastComponent implements OnInit {
   }
 
   localForecast() {
-    //Local Forecast
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
@@ -40,11 +39,11 @@ export class ForecastComponent implements OnInit {
           this.loading = false;
           this.city = data.city.name;
 
-          //Five Days Forecast
+          //clean previous data
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
 
-          const fLen = data.list.length;
-          for (let i = 0; i < fLen; i = i + 8) {
+          //five days weather forecast
+          for (let i = 0; i < data.list.length; i = i + 8) {
 
             const temporary = new Forecast(
               data.list[i].dt = moment.unix(data.list[i].dt).format('LL'),
@@ -81,19 +80,18 @@ export class ForecastComponent implements OnInit {
 
   cityForecast() {
 
-    //City Forecast
     this.fs.cityForecast(this.fs.city)
       .subscribe(
         (data) => {
 
           this.loading = false;
           this.city = data.city.name;
-          //Five Days Forecast
+
+          //clean previous data
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
 
-          const fLen = data.list.length;
-
-          for (let i = 0; i < fLen; i = i + 8) {
+          //Five Days Weather Forecast
+          for (let i = 0; i < data.list.length; i = i + 8) {
 
             const temporary = new Forecast(
               data.list[i].dt = moment.unix(data.list[i].dt).format('LL'),

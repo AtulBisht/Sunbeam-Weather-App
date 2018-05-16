@@ -27,14 +27,6 @@ export class CurrentComponent implements OnInit {
   tempValues: any;
   tempOptions: any;
 
-  windChart: string;
-  windValues: any;
-  windOptions: any;
-
-  humidityChart: string;
-  humidityValues: any;
-  humidityOptions: any;
-
   pressureChart: string;
   pressureValues: any;
   pressureOptions: any;
@@ -58,6 +50,7 @@ export class CurrentComponent implements OnInit {
 
   ngOnInit() {
     this.ngProgress.start();
+    //clean sessionStorage
     sessionStorage.clear();
     this.loading = true;
     this.localWeather();
@@ -71,6 +64,7 @@ export class CurrentComponent implements OnInit {
   }
 
   localForecast() {
+    //get location
     this.http.get("http://ip-api.com/json")
       .map((response: Response) => response.json())
       .subscribe(
@@ -83,7 +77,7 @@ export class CurrentComponent implements OnInit {
               (data) => {
                 this.loading = false;
 
-                //Chart
+                //clean previous data
                 this.tempValue.splice(0, this.tempValue.length);
                 this.timeValue.splice(0, this.timeValue.length);
                 this.windValue.splice(0, this.timeValue.length);
@@ -91,7 +85,7 @@ export class CurrentComponent implements OnInit {
                 this.humidityValue.splice(0, this.humidityValue.length);
 
 
-                //Getting Graph Values
+                //Get Graph Values
                 for (let i = 0; i < data.list.length; i++) {
                   if (i < 10) {
                     const temp = data.list[i].main.temp;
@@ -137,6 +131,7 @@ export class CurrentComponent implements OnInit {
 
 
   localWeather() {
+    //get location
     this.http.get("http://ip-api.com/json")
       .map((response: Response) => response.json())
       .subscribe(
@@ -234,7 +229,7 @@ export class CurrentComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          //Chart
+          //clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
           this.windValue.splice(0, this.timeValue.length);
@@ -242,7 +237,7 @@ export class CurrentComponent implements OnInit {
           this.humidityValue.splice(0, this.humidityValue.length);
 
 
-          //Getting Graph Values
+          //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
               const temp = data.list[i].main.temp;

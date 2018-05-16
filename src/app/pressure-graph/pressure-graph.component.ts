@@ -41,12 +41,12 @@ export class PressureGraphComponent implements OnInit {
         (data) => {
 
           this.loading = false;
-          //Chart
-          this.timeValue.splice(0, this.timeValue.length);
 
+          //clean previous data
+          this.timeValue.splice(0, this.timeValue.length);
           this.pressureValue.splice(0, this.pressureValue.length);
 
-          //Get Chart/Graph Values
+          //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
@@ -62,11 +62,9 @@ export class PressureGraphComponent implements OnInit {
         error => {
 
           if (error.status === 0) {
-
             console.log('service down ', error);
-
-          } else {
-
+          }
+          else {
             console.log('error in response ', error);
             this.alertService.error(error.statusText);
 
@@ -82,12 +80,13 @@ export class PressureGraphComponent implements OnInit {
         (data) => {
 
           this.loading = false;
-          //Temp Wind Graph
+
+          //clean previous data
           this.timeValue.splice(0, this.timeValue.length);
           this.pressureValue.splice(0, this.pressureValue.length);
 
 
-          //Get Chart/Graph Values
+          //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');

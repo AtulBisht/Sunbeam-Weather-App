@@ -88,11 +88,11 @@ export class HumidityGraphComponent implements OnInit {
         (data) => {
 
           this.loading = false;
-          //Temp Wind Graph
+          //clean previous data
           this.timeValue.splice(0, this.timeValue.length);
           this.humidityValue.splice(0, this.humidityValue.length);
 
-          //Get Chart/Graph Values
+          //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');

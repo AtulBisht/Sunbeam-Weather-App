@@ -3,7 +3,6 @@ import { ForecastService } from '../service/forecast.service';
 import { WeatherService } from '../service/weather.service';
 import { CitiesWeather } from '../models/cities-weather';
 
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -50,9 +49,10 @@ export class MapComponent implements OnInit {
                   this.loading = false;
                   console.log("weather around given city", data);
 
-
+                  //clean previous data
                   this.citiesWeather.splice(0, this.citiesWeather.length);
 
+                  //show weather info around city
                   for (let i = 0; i < data.list.length; i++) {
 
                     const temporary = new CitiesWeather(
@@ -64,12 +64,7 @@ export class MapComponent implements OnInit {
                     this.citiesWeather.push(temporary);
                   }
                 });
-
           });
-
-
-
-
     }
     else {
 
@@ -96,8 +91,10 @@ export class MapComponent implements OnInit {
                   this.loading = false;
                   console.log("weather around current city", data);
 
+                  //clean previous data
                   this.citiesWeather.splice(0, this.citiesWeather.length);
 
+                  //show weather info around city
                   for (let i = 0; i < data.list.length; i++) {
                     const temporary = new CitiesWeather(
                       data.list[i].name,
@@ -110,10 +107,6 @@ export class MapComponent implements OnInit {
                   }
                 });
           });
-
-
-
     }
-
   }
 }

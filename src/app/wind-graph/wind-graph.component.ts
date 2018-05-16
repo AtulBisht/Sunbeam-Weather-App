@@ -40,11 +40,11 @@ export class WindGraphComponent implements OnInit {
 
           this.loading = false;
 
-          //Chart
+          //clean previous data
           this.timeValue.splice(0, this.timeValue.length);
           this.windValue.splice(0, this.timeValue.length);
 
-          //Get Chart/Graph Values
+          //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
@@ -82,12 +82,12 @@ export class WindGraphComponent implements OnInit {
 
           this.loading = false;
 
-          //Temp Wind Graph
+          //clean previous
           this.timeValue.splice(0, this.timeValue.length);
           this.windValue.splice(0, this.timeValue.length);
 
 
-          //Get Chart/Graph Values
+          //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');

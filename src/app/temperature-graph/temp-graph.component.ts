@@ -41,12 +41,13 @@ export class TempGraphComponent implements OnInit {
         (data) => {
 
           this.loading = false;
-          //Chart
+
+          //clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
 
 
-          //Get Chart/Graph Values
+          //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
               const temp = data.list[i].main.temp;
@@ -83,11 +84,12 @@ export class TempGraphComponent implements OnInit {
         (data) => {
 
           this.loading = false;
-          //Temp Graph
+
+          //clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
 
-          //Get Chart/Graph Values
+          //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
               const temp = data.list[i].main.temp;
