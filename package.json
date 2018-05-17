@@ -1,21 +1,14 @@
 {
   "name": "sunbeam-weather-app",
+  "description": "Weather app",
   "productName": "Sunbeam-Weather-App",
   "version": "0.0.0",
   "license": "MIT",
-  "author": "atul bisht <atul.bisht@nerdapplabs.com>",
+  "author": "Atul Bisht <atul.bisht@nerdapplabs.com>",
   "copyright": "© 2018, nerdAppLabs software solution",
   "main": "main.js",
   "build": {
-    "appId": "com.atulbisht.sunbeam-weather-app",
-    "win": {
-      "target": "appx",
-      "icon": "src/assets/img/icons/SWA.ico"
-    },
-    "linux": {
-      "target": "AppImage",
-      "icon": "src/assets/img/icons/SWA.png"
-    }
+    "appId": "com.atulbisht.sunbeam-weather-app"
   },
   "scripts": {
     "ng": "ng",
@@ -26,11 +19,14 @@
     "e2e": "ng e2e",
     "electron": "ng build --dev && electron ./dist/index.html",
     "electron-build": "ng build --prod && electron ./dist/index.html",
+
     "package-mac": "electron-packager . sunbeam-weather-app --platform=darwin --asar=true --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite --ignore=node_modules/electron-*",
     "package-linux": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/img/icons/SWA.png --prune=true --out=release-builds",
     "package-win": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/SwA.ico --ignore=node_modules/electron-* --prune=true --out=release-builds",
+    
     "postinstall": "electron-builder install-app-deps",
-    "dist": "electron-builder",
+
+    "build-mwl": "electron-builder . -mwl",
     "build-mac": "electron-builder . --mac --x64",
     "build-linux": "electron-builder . --linux --x64",
     "build-win": "electron-builder . --win --ia32"
