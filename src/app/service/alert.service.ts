@@ -37,7 +37,7 @@ export class AlertService {
     this.subject.next({ type: 'error', text: message });
     setTimeout(function () {
       this.closeMessage();
-    }.bind(this), 10000);
+    }.bind(this), 5000);
   }
 
   getMessage(): Observable<any> {
