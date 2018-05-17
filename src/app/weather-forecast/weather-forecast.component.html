@@ -2,11 +2,9 @@
   <mat-grid-tile>
 
     <mat-card>
-
       <mat-card-title>
         Weather Forecast
       </mat-card-title>
-
       <mat-card-subtitle>
         <button mat-button (click)="showForecastService.showHourly('hourlyComponent')">
           <strong>Hourly Forecast</strong>
@@ -15,15 +13,12 @@
           <strong>5 days Forecast</strong>
         </button>
       </mat-card-subtitle>
-
       <mat-card-content>
         <app-forecast *ngIf="showForecastService.showFiveDaysForecast">
         </app-forecast>
-
         <app-hourly *ngIf="showForecastService.showHourlyForecast">
         </app-hourly>
       </mat-card-content>
-
     </mat-card>
 
   </mat-grid-tile>
