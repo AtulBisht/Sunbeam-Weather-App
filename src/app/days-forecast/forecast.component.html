@@ -5,13 +5,10 @@
     <mat-grid-tile>
 
       <mat-card>
-
         <mat-card-title>
           5 Days Weather Forecast &nbsp; {{this.city}}
         </mat-card-title>
-
         <mat-card-content>
-
           <mat-card *ngFor="let data of fiveDaysForecast">
             <mat-card-content>
               <strong>
@@ -30,7 +27,6 @@
               <strong>{{data?.pressure}} hPa</strong>
             </mat-card-content>
           </mat-card>
-
         </mat-card-content>
       </mat-card>
 
