@@ -52,7 +52,7 @@ Edit the scripts section of your package.json:
 ### For Windows
 ``npm run package-win``
 
-Note: If you are using macOS for create package install WINE to run Windows app otherwise it will give "Could not find "wine" on your system"
+Note: If you are using macOS for create package install wine
 
 ### For MacOS
 ``npm run package-mac``
@@ -94,7 +94,7 @@ Edit the scripts section of your package.json:
 ### For Windows 
 ``npm run build-win``
 
-Note: If you use macOS to create distributable file install wine otherwise it will give "Could not find "wine" on your system"
+Note: If you use macOS to create distributable file install wine.
 
 ### For MacOS 
 ``npm run build-mac``
