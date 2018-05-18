@@ -51,7 +51,7 @@ export class HumidityGraphComponent implements OnInit {
 
           //Get Chart/Graph Values
           for (let i = 0; i < data.list.length; i++) {
-            if (i < 10) {
+            if (i < 24) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
               const humidity = (data.list[i].main.humidity);
 
@@ -94,7 +94,7 @@ export class HumidityGraphComponent implements OnInit {
 
           //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
-            if (i < 10) {
+            if (i < 24) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
               const humidity = (data.list[i].main.humidity);
 
