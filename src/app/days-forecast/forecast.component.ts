@@ -63,13 +63,10 @@ export class ForecastComponent implements OnInit {
           }
         },
         error => {
-
           if (error.status === 0) {
-
             console.log('service down ', error);
-
-          } else {
-
+          }
+          else {
             console.log('error in response ', error);
             this.alertService.error(error.statusText);
           }
@@ -111,11 +108,10 @@ export class ForecastComponent implements OnInit {
           }
         },
         error => {
-
           if (error.status === 0) {
             console.log('service down ', error);
-          } else {
-
+          }
+          else {
             console.log('error in response ', error);
             this.alertService.error(error.statusText);
           }

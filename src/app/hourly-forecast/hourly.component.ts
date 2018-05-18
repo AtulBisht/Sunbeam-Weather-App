@@ -66,7 +66,6 @@ export class HourlyComponent implements OnInit {
           }
         },
         error => {
-
           if (error.status === 0) {
             console.log('service down ', error);
           }

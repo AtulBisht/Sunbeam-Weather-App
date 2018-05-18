@@ -57,19 +57,14 @@ export class WindGraphComponent implements OnInit {
 
           //Wind Graph
           this.getWChart(this.timeValue, this.windValue);
-
         },
         error => {
-
           if (error.status === 0) {
-
             console.log('service down ', error);
-
-          } else {
-
+          } 
+          else {
             console.log('error in response ', error);
             this.alertService.error(error.statusText);
-
           }
           console.log('error', error);
         });
@@ -86,7 +81,6 @@ export class WindGraphComponent implements OnInit {
           this.timeValue.splice(0, this.timeValue.length);
           this.windValue.splice(0, this.timeValue.length);
 
-
           //Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 10) {
@@ -101,13 +95,11 @@ export class WindGraphComponent implements OnInit {
           //Wind Graph
           this.getWChart(this.timeValue, this.windValue);
         },
-
         error => {
-
           if (error.status === 0) {
             console.log('service down ', error);
-          } else {
-
+          } 
+          else {
             console.log('error in response ', error);
             this.alertService.error(error.statusText);
           }

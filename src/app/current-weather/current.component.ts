@@ -112,16 +112,11 @@ export class CurrentComponent implements OnInit {
                 this.getPChart(this.timeValue, this.pressureValue);
               },
               error => {
-
                 if (error.status === 0) {
-
                   console.log('service down ', error);
-
                 } else {
-
                   console.log('error in response ', error);
                   this.alertService.error(error.statusText);
-
                 }
                 console.log('error', error);
               }
@@ -167,16 +162,13 @@ export class CurrentComponent implements OnInit {
                 );
               },
               error => {
-
                 if (error.status === 0) {
-
                   console.log('service down ', error);
                 } else {
 
                   console.log('error in response ', error);
                   this.alertService.error(error.statusText);
                 }
-
                 console.log('error', error);
               });
         })
@@ -212,10 +204,8 @@ export class CurrentComponent implements OnInit {
         error => {
 
           if (error.status === 0) {
-
             console.log('service down ', error);
           } else {
-
             console.log('error in response ', error);
             this.alertService.error(error.statusText);
           }
@@ -264,16 +254,11 @@ export class CurrentComponent implements OnInit {
           this.getPChart(this.timeValue, this.pressureValue);
         },
         error => {
-
           if (error.status === 0) {
-
             console.log('service down ', error);
-
           } else {
-
             console.log('error in response ', error);
             this.alertService.error(error.statusText);
-
           }
           console.log('error', error);
         }
@@ -291,7 +276,6 @@ export class CurrentComponent implements OnInit {
           data: windValues,
           backgroundColor: 'rgb(62,168,249)',
           fill: false,
-
         },
         {
           label: 'Humidity',
