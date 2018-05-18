@@ -8,7 +8,14 @@
   "copyright": "© 2018, nerdAppLabs software solution",
   "main": "main.js",
   "build": {
-    "appId": "com.atulbisht.sunbeam-weather-app"
+    "appId": "com.atulbisht.sunbeam-weather-app",
+    "productName": "Sunbeam-Weather-App",
+    "copyright": "© 2018, nerdAppLabs software solution",
+    "mac": {
+      "category": "public.app-category.weather",
+      "target": "pkg",
+      "icon": "./src/app/assets/img/icons/SWA.icns"
+    }
   },
   "scripts": {
     "ng": "ng",
@@ -19,17 +26,15 @@
     "e2e": "ng e2e",
     "electron": "ng build --dev && electron ./dist/index.html",
     "electron-build": "ng build --prod && electron ./dist/index.html",
-
     "package-mac": "electron-packager . sunbeam-weather-app --platform=darwin --asar=true --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite --ignore=node_modules/electron-*",
     "package-linux": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/img/icons/SWA.png --prune=true --out=release-builds --ignore=node_modules/electron-*",
     "package-win": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/SwA.ico --ignore=node_modules/electron-* --prune=true --out=release-builds",
-    
     "postinstall": "electron-builder install-app-deps",
-
     "build-mwl": "electron-builder  -mwl",
-    "build-mac": "electron-builder  --mac --x64",
-    "build-linux": "electron-builder  --linux --x64",
-    "build-win": "electron-builder  --win --ia32"
+    "build-mac": "electron-builder . --mac --x64",
+    "build-linux": "electron-builder . --linux --x64",
+    "build-win": "electron-builder . --win --ia32",
+    "dist": "electron-builder"
   },
   "private": true,
   "dependencies": {
@@ -64,7 +69,7 @@
     "@types/node": "^6.0.109",
     "codelyzer": "^4.3.0",
     "electron": "^1.8.6",
-    "electron-builder": "^20.13.3",
+    "electron-builder": "^20.13.4",
     "electron-packager": "^12.0.2",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
