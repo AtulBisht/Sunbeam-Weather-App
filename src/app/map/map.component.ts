@@ -103,7 +103,6 @@ export class MapComponent implements OnInit {
                       data.list[i].weather[0].description,
                     )
                     this.citiesWeather.push(temporary);
-
                   }
                 });
           });
