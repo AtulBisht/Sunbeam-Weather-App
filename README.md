@@ -44,15 +44,15 @@ Edit the scripts section of your package.json:
   },
   "devDependencies": {
 
-    "electron": "^1.8.6",
-    "electron-packager": "^12.0.2",
+    "electron": "*",
+    "electron-packager": "*",
     
   } 
 
 ### For Windows
 ``npm run package-win``
 
-Note: If you are using macOS for create package install wine
+Note: If you are using macOS for creating package install wine
 
 ### For MacOS
 ``npm run package-mac``
@@ -72,29 +72,29 @@ Edit the scripts section of your package.json:
 
 "scripts": {
   
-    "build-mac": "electron-builder . --mac --x64",
+    "build-mac": "electron-builder  --mac --x64",
 
-    "build-linux": "electron-builder . --linux --x64",
+    "build-linux": "electron-builder  --linux --x64",
 
-    "build-win": "electron-builder . --win --ia32",
+    "build-win": "electron-builder  --win --ia32",
    
   },
   "devDependencies": {
    
-    "electron": "^1.8.6",
+    "electron": "*",
 
-    "electron-builder": "^20.13.3",
+    "electron-builder": "*",
 
-    "electron-packager": "^12.0.2",
+    "electron-packager": "*",
   }
 
-### For mac,windows, linux
+### For macOS, Windows, Linux
 ``npm run build-mwl``
 
 ### For Windows 
 ``npm run build-win``
 
-Note: If you use macOS to create distributable file install wine.
+Note: If you are using macOS to create distributable file install wine.
 
 ### For MacOS 
 ``npm run build-mac``
