@@ -1,21 +1,12 @@
 @import 'src/styles';
 
-.temp{
+.Temp{
     padding:3px;
     border-radius: 2px;
     background-color: $maxTemp-color;
 }
 
-.maxTemp,.minTemp{
+.Temp,{
     padding:3px;
     border-radius: 2px;
-}
-
-.maxTemp{
-    background-color: $maxTemp-color;
-}
-
-.minTemp{
-    background-color: $minTemp-color;
-    color:$minTemp-text-color;
 }
