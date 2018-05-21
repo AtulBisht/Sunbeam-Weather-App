@@ -14,7 +14,6 @@ import { WeatherForecastComponent } from './weather-forecast/weather-forecast.co
 
 
 const WeatherRoutes: Routes = [
-    
     { path: '', component: CurrentComponent },
     { path: 'weatherForecast', component: WeatherForecastComponent },
     { path: 'hourly', component: HourlyComponent },
@@ -24,8 +23,7 @@ const WeatherRoutes: Routes = [
     { path: 'tempGraph', component: TempGraphComponent },
     { path: 'windGraph', component: WindGraphComponent },
     { path: 'HumidityGraph', component: HumidityGraphComponent },
-
-    //otherwise redirect to home
+    // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
 

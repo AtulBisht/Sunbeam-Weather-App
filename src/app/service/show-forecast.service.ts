@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ShowForecastService {
 
-  showHourlyForecast: boolean = false;
-  showFiveDaysForecast: boolean = false;
-  
+  showHourlyForecast = false;
+  showFiveDaysForecast = false;
+
   constructor() { }
 
   showHourly(key: string) {
