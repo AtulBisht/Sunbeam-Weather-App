@@ -1,5 +1,5 @@
 {
-  "name": "sunbeam-weather-app",
+  "name": "sunbeam_weather_app",
   "description": "Weather app",
   "productName": "Sunbeam-Weather-App",
   "version": "0.0.0",
@@ -9,12 +9,10 @@
   "main": "main.js",
   "build": {
     "appId": "com.atulbisht.sunbeam-weather-app",
-    "productName": "Sunbeam-Weather-App",
-    "copyright": "© 2018, nerdAppLabs software solution",
     "mac": {
       "category": "public.app-category.weather",
       "target": "pkg",
-      "icon": "./src/app/assets/img/icons/SWA.icns"
+      "icon": "build/SWA.icns"
     }
   },
   "scripts": {

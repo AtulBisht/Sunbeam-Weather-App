@@ -14,16 +14,12 @@
               <strong>
                 {{data?.dt}}
               </strong>
+              <hr> Temperature:
+              <span class="Temp">
+                <strong>{{data?.temp}} </strong>&deg;C
+              </span>
               &nbsp; &nbsp;
-              <img src="http://openweathermap.org/img/w/{{data?.icon}}.png"> &nbsp;
-              <strong>{{data?.temp}}</strong>&deg;C
-              <hr> High:
-              <span class="maxTemp">
-                <strong>{{data?.tempMax}} </strong>&deg;C
-              </span> &nbsp; Low:
-              <span class="minTemp">
-                <strong>{{data?.tempMin}} </strong>&deg;C
-              </span> &nbsp;
+              <img src="http://openweathermap.org/img/w/{{data?.icon}}.png"> &nbsp; &nbsp;
               <strong> {{data?.des}}</strong> &nbsp; Wind:
               <strong>{{data?.wind_speed}} m/s </strong>&nbsp; &nbsp; Clouds:
               <strong>{{data?.clouds}}%</strong>&nbsp; &nbsp; Humidity:
