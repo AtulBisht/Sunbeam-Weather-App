@@ -20,7 +20,6 @@
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
-    "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "ng build --dev && electron ./dist/index.html",
     "electron-build": "ng build --prod && electron ./dist/index.html",
@@ -32,7 +31,7 @@
     "build-mac": "electron-builder . --mac --x64",
     "build-linux": "electron-builder . --linux --x64",
     "build-win": "electron-builder . --win --ia32",
-    "dist": "electron-builder"
+    "dist": "build -mac"
   },
   "private": true,
   "dependencies": {
@@ -59,7 +58,7 @@
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/cli": "~1.7.4",
+    "@angular/cli": "^6.0.3",
     "@angular/compiler-cli": "^5.2.10",
     "@angular/language-service": "^5.2.10",
     "@types/jasmine": "^2.8.7",
@@ -78,7 +77,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
-    "tslint": "~5.9.1",
-    "typescript": "~2.5.3"
+    "typescript": "^2.5.3",
+    "@angular-devkit/build-angular": "~0.6.3"
   }
 }

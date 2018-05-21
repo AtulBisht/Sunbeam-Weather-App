@@ -10,13 +10,10 @@ import { AlertService } from '../service/alert.service';
 })
 export class TempGraphComponent implements OnInit {
 
-
   tempChart: string;
   tempValues: any;
   tempOptions: any;
-
   loading: boolean;
-
   tempValue = [];
   timeValue = [];
 
@@ -28,8 +25,7 @@ export class TempGraphComponent implements OnInit {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
       this.loading = true;
-    }
-    else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
+    } else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
       this.localForecast();
       this.loading = true;
     }
@@ -39,26 +35,20 @@ export class TempGraphComponent implements OnInit {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
-
           this.loading = false;
-
-          //clean previous data
+          // clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
-
-
-          //Get Graph Values
+          // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 24) {
               const temp = data.list[i].main.temp;
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-
               this.tempValue.push(temp);
               this.timeValue.push(time);
             }
           }
-
-          //Temperature Graph
+          // Temperature Graph
           this.getTChart(this.timeValue, this.tempValue);
         },
         error => {
@@ -69,7 +59,6 @@ export class TempGraphComponent implements OnInit {
             this.alertService.error(error.statusText);
           }
           console.log('error', error);
-
         });
   }
 
@@ -77,25 +66,20 @@ export class TempGraphComponent implements OnInit {
     this.fs.cityForecast(this.fs.city)
       .subscribe(
         (data) => {
-
           this.loading = false;
-
-          //clean previous data
+          // clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
-
-          //Get Graph Values
+          // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 24) {
               const temp = data.list[i].main.temp;
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-
               this.tempValue.push(temp);
               this.timeValue.push(time);
             }
           }
-
-          //Temperature Graph
+          // Temperature Graph
           this.getTChart(this.timeValue, this.tempValue);
         },
         error => {
@@ -109,7 +93,7 @@ export class TempGraphComponent implements OnInit {
         }
       );
   }
-  //Temp Graph 
+  // Temp Graph
   getTChart(time, value) {
     this.tempChart = 'horizontalBar';
     this.tempValues = {

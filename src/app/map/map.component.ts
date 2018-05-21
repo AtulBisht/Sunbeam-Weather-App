@@ -24,84 +24,62 @@ export class MapComponent implements OnInit {
     private ws: WeatherService) { }
 
   ngOnInit() {
-
     if (sessionStorage.getItem('city') != null) {
       this.loading = true;
-
       this.ws.cityWeather(this.ws.city)
         .subscribe(
           (data) => {
-
             this.loading = false;
-
             this.lat = data.coord.lat;
             this.lon = data.coord.lon;
-
             this.icon = data.weather[0].icon;
             this.title = data.weather[0].description;
             this.city = data.name;
             this.temperature = data.main.temp;
-
             this.ws.citiesWeather(this.lat, this.lon)
               .subscribe(
-                (data) => {
-
+                (data1) => {
                   this.loading = false;
-                  console.log("weather around given city", data);
-
-                  //clean previous data
+                  // clean previous data
                   this.citiesWeather.splice(0, this.citiesWeather.length);
-
-                  //show weather info around city
-                  for (let i = 0; i < data.list.length; i++) {
-
+                  // show weather info around city
+                  for (let i = 0; i < data1.list.length; i++) {
                     const temporary = new CitiesWeather(
-                      data.list[i].name,
-                      data.list[i].weather[0].icon,
-                      data.list[i].main.temp,
-                      data.list[i].weather[0].description,
-                    )
+                      data1.list[i].name,
+                      data1.list[i].weather[0].icon,
+                      data1.list[i].main.temp,
+                      data1.list[i].weather[0].description,
+                    );
                     this.citiesWeather.push(temporary);
                   }
                 });
           });
-    }
-    else {
-
+    } else {
       this.lat = this.ws.lat;
       this.lon = this.ws.lon;
-
       this.loading = true;
-
       this.ws.localWeather(this.ws.lat, this.ws.lon)
         .subscribe(
           (data) => {
-
             this.loading = false;
-
             this.icon = data.weather[0].icon;
             this.title = data.weather[0].description;
             this.city = data.name;
-            this.temperature = data.main.temp
-
+            this.temperature = data.main.temp;
             this.ws.citiesWeather(this.lat, this.lon)
               .subscribe(
-                (data) => {
-
+                (data1) => {
                   this.loading = false;
-                  console.log("weather around current city", data);
-
-                  //clean previous data
+                  // clean previous data
                   this.citiesWeather.splice(0, this.citiesWeather.length);
-
-                  //show weather info around city
-                  for (let i = 0; i < data.list.length; i++) {
+                  // show weather info around city
+                  for (let i = 0; i < data1.list.length; i++) {
                     const temporary = new CitiesWeather(
-                      data.list[i].name,
-                      data.list[i].weather[0].icon,
-                      data.list[i].main.temp,
-                      data.list[i].weather[0].description,
-                    )
+                      data1.list[i].name,
+                      data1.list[i].weather[0].icon,
+                      data1.list[i].main.temp,
+                      data1.list[i].weather[0].description,
+                    );
                     this.citiesWeather.push(temporary);
                   }
                 });

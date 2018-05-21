@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule, BrowserXhr } from '@angular/http';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { routing } from './app.routing';
 import { ChartModule } from 'angular2-chartjs';
@@ -83,6 +83,7 @@ import { FooterComponent } from './footer/footer.component';
       apiKey: environment.googleApiKey
     }),
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     WeatherService,
     ForecastService,

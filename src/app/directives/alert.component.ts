@@ -19,6 +19,6 @@ export class AlertComponent implements OnInit {
 
   closeMessage() {
     this.alertService.closeMessage();
-}
+  }
 
 }
