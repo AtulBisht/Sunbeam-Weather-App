@@ -41,7 +41,7 @@ export class WindGraphComponent implements OnInit {
 
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
-            if (i < 24) {
+            if (i < 20) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
               const wind = data.list[i].wind.speed;
               this.timeValue.push(time);
@@ -67,7 +67,7 @@ export class WindGraphComponent implements OnInit {
 
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
-            if (i < 24) {
+            if (i < 20) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
               const wind = data.list[i].wind.speed;
 

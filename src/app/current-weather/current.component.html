@@ -70,10 +70,10 @@
     <mat-grid-tile>
       <mat-card>
         <mat-card-title>
-          Temperature Graph (C)
+          Temperature and Humidity
         </mat-card-title>
         <mat-card-content>
-          <chart [type]="tempChart" [data]="tempValues" [options]="tempOptions"></chart>
+          <chart [type]="THChart" [data]="THValues" [options]="THOption"></chart>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -85,10 +85,10 @@
     <mat-grid-tile>
       <mat-card>
         <mat-card-title>
-          Humidity (%) - Wind (m/s) Graph
+          Pressure
         </mat-card-title>
         <mat-card-content>
-          <chart [type]="Chart" [data]="Value" [options]="Option"></chart>
+          <chart [type]="pressureChart" [data]="pressureValues" [options]="pressureOption"></chart>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
@@ -96,10 +96,10 @@
     <mat-grid-tile>
       <mat-card>
         <mat-card-title>
-          Pressure (hPa) Graph
+          Wind Speed
         </mat-card-title>
         <mat-card-content>
-          <chart [type]="pressureChart" [data]="pressureValues" [options]="pressureOptions"></chart>
+          <chart [type]="windChart" [data]="windValues" [options]="windOption"></chart>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

@@ -19,17 +19,17 @@ export class CurrentComponent implements OnInit {
 
   myWeather: CurrentWeather;
 
-  Chart: string;
-  Value: any;
-  Option: any;
+  windChart: string;
+  windValues: any;
+  windOption: any;
 
-  tempChart: string;
-  tempValues: any;
-  tempOptions: any;
+  THChart:string;
+  THValues:any;
+  THOption:any
 
   pressureChart: string;
   pressureValues: any;
-  pressureOptions: any;
+  pressureOption: any;
 
   tempValue = [];
   timeValue = [];
@@ -103,11 +103,11 @@ export class CurrentComponent implements OnInit {
                   }
                 }
 
-                // Wind Humidity Graph
-                this.getWHChartData(this.timeValue, this.windValue, this.humidityValue);
+                // Wind Graph
+                this.getWChartData(this.timeValue, this.windValue);
 
-                // Temperature Graph
-                this.getTChart(this.timeValue, this.tempValue);
+                // Temperature & humidity Graph
+                this.getTHChart(this.timeValue, this.tempValue, this.humidityValue);
 
                 // Pressure Graph
                 this.getPChart(this.timeValue, this.pressureValue);
@@ -244,11 +244,11 @@ export class CurrentComponent implements OnInit {
             }
           }
 
-          // Wind Humidity Graph
-          this.getWHChartData(this.timeValue, this.windValue, this.humidityValue);
+          // Wind Graph
+          this.getWChartData(this.timeValue, this.windValue);
 
-          // Temperature Graph
-          this.getTChart(this.timeValue, this.tempValue);
+          // Temperature & humidity Graph
+          this.getTHChart(this.timeValue, this.tempValue, this.humidityValue);
 
           // Pressure Graph
           this.getPChart(this.timeValue, this.pressureValue);
@@ -266,29 +266,23 @@ export class CurrentComponent implements OnInit {
   }
 
   // Time Wind Chart
-  getWHChartData(labelTime, windValues, humidityValue) {
-    this.Chart = 'horizontalBar';
-    this.Value = {
-      labels: labelTime,
+  getWChartData(timeValue, windValues) {
+    this.windChart = 'horizontalBar';
+    this.windValues = {
+      labels: timeValue,
       datasets: [
         {
           label: 'Wind',
           data: windValues,
           backgroundColor: 'rgb(62,168,249)',
           fill: false,
-        },
-        {
-          label: 'Humidity',
-          data: humidityValue,
-          backgroundColor: 'rgb(62,249,124)',
-          fill: false,
         }
       ]
     };
-    this.Option = {
+    this.windOption = {
       title: {
         display: true,
-        text: 'WIND (m/s) - HUMIDITY (%) GRAPH'
+        text: 'WIND SPEED (m/s) GRAPH'
       },
       legend: {
         display: true
@@ -305,23 +299,29 @@ export class CurrentComponent implements OnInit {
   }
 
   // Temp Graph
-  getTChart(time, value) {
-    this.tempChart = 'horizontalBar';
-    this.tempValues = {
-      labels: time,
+  getTHChart(timeValue, tempValue, humidityValue) {
+    this.THChart = 'horizontalBar';
+    this.THValues = {
+      labels: timeValue,
       datasets: [
         {
           label: 'Temperature',
-          data: value,
+          data: tempValue,
           backgroundColor: 'rgb(255,153,51)',
+          fill: false,
+        },
+        {
+          label: 'Humidity',
+          data: humidityValue,
+          backgroundColor: 'rgb(62,249,124)',
           fill: false,
         }
       ]
     };
-    this.tempOptions = {
+    this.THOption = {
       title: {
         display: true,
-        text: 'TEMPERATURE GRAPH ( C )'
+        text: 'TEMPERATURE (C) & HUMIDITY (%) GRAPH'
       },
       legend: {
         display: true
@@ -337,23 +337,23 @@ export class CurrentComponent implements OnInit {
   }
 
   // Pressure Graph
-  getPChart(time, value) {
+  getPChart(timeValue, pressureValue) {
     this.pressureChart = 'horizontalBar';
     this.pressureValues = {
-      labels: time,
+      labels: timeValue,
       datasets: [
         {
           label: 'Pressure',
-          data: value,
+          data: pressureValue,
           backgroundColor: 'rgb(153,153,255)',
           fill: false,
         }
       ]
     };
-    this.pressureOptions = {
+    this.pressureOption = {
       title: {
         display: true,
-        text: 'PRESSURE GRAPH ( hpa )'
+        text: 'PRESSURE GRAPH (hpa)'
       },
       legend: {
         display: true
