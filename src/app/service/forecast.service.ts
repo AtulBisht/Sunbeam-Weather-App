@@ -17,7 +17,8 @@ export class ForecastService {
     this.lon = lon;
     sessionStorage.setItem('latitude', this.lat);
     sessionStorage.setItem('longitude', this.lon);
-    return this.http.get('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
+    return this.http.get(
+      'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json());
 
   }
@@ -25,7 +26,8 @@ export class ForecastService {
   public cityForecast(city) {
     this.city = city;
     sessionStorage.setItem('city', this.city);
-    return this.http.get('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + this.apiKey + '&units=metric')
+    return this.http.get(
+      'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json());
   }
 

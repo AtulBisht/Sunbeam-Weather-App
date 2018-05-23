@@ -13,7 +13,7 @@
         </mat-card-title>
         <mat-card-content>
 
-          <h3>
+          <h2>
             <form (ngSubmit)="onSubmit(weatherForm)" #weatherForm="ngForm">
               <mat-form-field>
                 <input matInput type="text" name="city" placeholder="Your City Name" [(ngModel)]="city" required>
@@ -21,9 +21,9 @@
               <button mat-button>Go</button>
               <app-alert></app-alert>
             </form>
-          </h3>
+          </h2>
 
-          <strong>{{myWeather?.date| date:'EEEE, d MMMM y'}}</strong>
+          <strong> {{myWeather?.date| date:'EEEE, d MMMM y'}}</strong>
 
           <h2>
             <strong> {{myWeather?.city}}&nbsp; {{myWeather?.temp}}&deg;C
@@ -31,25 +31,37 @@
             </strong>
           </h2>
 
-          <mat-list>
-            <mat-list-item>
-              <strong>Sunrise </strong> &nbsp; {{myWeather?.sunrise}} &nbsp;
-              <strong>Sunset </strong> &nbsp; {{myWeather?.sunset}} &nbsp;
-            </mat-list-item>
-            <mat-list-item>
-              <strong>Max Temp </strong>&nbsp; {{myWeather?.tempMax}}&deg;C &nbsp;
-              <strong>Min Temp </strong>&nbsp; {{myWeather?.tempMin}}&deg;C &nbsp;
-              <strong>Clouds </strong>&nbsp; {{myWeather?.cloudiness}}% &nbsp;
-            </mat-list-item>
-            <mat-list-item>
-              <strong>Wind </strong> &nbsp; {{myWeather?.wind_speed}} m/s &nbsp;
-              <strong>Humidity </strong> &nbsp; {{myWeather?.humid}}% &nbsp;
-              <strong>Pressure </strong>&nbsp; {{myWeather?.pressure}} hPa &nbsp;
-            </mat-list-item>
-            <mat-list-item>
-              <strong>Geo Coords </strong> &nbsp; Latitude : {{myWeather?.coords.lat}}, Longitude : {{myWeather?.coords.lon}} &nbsp;
-            </mat-list-item>
-          </mat-list>
+          <table>
+            <tr>
+              <td>Max Temp -></td>
+              <th>{{myWeather?.tempMax}}&deg;C</th>
+              <td>Min Temp -></td>
+              <th>{{myWeather?.tempMin}}&deg;C </th>
+            </tr>
+            <tr>
+              <td>Sunrise -></td>
+              <th>{{myWeather?.sunrise}}</th>
+              <td>Sunset -></td>
+              <th>{{myWeather?.sunset}}</th>
+            </tr>
+            <tr>
+              <td>Pressure -></td>
+              <th>{{myWeather?.pressure}} hPa</th>
+              <td>Cloud -></td>
+              <th>{{myWeather?.cloudiness}}% </th>
+            </tr>
+            <tr>
+              <td>Wind Speed -></td>
+              <th>{{myWeather?.wind_speed}} m/s</th>
+              <td>Humidity -></td>
+              <th>{{myWeather?.humid}}% </th>
+            </tr>
+            <tr>
+              <td>Geo Coords -></td>
+              <th>Lat : {{myWeather?.coords.lat}}, Lon : {{myWeather?.coords.lon}} </th>
+            </tr>
+          </table>
+
         </mat-card-content>
       </mat-card>
 
