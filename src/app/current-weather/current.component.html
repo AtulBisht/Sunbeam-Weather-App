@@ -4,7 +4,7 @@
 <mat-spinner *ngIf='loading'></mat-spinner>
 
 <div *ngIf='!loading'>
-  <mat-grid-list cols="2" rowHeight='450px'>
+  <mat-grid-list cols="2" rowHeight='420px'>
 
     <mat-grid-tile>
       <mat-card>
@@ -33,32 +33,28 @@
 
           <table>
             <tr>
-              <td>Max Temp -></td>
+              <td>Max Temp:</td>
               <th>{{myWeather?.tempMax}}&deg;C</th>
-              <td>Min Temp -></td>
+              <td>Min Temp:</td>
               <th>{{myWeather?.tempMin}}&deg;C </th>
-            </tr>
-            <tr>
-              <td>Sunrise -></td>
-              <th>{{myWeather?.sunrise}}</th>
-              <td>Sunset -></td>
-              <th>{{myWeather?.sunset}}</th>
-            </tr>
-            <tr>
-              <td>Pressure -></td>
-              <th>{{myWeather?.pressure}} hPa</th>
-              <td>Cloud -></td>
+              <td>Cloud:</td>
               <th>{{myWeather?.cloudiness}}% </th>
             </tr>
             <tr>
-              <td>Wind Speed -></td>
-              <th>{{myWeather?.wind_speed}} m/s</th>
-              <td>Humidity -></td>
-              <th>{{myWeather?.humid}}% </th>
+              <td>Sunrise:</td>
+              <th>{{myWeather?.sunrise}}</th>
+              <td>Sunset:</td>
+              <th>{{myWeather?.sunset}}</th>
+              <td>Pressure:</td>
+              <th>{{myWeather?.pressure}} hPa</th>
             </tr>
             <tr>
-              <td>Geo Coords -></td>
-              <th>Lat : {{myWeather?.coords.lat}}, Lon : {{myWeather?.coords.lon}} </th>
+              <td>Wind Speed:</td>
+              <th>{{myWeather?.wind_speed}} m/s</th>
+              <td>Humidity:</td>
+              <th>{{myWeather?.humid}}% </th>
+              <td>Geo Coords:</td>
+              <th>{{myWeather?.coords.lat}},{{myWeather?.coords.lon}} </th>
             </tr>
           </table>
 
@@ -73,14 +69,14 @@
           Temperature and Humidity
         </mat-card-title>
         <mat-card-content>
-          <chart [type]="THChart" [data]="THValues" [options]="THOption"></chart>
+          <chart class="THChart" [type]="THChart" [data]="THValues" [options]="THOption"></chart>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
 
   </mat-grid-list>
 
-  <mat-grid-list cols="2" rowHeight="450px">
+  <mat-grid-list cols="2" rowHeight="420px">
 
     <mat-grid-tile>
       <mat-card>
