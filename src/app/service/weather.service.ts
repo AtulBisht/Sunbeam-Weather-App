@@ -17,21 +17,24 @@ export class WeatherService {
     this.lat = lat;
     this.lon = lon;
 
-    return this.http.get('http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
+    return this.http.get(
+      'http://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json());
   }
 
   public cityWeather(city) {
     this.city = city;
     localStorage.setItem('city', this.city);
-    return this.http.get('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + this.apiKey + '&units=metric')
+    return this.http.get(
+      'http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json());
   }
 
   public citiesWeather(lat, lon) {
     this.lat = lat;
     this.lon = lon;
-    return this.http.get('http://api.openweathermap.org/data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=10&appid=' + this.apiKey + '&units=metric')
+    return this.http.get(
+      'http://api.openweathermap.org/data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=10&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json());
   }
 }

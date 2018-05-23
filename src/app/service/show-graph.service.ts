@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ShowGraphService {
 
-  showTemp: boolean = false;
-  showWind: boolean = false;
-  showHumid: boolean = false;
-  showPressure: boolean = false;
-  
+  showTemp = false;
+  showWind = false;
+  showHumid = false;
+  showPressure = false;
+
   constructor() { }
 
   showGraphTemp(key: string) {

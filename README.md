@@ -101,10 +101,3 @@ Note: If you are using macOS to create distributable file install wine.
 
 ### For Linux 
 ``npm run build-linux``
-
-
-
-
-
-
-

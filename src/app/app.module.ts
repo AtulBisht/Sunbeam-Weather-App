@@ -14,10 +14,10 @@ import { ChartComponent } from './chart/chart.component';
 import { AlertComponent } from './directives/alert.component';
 import { TempGraphComponent } from './temperature-graph/temp-graph.component';
 import { WindGraphComponent } from './wind-graph/wind-graph.component';
-
 import { HourlyComponent } from './hourly-forecast/hourly.component';
 import { MapComponent } from './map/map.component';
 import { ForecastComponent } from './days-forecast/forecast.component';
+
 import {
   MatToolbarModule,
   MatIconModule,
@@ -25,6 +25,7 @@ import {
   MatSliderModule,
   MatListModule,
   MatCardModule,
+  MatTableModule,
   MatInputModule,
   MatButtonModule,
   MatGridListModule,
@@ -60,7 +61,6 @@ import { FooterComponent } from './footer/footer.component';
     PressureGraphComponent,
     WeatherForecastComponent,
     FooterComponent,
-
   ],
   imports: [
     BrowserAnimationsModule,
@@ -70,6 +70,7 @@ import { FooterComponent } from './footer/footer.component';
     MatIconModule,
     MatSidenavModule,
     MatListModule,
+    MatTableModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
@@ -92,7 +93,8 @@ import { FooterComponent } from './footer/footer.component';
     {
       provide: BrowserXhr,
       useClass: NgProgressBrowserXhr
-    }],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

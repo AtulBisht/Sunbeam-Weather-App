@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
 
-  public path: string = '';
+  public path = '';
 
   @Output() click: EventEmitter<any> = new EventEmitter();
   constructor(private router: Router) { }
@@ -18,8 +18,7 @@ export class SidebarComponent implements OnInit {
       if (this.router.url === '/' || this.router.url === '/current') {
         console.log(this.router.url);
         this.path = '/current';
-      }
-      else {
+      } else {
         console.log(this.router.url);
         this.path = this.router.url;
       }

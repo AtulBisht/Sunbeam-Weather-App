@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import { Http, Response } from '@angular/http';
-import 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 import { NgProgress } from 'ngx-progressbar';
 import { WeatherService } from '../service/weather.service';
 import { ForecastService } from '../service/forecast.service';
@@ -50,7 +50,7 @@ export class CurrentComponent implements OnInit {
 
   ngOnInit() {
     this.ngProgress.start();
-    //clean sessionStorage
+    // clean sessionStorage
     sessionStorage.clear();
     this.loading = true;
     this.localWeather();
@@ -64,8 +64,8 @@ export class CurrentComponent implements OnInit {
   }
 
   localForecast() {
-    //get location
-    this.http.get("http://ip-api.com/json")
+    // get location
+    this.http.get('http://ip-api.com/json')
       .map((response: Response) => response.json())
       .subscribe(
         (data) => {
@@ -74,10 +74,11 @@ export class CurrentComponent implements OnInit {
           this.fs.localForecast(lat, lon)
             .subscribe(
 
-              (data) => {
+              (data1) => {
+
                 this.loading = false;
 
-                //clean previous data
+                // clean previous data
                 this.tempValue.splice(0, this.tempValue.length);
                 this.timeValue.splice(0, this.timeValue.length);
                 this.windValue.splice(0, this.timeValue.length);
@@ -85,14 +86,14 @@ export class CurrentComponent implements OnInit {
                 this.humidityValue.splice(0, this.humidityValue.length);
 
 
-                //Get Graph Values
-                for (let i = 0; i < data.list.length; i++) {
+                // Get Graph Values
+                for (let i = 0; i < data1.list.length; i++) {
                   if (i < 8) {
-                    const temp = data.list[i].main.temp;
-                    const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-                    const wind = data.list[i].wind.speed;
-                    const humidity = data.list[i].main.humidity;
-                    const pressure = (data.list[i].main.pressure);
+                    const temp = data1.list[i].main.temp;
+                    const time = moment(data1.list[i].dt_txt).format('Do MMMM, h:mm a');
+                    const wind = data1.list[i].wind.speed;
+                    const humidity = data1.list[i].main.humidity;
+                    const pressure = (data1.list[i].main.pressure);
 
                     this.tempValue.push(temp);
                     this.timeValue.push(time);
@@ -102,13 +103,13 @@ export class CurrentComponent implements OnInit {
                   }
                 }
 
-                //Wind Humidity Graph
+                // Wind Humidity Graph
                 this.getWHChartData(this.timeValue, this.windValue, this.humidityValue);
 
-                //Temperature Graph
+                // Temperature Graph
                 this.getTChart(this.timeValue, this.tempValue);
 
-                //Pressure Graph
+                // Pressure Graph
                 this.getPChart(this.timeValue, this.pressureValue);
               },
               error => {
@@ -120,14 +121,13 @@ export class CurrentComponent implements OnInit {
                 }
                 console.log('error', error);
               }
-            )
+            );
         });
   }
 
-
   localWeather() {
-    //get location
-    this.http.get("http://ip-api.com/json")
+    // get location
+    this.http.get('http://ip-api.com/json')
       .map((response: Response) => response.json())
       .subscribe(
         (data) => {
@@ -135,30 +135,30 @@ export class CurrentComponent implements OnInit {
           const lon = data.lon;
           this.ws.localWeather(lat, lon)
             .subscribe(
-              (data) => {
+              (data1) => {
 
                 this.loading = false;
 
-                const date = moment.unix(data.dt).format('LL');
-                const sunrise = moment.unix(data.sys.sunrise).format('h:mm A');
-                const sunset = moment.unix(data.sys.sunset).format('h:mm A');
+                const date = moment.unix(data1.dt).format('LL');
+                const sunrise = moment.unix(data1.sys.sunrise).format('h:mm A');
+                const sunset = moment.unix(data1.sys.sunset).format('h:mm A');
 
-                this.myWeather = new CurrentWeather(data.name,
-                  data.sys.country,
-                  data.main.temp,
-                  data.main.humidity,
-                  data.main.pressure,
-                  data.weather[0].icon,
-                  data.clouds.all,
-                  data.weather[0].description,
-                  data.dt = date,
-                  data.main.temp_max,
-                  data.main.temp_min,
-                  data.sys.sunrise = sunrise,
-                  data.sys.sunset = sunset,
-                  data.coord,
-                  data.wind.speed,
-                  data.wind.deg
+                this.myWeather = new CurrentWeather(data1.name,
+                  data1.sys.country,
+                  data1.main.temp,
+                  data1.main.humidity,
+                  data1.main.pressure,
+                  data1.weather[0].icon,
+                  data1.clouds.all,
+                  data1.weather[0].description,
+                  data1.dt = date,
+                  data1.main.temp_max,
+                  data1.main.temp_min,
+                  data1.sys.sunrise = sunrise,
+                  data1.sys.sunset = sunset,
+                  data1.coord,
+                  data1.wind.speed,
+                  data1.wind.deg
                 );
               },
               error => {
@@ -171,7 +171,7 @@ export class CurrentComponent implements OnInit {
                 }
                 console.log('error', error);
               });
-        })
+        });
   }
 
   cityWeather(city) {
@@ -219,7 +219,7 @@ export class CurrentComponent implements OnInit {
       .subscribe(
         (data) => {
 
-          //clean previous data
+          // clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
           this.windValue.splice(0, this.timeValue.length);
@@ -227,7 +227,7 @@ export class CurrentComponent implements OnInit {
           this.humidityValue.splice(0, this.humidityValue.length);
 
 
-          //Get Graph Values
+          // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 8) {
               const temp = data.list[i].main.temp;
@@ -244,13 +244,13 @@ export class CurrentComponent implements OnInit {
             }
           }
 
-          //Wind Humidity Graph
+          // Wind Humidity Graph
           this.getWHChartData(this.timeValue, this.windValue, this.humidityValue);
 
-          //Temperature Graph
+          // Temperature Graph
           this.getTChart(this.timeValue, this.tempValue);
 
-          //Pressure Graph
+          // Pressure Graph
           this.getPChart(this.timeValue, this.pressureValue);
         },
         error => {
@@ -262,12 +262,12 @@ export class CurrentComponent implements OnInit {
           }
           console.log('error', error);
         }
-      )
+      );
   }
 
-  //Time Wind Chart
+  // Time Wind Chart
   getWHChartData(labelTime, windValues, humidityValue) {
-    this.Chart = 'line';
+    this.Chart = 'horizontalBar';
     this.Value = {
       labels: labelTime,
       datasets: [
@@ -288,7 +288,7 @@ export class CurrentComponent implements OnInit {
     this.Option = {
       title: {
         display: true,
-        text: 'WIND - PRESSURE GRAPH'
+        text: 'WIND (m/s) - HUMIDITY (%) GRAPH'
       },
       legend: {
         display: true
@@ -304,7 +304,7 @@ export class CurrentComponent implements OnInit {
 
   }
 
-  //Temp Graph 
+  // Temp Graph
   getTChart(time, value) {
     this.tempChart = 'horizontalBar';
     this.tempValues = {
@@ -336,7 +336,7 @@ export class CurrentComponent implements OnInit {
     };
   }
 
-  //Pressure Graph
+  // Pressure Graph
   getPChart(time, value) {
     this.pressureChart = 'horizontalBar';
     this.pressureValues = {

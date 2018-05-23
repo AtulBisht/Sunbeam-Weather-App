@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../service/forecast.service';
 import * as moment from 'moment';
-import { AlertService } from '../service/alert.service';
 
 @Component({
   selector: 'app-temp-graph',
@@ -9,7 +8,6 @@ import { AlertService } from '../service/alert.service';
   styleUrls: ['./temp-graph.component.scss']
 })
 export class TempGraphComponent implements OnInit {
-
 
   tempChart: string;
   tempValues: any;
@@ -21,15 +19,13 @@ export class TempGraphComponent implements OnInit {
   timeValue = [];
 
   constructor(
-    private fs: ForecastService,
-    private alertService: AlertService) { }
+    private fs: ForecastService) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
       this.cityForecast();
       this.loading = true;
-    }
-    else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
+    } else {
       this.localForecast();
       this.loading = true;
     }
@@ -39,52 +35,39 @@ export class TempGraphComponent implements OnInit {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
-
           this.loading = false;
 
-          //clean previous data
+          // clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
 
-
-          //Get Graph Values
+          // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 24) {
               const temp = data.list[i].main.temp;
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
-
               this.tempValue.push(temp);
               this.timeValue.push(time);
             }
           }
 
-          //Temperature Graph
+          // Temperature Graph
           this.getTChart(this.timeValue, this.tempValue);
-        },
-        error => {
-          if (error.status === 0) {
-            console.log('service down ', error);
-          } else {
-            console.log('error in response ', error);
-            this.alertService.error(error.statusText);
-          }
-          console.log('error', error);
-
-        });
+        }
+      );
   }
 
   cityForecast() {
     this.fs.cityForecast(this.fs.city)
       .subscribe(
         (data) => {
-
           this.loading = false;
 
-          //clean previous data
+          // clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
 
-          //Get Graph Values
+          // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 24) {
               const temp = data.list[i].main.temp;
@@ -95,21 +78,13 @@ export class TempGraphComponent implements OnInit {
             }
           }
 
-          //Temperature Graph
+          // Temperature Graph
           this.getTChart(this.timeValue, this.tempValue);
-        },
-        error => {
-          if (error.status === 0) {
-            console.log('service down ', error);
-          } else {
-            console.log('error in response ', error);
-            this.alertService.error(error.statusText);
-          }
-          console.log('error', error);
         }
       );
   }
-  //Temp Graph 
+
+  // Temp Graph
   getTChart(time, value) {
     this.tempChart = 'horizontalBar';
     this.tempValues = {
