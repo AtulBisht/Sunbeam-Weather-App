@@ -8,7 +8,7 @@ import { ShowForecastService } from '../service/show-forecast.service';
 })
 export class WeatherForecastComponent implements OnInit {
 
-  constructor(private showForecastService: ShowForecastService) { }
+  constructor(public showForecastService: ShowForecastService) { }
 
   ngOnInit() {
     this.showForecastService.showFiveDay('forecastComponent');
