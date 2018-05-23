@@ -29,8 +29,17 @@ $minTemp-color:rgb(161,161,161);
 $minTemp-text-color:rgb(255,255,255);
 
 mat-card{
-    width:100%;
+    width:95%;
     height:100%;
+}
+
+mat-card-title{
+    padding-left:5%;
+}
+
+mat-sidenav-container{
+    height:900px;
+    width:100%;
 }
 
 chart{
