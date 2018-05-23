@@ -43,7 +43,7 @@ export class TempGraphComponent implements OnInit {
 
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
-            if (i < 24) {
+            if (i < 20) {
               const temp = data.list[i].main.temp;
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
               this.tempValue.push(temp);
@@ -69,7 +69,7 @@ export class TempGraphComponent implements OnInit {
 
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
-            if (i < 24) {
+            if (i < 20) {
               const temp = data.list[i].main.temp;
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
 
@@ -86,7 +86,7 @@ export class TempGraphComponent implements OnInit {
 
   // Temp Graph
   getTChart(time, value) {
-    this.tempChart = 'horizontalBar';
+    this.tempChart = 'bar';
     this.tempValues = {
       labels: time,
       datasets: [
