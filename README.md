@@ -24,11 +24,11 @@ Link :-
 
 Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaScript or the command line.
 
-#### If you want to run electron-packager through npm, install the package locally:
+#### -> If you want to run electron-packager through npm, install the package locally:
 
 ``npm install --save-dev electron-packager``
 
-#### Edit the scripts section of your package.json:
+#### -> Edit the scripts section of your package.json:
 
  "scripts": {
 
@@ -71,9 +71,9 @@ A complete solution to package and build a ready for distribution Electron app f
 ``npm install --save-dev electron-builder``
 
 #### -> Set productName, version, author, copyright, appID, Output folder, Icon in package.json
- {
-
-   "name": "sunbeam_weather_app",
+   {
+     
+  "name": "sunbeam_weather_app", 
 
   "description": "Weather app",
 
@@ -83,8 +83,7 @@ A complete solution to package and build a ready for distribution Electron app f
 
   "license": "MIT",
 
-  "author": "Atul Bisht 
-  <atul.bisht@nerdapplabs.com>",
+  "author": "Atul Bisht <atul.bisht@nerdapplabs.com>",
 
   "copyright": "© 2018, nerdAppLabs software solution",
 
@@ -98,13 +97,20 @@ A complete solution to package and build a ready for distribution Electron app f
     },
     "mac": {
       "category": "public.app-category.weather",
+      "target":"pkg",
       "icon": "build/SWA.icns"
     },
     "win": {
+      "target":"nsis",
       "icon": "build/SWA.ico"
-    }
+    },
+    "linux":{
+      "target":"deb",
+      "icon":"build/SWA.png"
+    },
   }
- }
+
+}
 
 #### -> Edit the scripts section of your package.json:
 
