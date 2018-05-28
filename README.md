@@ -3,7 +3,7 @@
 It is an Angular-Electron App which give you information about Weather Forecast.
 
 ## Clone App
-``https://github.com/AtulBisht/Sunbeam-Weather-App.git``
+<https://github.com/AtulBisht/Sunbeam-Weather-App.git>
 
 ## Install dependencies with npm 
 
@@ -19,7 +19,8 @@ It is an Angular-Electron App which give you information about Weather Forecast.
 
 ## electron-packager to package electron app
 
-Link :- ``https://www.christianengvall.se/electron-packager-tutorial/``
+Link :- 
+<https://www.christianengvall.se/electron-packager-tutorial/>
 
 Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaScript or the command line.
 
@@ -27,7 +28,43 @@ If you want to run electron-packager through npm, install the package locally:
 
 ``npm install --save-dev electron-packager``
 
-Edit the scripts section of your package.json:
+#### Set productName, version, author, copyright, appID, Output folder, Icon in package.json
+ {
+
+   "name": "sunbeam_weather_app",
+
+  "description": "Weather app",
+
+  "productName": "Sunbeam-Weather-App",
+
+  "version": "0.0.0",
+
+  "license": "MIT",
+
+  "author": "Atul Bisht 
+  <atul.bisht@nerdapplabs.com>",
+
+  "copyright": "© 2018, nerdAppLabs software solution",
+
+  "main": "main.js",
+
+  "build": {
+
+    "appId": "com.atulbisht.sunbeam-weather-app",
+    "directories": {
+      "output": "app"
+    },
+    "mac": {
+      "category": "public.app-category.weather",
+      "icon": "build/SWA.icns"
+    },
+    "win": {
+      "icon": "build/SWA.ico"
+    }
+  }
+ }
+
+#### Edit the scripts section of your package.json:
 
  "scripts": {
 
@@ -50,7 +87,7 @@ Edit the scripts section of your package.json:
 ### To create package for Windows
 ``npm run package-win``
 
-Note: If you are using macOS for creating package install wine
+Note: If you are using macOS for creating package for windows install wine
 
 ### To create package for MacOS
 ``npm run package-mac``
@@ -61,7 +98,7 @@ Note: If you are using macOS for creating package install wine
 ## electron-builder to package and build distributable electron app
 
 Link :-
- ``https://www.electron.build/``
+ <https://www.electron.build/>
 
 A complete solution to package and build a ready for distribution Electron app for macOS, Windows and Linux with “auto update”
 
@@ -95,7 +132,7 @@ Edit the scripts section of your package.json:
 ### To package and build distributable electron app for Windows 
 ``npm run build-win``
 
-Note: If you are using macOS to create distributable file install wine.
+Note: If you are using macOS to create distributable file for windows install wine.
 
 ### To package and build distributable electron app for MacOS 
 ``npm run build-mac``
