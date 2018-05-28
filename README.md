@@ -70,7 +70,7 @@ A complete solution to package and build a ready for distribution Electron app f
 
 ``npm install --save-dev electron-builder``
 
-#### -> Set productName, version, author, copyright, appID, Output folder, Icon in package.json
+#### -> Set productName, version, author, copyright, appID, Output folder,target, Icon in package.json
    {
      
   "name": "sunbeam_weather_app", 
