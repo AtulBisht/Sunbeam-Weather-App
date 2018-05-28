@@ -33,7 +33,10 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar>
-      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>&nbsp;
+      <button mat-button (click)="sidenav.toggle()">
+        <mat-icon> menu
+        </mat-icon>
+      </button>
       <strong>SunBeam Weather App</strong>
     </mat-toolbar>
     <router-outlet></router-outlet>
