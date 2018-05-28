@@ -2,10 +2,6 @@
 
 It is an Angular-Electron App which give you information about Weather Forecast.
 
-## Install Angular Cli
-
-``npm install -g @angular/cli``
-
 ## Clone App
 ``https://github.com/AtulBisht/Sunbeam-Weather-App.git``
 
@@ -13,7 +9,7 @@ It is an Angular-Electron App which give you information about Weather Forecast.
 
 ``npm install``
 
-## Run app in ELECTRON
+## To Run app in ELECTRON
 
 ``npm run electron``
 
@@ -21,7 +17,7 @@ It is an Angular-Electron App which give you information about Weather Forecast.
 
 ``ng serve``
 
-## electron-packager
+## electron-packager to package electron app
 
 Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaScript or the command line.
 
@@ -60,7 +56,7 @@ Note: If you are using macOS for creating package install wine
 ### For Linux
 ``npm run package-linux``
 
-## electron-builder
+## electron-builder to package and build distributable electron app
 
 A complete solution to package and build a ready for distribution Electron app for macOS, Windows and Linux with “auto update”
 
@@ -88,7 +84,7 @@ Edit the scripts section of your package.json:
     "electron-packager": "*",
   }
 
-### For macOS, Windows, Linux
+### For all platform (macOS, Windows, Linux) 
 ``npm run build-mwl``
 
 ### For Windows 
