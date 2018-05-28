@@ -19,6 +19,8 @@ It is an Angular-Electron App which give you information about Weather Forecast.
 
 ## electron-packager to package electron app
 
+Link :- ``https://www.christianengvall.se/electron-packager-tutorial/``
+
 Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaScript or the command line.
 
 If you want to run electron-packager through npm, install the package locally:
@@ -45,18 +47,21 @@ Edit the scripts section of your package.json:
     
   } 
 
-### For Windows
+### To create package for Windows
 ``npm run package-win``
 
 Note: If you are using macOS for creating package install wine
 
-### For MacOS
+### To create package for MacOS
 ``npm run package-mac``
 
-### For Linux
+### To create package for Linux
 ``npm run package-linux``
 
 ## electron-builder to package and build distributable electron app
+
+Link :-
+ ``https://www.electron.build/``
 
 A complete solution to package and build a ready for distribution Electron app for macOS, Windows and Linux with “auto update”
 
@@ -84,16 +89,16 @@ Edit the scripts section of your package.json:
     "electron-packager": "*",
   }
 
-### For all platform (macOS, Windows, Linux) 
+### To package and build distributable electron app for all platform (macOS, Windows, Linux) 
 ``npm run build-mwl``
 
-### For Windows 
+### To package and build distributable electron app for Windows 
 ``npm run build-win``
 
 Note: If you are using macOS to create distributable file install wine.
 
-### For MacOS 
+### To package and build distributable electron app for MacOS 
 ``npm run build-mac``
 
-### For Linux 
+### To package and build distributable electron app for Linux 
 ``npm run build-linux``
