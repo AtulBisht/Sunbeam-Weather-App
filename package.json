@@ -18,7 +18,12 @@
       "icon": "build/SWA.icns"
     },
     "win": {
+      "target":"nsis",
       "icon": "build/SWA.ico"
+    },
+    "linux":{
+      "target":"deb",
+      "icon":"build/SWA.png"
     }
   },
   "scripts": {
@@ -35,8 +40,8 @@
     "package-win": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/SwA.ico --ignore=node_modules/electron-* --prune=true --out=release-builds",
     "build-mwl": "electron-builder -mwl",
     "build-mac": "electron-builder --mac --x64",
-    "build-linux": "electron-builder  --linux AppImage snap deb 7z zip tar.xz tar.lz tar.gz tar.bz2",
-    "build-win": "electron-builder  --win --ia32 nsis appx"
+    "build-linux": "electron-builder  --linux",
+    "build-win": "electron-builder  --win --ia32"
   },
   "private": true,
   "dependencies": {
