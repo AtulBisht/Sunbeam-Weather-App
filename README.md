@@ -28,42 +28,6 @@ If you want to run electron-packager through npm, install the package locally:
 
 ``npm install --save-dev electron-packager``
 
-#### Set productName, version, author, copyright, appID, Output folder, Icon in package.json
- {
-
-   "name": "sunbeam_weather_app",
-
-  "description": "Weather app",
-
-  "productName": "Sunbeam-Weather-App",
-
-  "version": "0.0.0",
-
-  "license": "MIT",
-
-  "author": "Atul Bisht 
-  <atul.bisht@nerdapplabs.com>",
-
-  "copyright": "© 2018, nerdAppLabs software solution",
-
-  "main": "main.js",
-
-  "build": {
-
-    "appId": "com.atulbisht.sunbeam-weather-app",
-    "directories": {
-      "output": "app"
-    },
-    "mac": {
-      "category": "public.app-category.weather",
-      "icon": "build/SWA.icns"
-    },
-    "win": {
-      "icon": "build/SWA.ico"
-    }
-  }
- }
-
 #### Edit the scripts section of your package.json:
 
  "scripts": {
@@ -105,6 +69,42 @@ A complete solution to package and build a ready for distribution Electron app f
 If you want to run electron-builder through npm, install the package locally:
 
 ``npm install --save-dev electron-builder``
+
+#### Set productName, version, author, copyright, appID, Output folder, Icon in package.json
+ {
+
+   "name": "sunbeam_weather_app",
+
+  "description": "Weather app",
+
+  "productName": "Sunbeam-Weather-App",
+
+  "version": "0.0.0",
+
+  "license": "MIT",
+
+  "author": "Atul Bisht 
+  <atul.bisht@nerdapplabs.com>",
+
+  "copyright": "© 2018, nerdAppLabs software solution",
+
+  "main": "main.js",
+
+  "build": {
+
+    "appId": "com.atulbisht.sunbeam-weather-app",
+    "directories": {
+      "output": "app"
+    },
+    "mac": {
+      "category": "public.app-category.weather",
+      "icon": "build/SWA.icns"
+    },
+    "win": {
+      "icon": "build/SWA.ico"
+    }
+  }
+ }
 
 Edit the scripts section of your package.json:
 
