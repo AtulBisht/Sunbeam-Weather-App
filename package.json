@@ -17,14 +17,14 @@
       "target": "pkg",
       "icon": "build/SWA.icns"
     },
-    "linux":{
-      "target":"deb",
-      "executableName":"Sunbeam-weather-app",
-      "category":"weather"
+    "linux": {
+      "target": "deb",
+      "executableName": "Sunbeam-weather-app",
+      "category": "weather"
     },
-    "win":{
-      "target":"nsis",
-      "icon":"bild/SWA.ico"
+    "win": {
+      "target": "nsis",
+      "icon": "bild/SWA.ico"
     }
   },
   "scripts": {
@@ -36,14 +36,12 @@
     "e2e": "ng e2e",
     "electron": "ng build --dev && electron ./dist/index.html",
     "electron-build": "ng build --prod && electron ./dist/index.html",
-
     "package-mac": "electron-packager . sunbeam-weather-app --platform=darwin --asar=true --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite --ignore=node_modules/electron-*",
     "package-linux": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/img/icons/SWA.png --prune=true --out=release-builds --ignore=node_modules/electron-*",
     "package-win": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/SwA.ico --ignore=node_modules/electron-* --prune=true --out=release-builds",
-
     "build-mwl": "electron-builder -mwl",
     "build-mac": "electron-builder --mac --x64",
-    "build-linux": "electron-builder  --linux deb",
+    "build-linux": "electron-builder  --linux deb tar.xz",
     "build-win": "electron-builder  --win --ia32"
   },
   "private": true,
@@ -61,7 +59,6 @@
     "@angular/platform-browser-dynamic": "^5.2.10",
     "@angular/router": "^5.2.10",
     "angular2-chartjs": "^0.5.0",
-    "asar": "^0.14.3",
     "chart.js": "^2.7.2",
     "core-js": "^2.5.6",
     "hammerjs": "^2.0.8",
