@@ -132,16 +132,16 @@ A complete solution to package and build a ready for distribution Electron app f
     "electron-packager": "*",
   }
 
-### -> To package and build distributable electron app for all platform (macOS, Windows, Linux) 
+##### -> To package and build distributable electron app for all platform (macOS, Windows, Linux) 
 ``npm run build-mwl``
 
-### -> To package and build distributable electron app for Windows 
+#### -> To package and build distributable electron app for Windows 
 ``npm run build-win``
 
 Note: If you are using macOS to create distributable file for windows install wine.
 
-### -> To package and build distributable electron app for MacOS 
+#### -> To package and build distributable electron app for MacOS 
 ``npm run build-mac``
 
-### -> To package and build distributable electron app for Linux 
+#### -> To package and build distributable electron app for Linux 
 ``npm run build-linux``
