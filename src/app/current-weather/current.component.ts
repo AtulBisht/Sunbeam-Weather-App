@@ -23,9 +23,9 @@ export class CurrentComponent implements OnInit {
   windValues: any;
   windOption: any;
 
-  THChart:string;
-  THValues:any;
-  THOption:any
+  THChart: string;
+  THValues: any;
+  THOption: any;
 
   pressureChart: string;
   pressureValues: any;
