@@ -24,7 +24,7 @@ Link :-
 
 Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaScript or the command line.
 
-If you want to run electron-packager through npm, install the package locally:
+#### If you want to run electron-packager through npm, install the package locally:
 
 ``npm install --save-dev electron-packager``
 
@@ -66,11 +66,11 @@ Link :-
 
 A complete solution to package and build a ready for distribution Electron app for macOS, Windows and Linux with “auto update”
 
-If you want to run electron-builder through npm, install the package locally:
+#### -> If you want to run electron-builder through npm, install the package locally:
 
 ``npm install --save-dev electron-builder``
 
-#### Set productName, version, author, copyright, appID, Output folder, Icon in package.json
+#### -> Set productName, version, author, copyright, appID, Output folder, Icon in package.json
  {
 
    "name": "sunbeam_weather_app",
@@ -106,7 +106,7 @@ If you want to run electron-builder through npm, install the package locally:
   }
  }
 
-Edit the scripts section of your package.json:
+#### -> Edit the scripts section of your package.json:
 
 "scripts": {
   
@@ -126,16 +126,16 @@ Edit the scripts section of your package.json:
     "electron-packager": "*",
   }
 
-### To package and build distributable electron app for all platform (macOS, Windows, Linux) 
+### -> To package and build distributable electron app for all platform (macOS, Windows, Linux) 
 ``npm run build-mwl``
 
-### To package and build distributable electron app for Windows 
+### -> To package and build distributable electron app for Windows 
 ``npm run build-win``
 
 Note: If you are using macOS to create distributable file for windows install wine.
 
-### To package and build distributable electron app for MacOS 
+### -> To package and build distributable electron app for MacOS 
 ``npm run build-mac``
 
-### To package and build distributable electron app for Linux 
+### -> To package and build distributable electron app for Linux 
 ``npm run build-linux``
