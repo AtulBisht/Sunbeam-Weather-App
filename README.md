@@ -50,7 +50,7 @@ Edit the scripts section of your package.json:
 ### To create package for Windows
 ``npm run package-win``
 
-Note: If you are using macOS for creating package install wine
+Note: If you are using macOS for creating package for windows install wine
 
 ### To create package for MacOS
 ``npm run package-mac``
@@ -95,7 +95,7 @@ Edit the scripts section of your package.json:
 ### To package and build distributable electron app for Windows 
 ``npm run build-win``
 
-Note: If you are using macOS to create distributable file install wine.
+Note: If you are using macOS to create distributable file for windows install wine.
 
 ### To package and build distributable electron app for MacOS 
 ``npm run build-mac``
