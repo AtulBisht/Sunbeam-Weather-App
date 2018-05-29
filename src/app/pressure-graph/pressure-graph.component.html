@@ -1,8 +1,6 @@
 <mat-spinner *ngIf='loading'>
 </mat-spinner>
 
-<mat-card>
-    <div *ngIf='!loading'>
-        <chart [type]="pressureChart" [data]="pressureValues" [options]="pressureOptions"></chart>
-    </div>
+<mat-card *ngIf='!loading'>
+    <chart [type]="pressureChart" [data]="pressureValues" [options]="pressureOptions"></chart>
 </mat-card>

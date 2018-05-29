@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { routing } from './app.routing';
 import { ChartModule } from 'angular2-chartjs';
 import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
-
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CurrentComponent } from './current-weather/current.component';
