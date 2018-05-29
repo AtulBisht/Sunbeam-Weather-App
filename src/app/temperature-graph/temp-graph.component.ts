@@ -12,9 +12,7 @@ export class TempGraphComponent implements OnInit {
   tempChart: string;
   tempValues: any;
   tempOptions: any;
-
   loading: boolean;
-
   tempValue = [];
   timeValue = [];
 

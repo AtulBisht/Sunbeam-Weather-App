@@ -1,5 +1,4 @@
 export class CurrentWeather {
-
     constructor(
         public city,
         public country,

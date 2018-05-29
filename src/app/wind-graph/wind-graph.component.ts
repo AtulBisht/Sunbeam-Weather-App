@@ -13,7 +13,6 @@ export class WindGraphComponent implements OnInit {
   windValues: any;
   windOptions: any;
   loading: boolean;
-
   timeValue = [];
   windValue = [];
 

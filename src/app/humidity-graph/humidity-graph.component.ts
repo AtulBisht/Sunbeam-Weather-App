@@ -12,10 +12,8 @@ export class HumidityGraphComponent implements OnInit {
   humidityChart: string;
   humidityValues: any;
   humidityOptions: any;
-
   timeValue = [];
   humidityValue = [];
-
   loading: boolean;
 
   constructor(

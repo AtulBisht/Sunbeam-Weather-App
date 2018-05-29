@@ -18,25 +18,20 @@ import { CurrentWeather } from '../models/current-weather';
 export class CurrentComponent implements OnInit {
 
   myWeather: CurrentWeather;
-
   windChart: string;
   windValues: any;
   windOption: any;
-
   THChart: string;
   THValues: any;
   THOption: any;
-
   pressureChart: string;
   pressureValues: any;
   pressureOption: any;
-
   tempValue = [];
   timeValue = [];
   windValue = [];
   pressureValue = [];
   humidityValue = [];
-
   loading: boolean;
 
   constructor(

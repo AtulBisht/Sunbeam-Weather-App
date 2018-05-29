@@ -13,7 +13,6 @@ export class PressureGraphComponent implements OnInit {
   pressureValues: any;
   pressureOptions: any;
   loading: boolean;
-
   timeValue = [];
   pressureValue = [];
 
