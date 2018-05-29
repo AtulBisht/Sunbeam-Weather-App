@@ -115,9 +115,6 @@ A complete solution to package and build a ready for distribution Electron app f
   }
 
 }
-#### -> Run app in ELECTRON
-
-``npm run electron``
 
 #### -> Edit the scripts section of your package.json:
 
@@ -138,6 +135,10 @@ A complete solution to package and build a ready for distribution Electron app f
 
     "electron-packager": "*",
   }
+
+#### -> Run app in ELECTRON
+
+``npm run electron``
 
 #### -> To package and build distributable electron app for all platform (macOS, Windows, Linux) 
 ``npm run build-mwl``
