@@ -42,7 +42,7 @@ export class PressureGraphComponent implements OnInit {
 
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
-            if (i < 20) {
+            if (i < 24) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
               const pressure = (data.list[i].main.pressure);
               this.timeValue.push(time);
@@ -69,7 +69,7 @@ export class PressureGraphComponent implements OnInit {
 
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
-            if (i < 20) {
+            if (i < 24) {
               const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
               const pressure = (data.list[i].main.pressure);
 
