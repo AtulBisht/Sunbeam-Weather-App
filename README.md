@@ -48,20 +48,24 @@ Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaSc
     
   } 
 
-### To create package for Windows
+  #### -> Run app in ELECTRON
+
+``npm run electron``
+
+#### -> To create package for Windows
 ``npm run package-win``
 
-Note: If you are using macOS for creating package for windows install wine
+Note: If you are using macOS for creating package for windows install wine 
 
-### To create package for MacOS
+#### -> To create package for MacOS
 ``npm run package-mac``
 
-### To create package for Linux
+#### -> To create package for Linux
 ``npm run package-linux``
 
 ## electron-builder to package and build distributable electron app
 
-Link :-
+Link :- 
  <https://www.electron.build/>
 
 A complete solution to package and build a ready for distribution Electron app for macOS, Windows and Linux with “auto update”
@@ -111,6 +115,9 @@ A complete solution to package and build a ready for distribution Electron app f
   }
 
 }
+#### -> Run app in ELECTRON
+
+``npm run electron``
 
 #### -> Edit the scripts section of your package.json:
 
