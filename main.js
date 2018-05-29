@@ -4,8 +4,8 @@ let win;
 function createWindow() {
 
   win = new BrowserWindow({
-    minWidth: 1280,
-    minHeight: 800,
+    Width: 1280,
+    Height: 800,
     backgroundColor: '#ffffff',
     icon: `file://${__dirname}/dist/assets/img/icons/SWA.png`
   })
