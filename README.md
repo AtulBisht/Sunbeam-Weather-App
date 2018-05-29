@@ -119,6 +119,8 @@ A complete solution to package and build a ready for distribution Electron app f
 #### -> Edit the scripts section of your package.json:
 
 "scripts": {
+
+    "build-mwl": "electron-builder -mwl",
   
     "build-mac": "electron-builder  --mac --x64",
 
