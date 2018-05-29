@@ -15,7 +15,5 @@ export class ChartComponent implements OnInit {
     this.showGraphService.showGraphWind('windComponent');
     this.showGraphService.showGraphHumidity('humidityComponent');
     this.showGraphService.showGraphTemp('tempComponent');
-
   }
-
 }

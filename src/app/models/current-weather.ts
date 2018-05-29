@@ -16,8 +16,5 @@ export class CurrentWeather {
         public coords,
         public wind_speed,
         public wind_deg
-    ) {
-
-
-    }
+    ) { }
 }

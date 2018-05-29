@@ -32,10 +32,8 @@ export class HourlyComponent implements OnInit {
         (data) => {
           this.loading = false;
           this.city = data.city.name;
-
           // clean previous data
           this.myCityForecast.splice(0, this.myCityForecast.length);
-
           // Hourly weather Forecast
           for (let i = 0; i < data.list.length; i++) {
             if (i < 6) {
@@ -65,7 +63,6 @@ export class HourlyComponent implements OnInit {
         (data) => {
           this.loading = false;
           this.city = data.city.name;
-
           // clean previous data
           this.myCityForecast.splice(0, this.myCityForecast.length);
           // Hourly Weather Forecast
@@ -92,5 +89,3 @@ export class HourlyComponent implements OnInit {
   }
 
 }
-
-

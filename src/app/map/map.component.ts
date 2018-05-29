@@ -44,10 +44,8 @@ export class MapComponent implements OnInit {
               .subscribe(
                 (data1) => {
                   this.loading = false;
-
                   // clean previous data
                   this.citiesWeather.splice(0, this.citiesWeather.length);
-
                   // show weather info around city
                   for (let i = 0; i < data1.list.length; i++) {
                     const temporary = new CitiesWeather(
@@ -61,17 +59,14 @@ export class MapComponent implements OnInit {
                 });
           });
     } else {
-
       this.lat = this.ws.lat;
       this.lon = this.ws.lon;
-
       this.loading = true;
 
       this.ws.localWeather(this.ws.lat, this.ws.lon)
         .subscribe(
           (data) => {
             this.loading = false;
-
             this.icon = data.weather[0].icon;
             this.title = data.weather[0].description;
             this.city = data.name;
@@ -81,10 +76,8 @@ export class MapComponent implements OnInit {
               .subscribe(
                 (data1) => {
                   this.loading = false;
-
                   // clean previous data
                   this.citiesWeather.splice(0, this.citiesWeather.length);
-
                   // show weather info around city
                   for (let i = 0; i < data1.list.length; i++) {
                     const temporary = new CitiesWeather(

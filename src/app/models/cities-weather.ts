@@ -4,7 +4,5 @@ export class CitiesWeather {
         public icon,
         public temp,
         public description,
-    ) {
-
-    }
+    ) { }
 }

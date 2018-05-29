@@ -33,11 +33,9 @@ export class WindGraphComponent implements OnInit {
       .subscribe(
         (data) => {
           this.loading = false;
-
           // clean previous data
           this.timeValue.splice(0, this.timeValue.length);
           this.windValue.splice(0, this.timeValue.length);
-
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
@@ -45,7 +43,6 @@ export class WindGraphComponent implements OnInit {
             this.timeValue.push(time);
             this.windValue.push(wind);
           }
-
           // Wind Graph
           this.getWChart(this.timeValue, this.windValue);
         }
@@ -57,11 +54,9 @@ export class WindGraphComponent implements OnInit {
       .subscribe(
         (data) => {
           this.loading = false;
-
           // clean previous
           this.timeValue.splice(0, this.timeValue.length);
           this.windValue.splice(0, this.timeValue.length);
-
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             const time = moment(data.list[i].dt_txt).format('Do MMMM, h:mm a');
@@ -70,7 +65,6 @@ export class WindGraphComponent implements OnInit {
             this.timeValue.push(time);
             this.windValue.push(wind);
           }
-
           // Wind Graph
           this.getWChart(this.timeValue, this.windValue);
         }

@@ -15,7 +15,6 @@ export class ShowGraphService {
     this.showWind = false;
     this.showHumid = false;
     this.showPressure = false;
-
   }
 
   showGraphWind(key: string) {
@@ -37,7 +36,6 @@ export class ShowGraphService {
     this.showTemp = false;
     this.showWind = false;
     this.showHumid = false;
-
   }
 
 }

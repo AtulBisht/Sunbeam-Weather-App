@@ -11,7 +11,5 @@ export class Forecast {
                 public wind_speed,
                 public clouds,
                 public pressure
-    ) {
-
-    }
+    ) { }
 }

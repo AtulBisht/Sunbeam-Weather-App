@@ -34,11 +34,9 @@ export class TempGraphComponent implements OnInit {
       .subscribe(
         (data) => {
           this.loading = false;
-
           // clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
-
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             const temp = data.list[i].main.temp;
@@ -57,11 +55,9 @@ export class TempGraphComponent implements OnInit {
       .subscribe(
         (data) => {
           this.loading = false;
-
           // clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
-
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             const temp = data.list[i].main.temp;
@@ -109,4 +105,3 @@ export class TempGraphComponent implements OnInit {
   }
 
 }
-

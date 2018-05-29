@@ -33,10 +33,8 @@ export class ForecastComponent implements OnInit {
         (data) => {
           this.loading = false;
           this.city = data.city.name;
-
           // clean previous data
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
-
           // five days weather forecast
           for (let i = 0; i < data.list.length; i = i + 8) {
             const temporary = new Forecast(
@@ -65,10 +63,8 @@ export class ForecastComponent implements OnInit {
         (data) => {
           this.loading = false;
           this.city = data.city.name;
-
           // clean previous data
           this.fiveDaysForecast.splice(0, this.fiveDaysForecast.length);
-
           // Five Days Weather Forecast
           for (let i = 0; i < data.list.length; i = i + 8) {
             const temporary = new Forecast(

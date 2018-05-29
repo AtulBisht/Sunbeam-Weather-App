@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HumidityGraphComponent } from './humidity-graph.component';
 
 describe('HumidityGraphComponent', () => {

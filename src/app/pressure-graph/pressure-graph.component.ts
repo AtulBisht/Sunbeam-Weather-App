@@ -34,11 +34,9 @@ export class PressureGraphComponent implements OnInit {
       .subscribe(
         (data) => {
           this.loading = false;
-
           // clean previous data
           this.timeValue.splice(0, this.timeValue.length);
           this.pressureValue.splice(0, this.pressureValue.length);
-
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 24) {
@@ -48,12 +46,10 @@ export class PressureGraphComponent implements OnInit {
               this.pressureValue.push(pressure);
             }
           }
-
           // Pressure Graph
           this.getPChart(this.timeValue, this.pressureValue);
         }
       );
-
   }
 
   cityForecast() {
@@ -61,11 +57,9 @@ export class PressureGraphComponent implements OnInit {
       .subscribe(
         (data) => {
           this.loading = false;
-
           // clean previous data
           this.timeValue.splice(0, this.timeValue.length);
           this.pressureValue.splice(0, this.pressureValue.length);
-
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
             if (i < 24) {
@@ -81,7 +75,6 @@ export class PressureGraphComponent implements OnInit {
         }
       );
   }
-
 
   // Pressure Graph
   getPChart(time, value) {

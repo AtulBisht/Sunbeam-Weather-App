@@ -13,7 +13,5 @@ export class WeatherForecastComponent implements OnInit {
   ngOnInit() {
     this.showForecastService.showFiveDay('forecastComponent');
     this.showForecastService.showHourly('hourlyComponent');
-
   }
-
 }

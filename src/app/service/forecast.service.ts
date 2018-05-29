@@ -20,7 +20,6 @@ export class ForecastService {
     return this.http.get(
       'http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + this.apiKey + '&units=metric')
       .map((response: Response) => response.json());
-
   }
 
   public cityForecast(city) {
@@ -32,4 +31,3 @@ export class ForecastService {
   }
 
 }
-

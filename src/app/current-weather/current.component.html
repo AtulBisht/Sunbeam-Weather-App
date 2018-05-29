@@ -9,7 +9,6 @@
           Current Weather {{myWeather?.city}}, {{myWeather?.country}}
         </mat-card-title>
         <mat-card-content>
-
           <h2>
             <form (ngSubmit)="onSubmit(weatherForm)" #weatherForm="ngForm">
               <mat-form-field>
@@ -19,15 +18,12 @@
               <app-alert></app-alert>
             </form>
           </h2>
-
           <strong> {{myWeather?.date| date:'EEEE, d MMMM y'}}</strong>
-
           <h2>
             <strong> {{myWeather?.city}}&nbsp; {{myWeather?.temp}}&deg;C
               <img src="http://openweathermap.org/img/w/{{myWeather?.icon}}.png"> &nbsp; {{myWeather?.weatherKind}}
             </strong>
           </h2>
-
           <table>
             <tr>
               <td>Max Temp:</td>
@@ -54,7 +50,6 @@
               <th>{{myWeather?.coords.lat}},{{myWeather?.coords.lon}} </th>
             </tr>
           </table>
-
         </mat-card-content>
       </mat-card>
 
@@ -72,7 +67,6 @@
     </mat-grid-tile>
 
   </mat-grid-list>
-
   <mat-grid-list cols="2" rowHeight="420px">
 
     <mat-grid-tile>
@@ -96,6 +90,5 @@
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
-
   </mat-grid-list>
 </div>

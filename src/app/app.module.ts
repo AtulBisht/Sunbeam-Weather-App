@@ -16,7 +16,6 @@ import { WindGraphComponent } from './wind-graph/wind-graph.component';
 import { HourlyComponent } from './hourly-forecast/hourly.component';
 import { MapComponent } from './map/map.component';
 import { ForecastComponent } from './days-forecast/forecast.component';
-
 import {
   MatToolbarModule,
   MatIconModule,
@@ -30,7 +29,6 @@ import {
   MatGridListModule,
   MatProgressSpinnerModule,
 } from '@angular/material';
-
 import { WeatherService } from './service/weather.service';
 import { AlertService } from './service/alert.service';
 import { ShowGraphService } from './service/show-graph.service';

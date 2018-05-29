@@ -40,8 +40,7 @@ export class CurrentComponent implements OnInit {
     public ngProgress: NgProgress,
     public alertService: AlertService,
     private http: Http,
-  ) {
-  }
+  ) { }
 
   ngOnInit() {
     this.ngProgress.start();
@@ -68,9 +67,7 @@ export class CurrentComponent implements OnInit {
           const lon = data.lon;
           this.fs.localForecast(lat, lon)
             .subscribe(
-
               (data1) => {
-
                 this.loading = false;
 
                 // clean previous data
@@ -79,7 +76,6 @@ export class CurrentComponent implements OnInit {
                 this.windValue.splice(0, this.timeValue.length);
                 this.pressureValue.splice(0, this.pressureValue.length);
                 this.humidityValue.splice(0, this.humidityValue.length);
-
 
                 // Get Graph Values
                 for (let i = 0; i < data1.list.length; i++) {
@@ -97,13 +93,10 @@ export class CurrentComponent implements OnInit {
                     this.humidityValue.push(humidity);
                   }
                 }
-
                 // Wind Graph
                 this.getWChartData(this.timeValue, this.windValue);
-
                 // Temperature & humidity Graph
                 this.getTHChart(this.timeValue, this.tempValue, this.humidityValue);
-
                 // Pressure Graph
                 this.getPChart(this.timeValue, this.pressureValue);
               },
@@ -131,7 +124,6 @@ export class CurrentComponent implements OnInit {
           this.ws.localWeather(lat, lon)
             .subscribe(
               (data1) => {
-
                 this.loading = false;
 
                 const date = moment.unix(data1.dt).format('LL');
@@ -160,7 +152,6 @@ export class CurrentComponent implements OnInit {
                 if (error.status === 0) {
                   console.log('service down ', error);
                 } else {
-
                   console.log('error in response ', error);
                   this.alertService.error(error.statusText);
                 }
@@ -197,7 +188,6 @@ export class CurrentComponent implements OnInit {
           );
         },
         error => {
-
           if (error.status === 0) {
             console.log('service down ', error);
           } else {
@@ -213,14 +203,12 @@ export class CurrentComponent implements OnInit {
     this.fs.cityForecast(city)
       .subscribe(
         (data) => {
-
           // clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
           this.windValue.splice(0, this.timeValue.length);
           this.pressureValue.splice(0, this.pressureValue.length);
           this.humidityValue.splice(0, this.humidityValue.length);
-
 
           // Get Graph Values
           for (let i = 0; i < data.list.length; i++) {
@@ -241,10 +229,8 @@ export class CurrentComponent implements OnInit {
 
           // Wind Graph
           this.getWChartData(this.timeValue, this.windValue);
-
           // Temperature & humidity Graph
           this.getTHChart(this.timeValue, this.tempValue, this.humidityValue);
-
           // Pressure Graph
           this.getPChart(this.timeValue, this.pressureValue);
         },
@@ -290,7 +276,6 @@ export class CurrentComponent implements OnInit {
         }]
       }
     };
-
   }
 
   // Temp Graph
@@ -362,6 +347,5 @@ export class CurrentComponent implements OnInit {
       }
     };
   }
-
+  
 }
-
