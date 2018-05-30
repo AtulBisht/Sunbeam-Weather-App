@@ -38,7 +38,7 @@ mat-card-title{
 }
 
 mat-sidenav-container{
-    height:900px;
+    height:100%;
     width:100%;
 }
 
@@ -49,4 +49,8 @@ chart{
 mat-spinner{
     margin-left:45%;
     margin-top:25%;
+}
+
+mat-card-title{
+    padding-top:5%;
 }

@@ -14,16 +14,16 @@
     },
     "mac": {
       "category": "public.app-category.weather",
-      "target":"pkg",
+      "target": "pkg",
       "icon": "build/SWA.icns"
     },
     "win": {
-      "target":"nsis",
+      "target": "nsis",
       "icon": "build/SWA.ico"
     },
-    "linux":{
-      "target":"deb",
-      "icon":"build/SWA.png"
+    "linux": {
+      "target": "deb",
+      "icon": "build/SWA.png"
     }
   },
   "scripts": {
