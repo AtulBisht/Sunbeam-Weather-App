@@ -4,7 +4,7 @@
   "productName": "Sunbeam-Weather-App",
   "version": "0.0.0",
   "license": "MIT",
-  "author": "Atul Bisht <atul.bisht@nerdapplabs.com>",
+  "author": "nerdAppLabs Software Solutions <atul.bisht@nerdapplabs.com>",
   "copyright": "© 2018, nerdAppLabs software solution",
   "main": "main.js",
   "build": {
