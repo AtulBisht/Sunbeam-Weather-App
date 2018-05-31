@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../service/forecast.service';
 import * as moment from 'moment';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-humidity-graph',
@@ -17,13 +18,16 @@ export class HumidityGraphComponent implements OnInit {
   loading: boolean;
 
   constructor(
-    private fs: ForecastService) { }
+    private fs: ForecastService,
+    private progress: NgProgress) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
+      this.progress.start();
       this.cityForecast();
       this.loading = true;
     } else if ((sessionStorage.getItem('longitude') && sessionStorage.getItem('latitude') != null)) {
+      this.progress.start();
       this.localForecast();
       this.loading = true;
     }
@@ -33,6 +37,7 @@ export class HumidityGraphComponent implements OnInit {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
+          this.progress.done();
           this.loading = false;
           // Chart
           this.timeValue.splice(0, this.timeValue.length);
@@ -55,6 +60,7 @@ export class HumidityGraphComponent implements OnInit {
     this.fs.cityForecast(this.fs.city)
       .subscribe(
         (data) => {
+          this.progress.done();
           this.loading = false;
           // clean previous data
           this.timeValue.splice(0, this.timeValue.length);

@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpModule, BrowserXhr } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { routing } from './app.routing';
+import { NgProgressModule } from 'ngx-progressbar';
 import { ChartModule } from 'angular2-chartjs';
-import { NgProgressModule, NgProgressBrowserXhr } from 'ngx-progressbar';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CurrentComponent } from './current-weather/current.component';
@@ -62,7 +62,7 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     MatToolbarModule,
     MatIconModule,
     MatSidenavModule,
@@ -87,10 +87,6 @@ import { FooterComponent } from './footer/footer.component';
     AlertService,
     ShowForecastService,
     ShowGraphService,
-    {
-      provide: BrowserXhr,
-      useClass: NgProgressBrowserXhr
-    }
   ],
   bootstrap: [AppComponent]
 })

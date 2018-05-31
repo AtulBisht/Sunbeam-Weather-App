@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../service/forecast.service';
 import { WeatherService } from '../service/weather.service';
 import { CitiesWeather } from '../models/cities-weather';
+import { NgProgress } from 'ngx-progressbar';
 
 @Component({
   selector: 'app-map',
@@ -21,12 +22,13 @@ export class MapComponent implements OnInit {
 
   constructor(
     private fs: ForecastService,
-    private ws: WeatherService) { }
+    private ws: WeatherService,
+    private progress: NgProgress) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
       this.loading = true;
-
+      this.progress.start();
       this.ws.cityWeather(this.ws.city)
         .subscribe(
           (data) => {
@@ -43,7 +45,9 @@ export class MapComponent implements OnInit {
             this.ws.citiesWeather(this.lat, this.lon)
               .subscribe(
                 (data1) => {
+                  this.progress.done();
                   this.loading = false;
+                  console.log(data);
                   // clean previous data
                   this.citiesWeather.splice(0, this.citiesWeather.length);
                   // show weather info around city
@@ -62,7 +66,7 @@ export class MapComponent implements OnInit {
       this.lat = this.ws.lat;
       this.lon = this.ws.lon;
       this.loading = true;
-
+      this.progress.start();
       this.ws.localWeather(this.ws.lat, this.ws.lon)
         .subscribe(
           (data) => {
@@ -75,6 +79,7 @@ export class MapComponent implements OnInit {
             this.ws.citiesWeather(this.lat, this.lon)
               .subscribe(
                 (data1) => {
+                  this.progress.done();
                   this.loading = false;
                   // clean previous data
                   this.citiesWeather.splice(0, this.citiesWeather.length);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../service/forecast.service';
+import { NgProgress } from 'ngx-progressbar';
 import { Forecast } from '../models/forecast';
 import * as moment from 'moment';
 
@@ -15,13 +16,17 @@ export class ForecastComponent implements OnInit {
   city: string;
 
   constructor(
-    private fs: ForecastService) { }
+    private fs: ForecastService,
+    private progress: NgProgress
+  ) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
+      this.progress.start();
       this.cityForecast();
       this.loading = true;
     } else {
+      this.progress.start();
       this.localForecast();
       this.loading = true;
     }
@@ -31,6 +36,7 @@ export class ForecastComponent implements OnInit {
     this.fs.localForecast(this.fs.lat, this.fs.lon)
       .subscribe(
         (data) => {
+          this.progress.done();
           this.loading = false;
           this.city = data.city.name;
           // clean previous data
@@ -61,6 +67,7 @@ export class ForecastComponent implements OnInit {
     this.fs.cityForecast(this.fs.city)
       .subscribe(
         (data) => {
+          this.progress.done();
           this.loading = false;
           this.city = data.city.name;
           // clean previous data

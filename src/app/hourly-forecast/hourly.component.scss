@@ -1,7 +1,7 @@
 @import 'src/styles';
 
 .maxTemp,.minTemp{
-    padding:3px;
+    padding:1px;
     border-radius: 2px;
 }
 
@@ -12,4 +12,8 @@
 .minTemp{
     background-color: $minTemp-color;
     color:$minTemp-text-color;
+}
+
+mat-card-title{
+    padding-top:0%;
 }

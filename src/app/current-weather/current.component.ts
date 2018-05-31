@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
-import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
 import { NgProgress } from 'ngx-progressbar';
+import 'rxjs/add/operator/map';
 import { WeatherService } from '../service/weather.service';
 import { ForecastService } from '../service/forecast.service';
 import { AlertService } from '../service/alert.service';
 import { CurrentWeather } from '../models/current-weather';
+
+interface Response {
+  lat: string;
+  lon: string;
+}
 
 @Component({
   selector: 'app-current',
@@ -37,13 +42,13 @@ export class CurrentComponent implements OnInit {
   constructor(
     private ws: WeatherService,
     private fs: ForecastService,
-    public ngProgress: NgProgress,
+    private progress: NgProgress,
     public alertService: AlertService,
-    private http: Http,
+    private http: HttpClient,
   ) { }
 
   ngOnInit() {
-    this.ngProgress.start();
+    this.progress.start();
     // clean sessionStorage
     sessionStorage.clear();
     this.loading = true;
@@ -52,17 +57,17 @@ export class CurrentComponent implements OnInit {
   }
 
   onSubmit(weatherForm: NgForm) {
-    this.ngProgress.start();
+    this.progress.start();
     this.cityWeather(weatherForm.value.city);
     this.cityForecast(weatherForm.value.city);
   }
 
   localForecast() {
     // get location
-    this.http.get('http://ip-api.com/json')
-      .map((response: Response) => response.json())
+    this.http.get<Response>('http://ip-api.com/json')
       .subscribe(
         (data) => {
+          this.progress.done();
           const lat = data.lat;
           const lon = data.lon;
           this.fs.localForecast(lat, lon)
@@ -115,10 +120,10 @@ export class CurrentComponent implements OnInit {
 
   localWeather() {
     // get location
-    this.http.get('http://ip-api.com/json')
-      .map((response: Response) => response.json())
+    this.http.get<Response>('http://ip-api.com/json')
       .subscribe(
         (data) => {
+          this.progress.done();
           const lat = data.lat;
           const lon = data.lon;
           this.ws.localWeather(lat, lon)
@@ -164,7 +169,7 @@ export class CurrentComponent implements OnInit {
     this.ws.cityWeather(city)
       .subscribe(
         (data) => {
-
+          this.progress.done();
           const date = moment.unix(data.dt).format('LL');
           const sunrise = moment.unix(data.sys.sunrise).format('h:mm A');
           const sunset = moment.unix(data.sys.sunset).format('h:mm A');
@@ -203,6 +208,7 @@ export class CurrentComponent implements OnInit {
     this.fs.cityForecast(city)
       .subscribe(
         (data) => {
+          this.progress.done();
           // clean previous data
           this.tempValue.splice(0, this.tempValue.length);
           this.timeValue.splice(0, this.timeValue.length);
@@ -347,5 +353,5 @@ export class CurrentComponent implements OnInit {
       }
     };
   }
-  
+
 }
