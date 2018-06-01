@@ -34,11 +34,11 @@ Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaSc
 
     "electron": "ng build --dev && electron ./dist/index.html",
 
-    "package-mac": "electron-packager . sunbeam-weather-app --platform=darwin --asar=true --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite --ignore=node_modules/electron-*",
+    "package-mac": "npm run electron-build && electron-packager . sunbeam-weather-app --platform=darwin --asar=true --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite --ignore=node_modules/electron-*",
 
-    "package-linux": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/img/icons/SWA.png --prune=true --out=release-builds",
+    "package-linux": "npm run electron-build && electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/img/icons/SWA.png --prune=true --out=release-builds",
 
-    "package-win": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/SwA.ico --ignore=node_modules/electron-* --prune=true --out=release-builds",
+    "package-win": "npm run electron-build && electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/SwA.ico --ignore=node_modules/electron-* --prune=true --out=release-builds",
 
   },
   "devDependencies": {
@@ -47,10 +47,6 @@ Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaSc
     "electron-packager": "*",
     
   } 
-
-  #### -> Run app in ELECTRON
-
-``npm run electron``
 
 #### -> To create package for Windows
 ``npm run package-win``
@@ -120,13 +116,13 @@ A complete solution to package and build a ready for distribution Electron app f
 
 "scripts": {
 
-    "build-mwl": "electron-builder -mwl",
+    "build-mwl": "npm run electron-build && electron-builder -mwl",
   
-    "build-mac": "electron-builder  --mac --x64",
+    "build-mac": "npm run electron-build && electron-builder  --mac --x64",
 
-    "build-linux": "electron-builder  --linux --x64",
+    "build-linux": "npm run electron-build && electron-builder  --linux --x64",
 
-    "build-win": "electron-builder  --win --ia32",
+    "build-win": "npm run electron-build && electron-builder  --win --ia32",
    
   },
   "devDependencies": {
@@ -137,10 +133,6 @@ A complete solution to package and build a ready for distribution Electron app f
 
     "electron-packager": "*",
   }
-
-#### -> Run app in ELECTRON
-
-``npm run electron``
 
 #### -> To package and build distributable electron app for all platform (macOS, Windows, Linux) 
 ``npm run build-mwl``
