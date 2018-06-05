@@ -7,7 +7,7 @@ function createWindow() {
     Width: 1280,
     Height: 800,
     backgroundColor: '#ffffff',
-    icon: `file://${__dirname}/dist/assets/img/icons/SWA.png`
+    icon: `file://${__dirname}/dist/assets/img/icons/SWA.ico`
   })
 
   win.loadURL(`file://${__dirname}/dist/index.html`)
