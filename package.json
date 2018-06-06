@@ -5,24 +5,31 @@
   "version": "1.0.0",
   "license": "MIT",
   "author": "atul bisht <atul.bisht@nerdapplabs.com>",
-  "copyright": "© 2018, nerdAppLabs software solution",
+  "copyright": "© 2018 nerdAppLabs software solution",
   "main": "main.js",
   "build": {
-    "appId": "com.atulbisht.sunbeam-weather-app",
+    "appId": "com.nerdAppLabs.sunbeam-weather-app",
     "directories": {
       "output": "app"
     },
     "mac": {
       "category": "public.app-category.weather",
-      "target": "pkg",
+      "target": "dmg",
       "icon": "build/SWA.icns"
     },
     "linux": {
-      "target": "deb",
-      "icon": "build/SWA.png"
+      "target": "AppImage"
     },
     "win": {
-      "target": "nsis",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
       "icon": "build/SWA.ico"
     }
   },
@@ -35,9 +42,9 @@
     "e2e": "ng e2e",
     "electron": "ng build --dev && electron ./dist/index.html",
     "electron-build": "ng build --prod && electron ./dist/index.html",
-    "build-mwl": "electron-builder -mwl",
-    "build-mac": "electron-builder --mac --x64",
-    "build-linux": "electron-builder  --linux --x64",
+    "build-ml":"electron-builder -ml",
+    "build-mac": "electron-builder --mac",
+    "build-linux": "electron-builder  --linux",
     "build-win": "electron-builder  --win --ia32"
   },
   "private": true,

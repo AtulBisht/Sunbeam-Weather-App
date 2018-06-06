@@ -40,7 +40,7 @@ A complete solution to package and build a ready for distribution Electron app f
 
 ``npm install --save-dev electron-builder``
 
-#### -> Set productName, version, author, copyright, appID, Output folder,target, Icon in package.json
+#### -> Set productName, version, author, copyright, appID, Output folder, target, Icon in package.json
    {
      
   "name": "sunbeam_weather_app", 
@@ -67,15 +67,15 @@ A complete solution to package and build a ready for distribution Electron app f
     },
     "mac": {
       "category": "weather.app-category.weather",
-      "target":"pkg",
+      "target":"pkg", //target :- dmg (default), mas, zip, 7z, tar.xz, tar.lz 
       "icon": "build/SWA.icns"
     },
     "win": {
-      "target":"nsis",
+      "target":"zip", //target :- nsis (default), appx, 7z, tar.xz, tar.lz, tar.gz, tar.bz2
       "icon": "build/SWA.ico"
     },
     "linux":{
-      "target":"deb",
+      "target":"snap", //target :- AppImage (default), 7z, zip, tar.xz, tar.lz, tar.gz, tar.bz2
       "icon":"build/SWA.png"
     },
   }
@@ -86,29 +86,27 @@ A complete solution to package and build a ready for distribution Electron app f
 
 "scripts": {
 
-    "build-mwl": "electron-builder -mwl",
+    "build-ml": "electron-builder -ml",
   
-    "build-mac": "electron-builder  --mac --x64",
+    "build-mac": "electron-builder  --mac",
 
-    "build-linux": "electron-builder  --linux --x64",
+    "build-linux": "electron-builder  --linux",
 
-    "build-win": "electron-builder  --win --ia32",
+    "build-win": "electron-builder  --win",
    
   },
   "devDependencies": {
    
     "electron": "*",
 
-    "electron-builder": "*",
-
-    "electron-packager": "*",
+    "electron-builder": "*"
   }
 
 #### -> Run app in Electron
   ``npm run electron``
 
-#### -> To package and build distributable electron app for all platform (macOS, Windows, Linux) 
-``npm run build-mwl``
+#### To package and build distributable electron app for macOS and Linux
+``npm run build-ml``
 
 #### -> To package and build distributable electron app for Windows 
 ``npm run build-win``
