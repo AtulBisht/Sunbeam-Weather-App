@@ -2,7 +2,19 @@
 
 It is an Angular-Electron App which give you information about Weather Forecast.
 
+## Prerequisites
+Be sure to have Node >= 8.0 and NPM >= 5 installed on your computer/server
+
+You can download NodeJS by following this <https://nodejs.org/en/>, take the LTS version. The installer will install Node and Npm.
+
+### check node version
+node -v
+
+### check npm version
+npm -v
+
 ## Clone App
+
 <https://github.com/AtulBisht/Sunbeam-Weather-App.git>
 
 ## Install dependencies with npm 
@@ -34,11 +46,11 @@ Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaSc
 
     "electron": "ng build --dev && electron ./dist/index.html",
 
-    "package-mac": "npm run electron-build && electron-packager . sunbeam-weather-app --platform=darwin --asar=true --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite --ignore=node_modules/electron-*",
+    "package-mac": "electron-packager . sunbeam-weather-app --platform=darwin --asar=true --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite --ignore=node_modules/electron-*",
 
-    "package-linux": "npm run electron-build && electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/img/icons/SWA.png --prune=true --out=release-builds",
+    "package-linux": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/img/icons/SWA.png --prune=true --out=release-builds",
 
-    "package-win": "npm run electron-build && electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/SwA.ico --ignore=node_modules/electron-* --prune=true --out=release-builds",
+    "package-win": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/SwA.ico --ignore=node_modules/electron-* --prune=true --out=release-builds",
 
   },
   "devDependencies": {
@@ -94,12 +106,12 @@ A complete solution to package and build a ready for distribution Electron app f
 
   "build": {
 
-    "appId": "com.atulbisht.sunbeam-weather-app",
+    "appId": "com.nerdAppLabs.sunbeam-weather-app",
     "directories": {
       "output": "app"
     },
     "mac": {
-      "category": "public.app-category.weather",
+      "category": "weather.app-category.weather",
       "target":"pkg",
       "icon": "build/SWA.icns"
     },
@@ -119,13 +131,13 @@ A complete solution to package and build a ready for distribution Electron app f
 
 "scripts": {
 
-    "build-mwl": "npm run electron-build && electron-builder -mwl",
+    "build-mwl": "electron-builder -mwl",
   
-    "build-mac": "npm run electron-build && electron-builder  --mac --x64",
+    "build-mac": "electron-builder  --mac --x64",
 
-    "build-linux": "npm run electron-build && electron-builder  --linux --x64",
+    "build-linux": "electron-builder  --linux --x64",
 
-    "build-win": "npm run electron-build && electron-builder  --win --ia32",
+    "build-win": "electron-builder  --win --ia32",
    
   },
   "devDependencies": {
