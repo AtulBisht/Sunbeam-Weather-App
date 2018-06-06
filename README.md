@@ -29,51 +29,6 @@ npm -v
 
 ``ng serve``
 
-## electron-packager to package electron app
-
-Link :- 
-<https://www.christianengvall.se/electron-packager-tutorial/>
-
-Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaScript or the command line.
-
-#### -> If you want to run electron-packager through npm, install the package locally:
-
-``npm install --save-dev electron-packager``
-
-#### -> Edit the scripts section of your package.json:
-
- "scripts": {
-
-    "electron": "ng build --dev && electron ./dist/index.html",
-
-    "package-mac": "electron-packager . sunbeam-weather-app --platform=darwin --asar=true --arch=x64 --icon=src/assets/img/icons/SWA.icns --prune=true --out=release-builds --overwrite --ignore=node_modules/electron-*",
-
-    "package-linux": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=linux --arch=x64 --icon=src/assets/img/icons/SWA.png --prune=true --out=release-builds",
-
-    "package-win": "electron-packager . sunbeam-weather-app --overwrite --asar=true --platform=win32 --arch=ia32 --icon=src/assets/img/icons/SwA.ico --ignore=node_modules/electron-* --prune=true --out=release-builds",
-
-  },
-  "devDependencies": {
-
-    "electron": "*",
-    "electron-packager": "*",
-    
-  } 
-
-#### -> Run app in Electron
-  ``npm run electron``
-
-#### -> To create package for Windows
-``npm run package-win``
-
-Note: If you are using macOS for creating package for windows install wine 
-
-#### -> To create package for MacOS
-``npm run package-mac``
-
-#### -> To create package for Linux
-``npm run package-linux``
-
 ## electron-builder to package and build distributable electron app
 
 Link :- 
