@@ -41,8 +41,7 @@
     "build-mwl": "npm run electron-build && electron-builder -mwl",
     "build-mac": "npm run electron-build && electron-builder --mac --x64",
     "build-linux": "npm run electron-build && electron-builder  --linux",
-    "build-win": "npm run electron-build && electron-builder  --win --ia32",
-    "win-setup": "electron-packager . app --platform win32 --arch x64 --out dist/ --overwrite && electron-installer-windows --src dist/app-win32-x64 --dest app/installers/"
+    "build-win": "npm run electron-build && electron-builder  --win --ia32"
   },
   "private": true,
   "dependencies": {
