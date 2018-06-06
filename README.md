@@ -48,6 +48,9 @@ Package your Electron app into OS-specific bundles (.app, .exe, etc.) via JavaSc
     
   } 
 
+#### -> Run app in Electron
+  ``npm run electron``
+
 #### -> To create package for Windows
 ``npm run package-win``
 
@@ -133,6 +136,9 @@ A complete solution to package and build a ready for distribution Electron app f
 
     "electron-packager": "*",
   }
+
+#### -> Run app in Electron
+  ``npm run electron``
 
 #### -> To package and build distributable electron app for all platform (macOS, Windows, Linux) 
 ``npm run build-mwl``
