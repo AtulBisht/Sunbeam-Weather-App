@@ -45,7 +45,7 @@
     "build-ml":"electron-builder -ml",
     "build-mac": "electron-builder --mac",
     "build-linux": "electron-builder  --linux",
-    "build-win": "electron-builder  --win --ia32"
+    "build-win": "electron-builder  --win"
   },
   "private": true,
   "dependencies": {},
