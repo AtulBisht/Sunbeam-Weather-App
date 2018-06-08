@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import * as moment from 'moment';
 import { HttpClient } from '@angular/common/http';
 import { NgProgress } from 'ngx-progressbar';
-import 'rxjs/add/operator/map';
 import { WeatherService } from '../service/weather.service';
 import { ForecastService } from '../service/forecast.service';
 import { AlertService } from '../service/alert.service';

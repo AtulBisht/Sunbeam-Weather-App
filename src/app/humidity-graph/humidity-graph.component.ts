@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../service/forecast.service';
 import * as moment from 'moment';
 import { NgProgress } from 'ngx-progressbar';
+import { AlertService } from '../service/alert.service';
 
 @Component({
   selector: 'app-humidity-graph',
@@ -19,7 +20,9 @@ export class HumidityGraphComponent implements OnInit {
 
   constructor(
     private fs: ForecastService,
-    private progress: NgProgress) { }
+    private progress: NgProgress,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
@@ -52,6 +55,15 @@ export class HumidityGraphComponent implements OnInit {
           }
           // humidity Graph
           this.getHChart(this.timeValue, this.humidityValue);
+        },
+        error => {
+          if (error.status === 0) {
+            console.log('service down ', error);
+          } else {
+            console.log('error in response ', error);
+            this.alertService.error(error.statusText);
+          }
+          console.log('error', error);
         }
       );
   }
@@ -75,6 +87,15 @@ export class HumidityGraphComponent implements OnInit {
           }
           // Humidity Graph
           this.getHChart(this.timeValue, this.humidityValue);
+        },
+        error => {
+          if (error.status === 0) {
+            console.log('service down ', error);
+          } else {
+            console.log('error in response ', error);
+            this.alertService.error(error.statusText);
+          }
+          console.log('error', error);
         }
       );
   }

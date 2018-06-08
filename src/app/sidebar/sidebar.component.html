@@ -7,19 +7,19 @@
     <img src="assets/img/SWA.png">
 
     <mat-nav-list>
-      <mat-list-item (click)="onClick('/currnet')">
+      <mat-list-item [ngClass]="{'is-active':step=='/current'}" (click)="onClick('/current')">
         <mat-icon>home</mat-icon> &nbsp; &nbsp;
         <strong>Current Weather</strong>
       </mat-list-item>
-      <mat-list-item (click)="onClick('/weatherForecast')">
+      <mat-list-item [ngClass]="{'is-active':step=='/weatherForecast'}" (click)="onClick('/weatherForecast')">
         <mat-icon>wb_sunny</mat-icon> &nbsp; &nbsp;
         <strong>Weather Forecast</strong>
       </mat-list-item>
-      <mat-list-item (click)="onClick('/chart')">
+      <mat-list-item [ngClass]="{'is-active':step=='/chart'}" (click)="onClick('/chart')">
         <mat-icon>show_chart</mat-icon> &nbsp; &nbsp;
         <strong>Weather Graphs</strong>
       </mat-list-item>
-      <mat-list-item (click)="onClick('/map')">
+      <mat-list-item [ngClass]="{'is-active':step=='/map'}" (click)="onClick('/map')">
         <mat-icon>map</mat-icon> &nbsp; &nbsp;
         <strong>Map and Cities Weather</strong>
       </mat-list-item>

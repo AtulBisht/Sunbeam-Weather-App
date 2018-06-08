@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../service/forecast.service';
 import { Forecast } from '../models/forecast';
 import { NgProgress } from 'ngx-progressbar';
+import { AlertService } from '../service/alert.service';
 
 @Component({
   selector: 'app-hourly',
@@ -16,7 +17,9 @@ export class HourlyComponent implements OnInit {
 
   constructor(
     private fs: ForecastService,
-    private progress: NgProgress) { }
+    private progress: NgProgress,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
@@ -59,7 +62,17 @@ export class HourlyComponent implements OnInit {
               this.myCityForecast.push(temporary);
             }
           }
-        });
+        },
+        error => {
+          if (error.status === 0) {
+            console.log('service down ', error);
+          } else {
+            console.log('error in response ', error);
+            this.alertService.error(error.statusText);
+          }
+          console.log('error', error);
+        }
+      );
   }
 
   cityForecast() {
@@ -90,6 +103,15 @@ export class HourlyComponent implements OnInit {
               this.myCityForecast.push(temporary);
             }
           }
+        },
+        error => {
+          if (error.status === 0) {
+            console.log('service down ', error);
+          } else {
+            console.log('error in response ', error);
+            this.alertService.error(error.statusText);
+          }
+          console.log('error', error);
         }
       );
   }

@@ -3,6 +3,8 @@ import { ForecastService } from '../service/forecast.service';
 import { WeatherService } from '../service/weather.service';
 import { CitiesWeather } from '../models/cities-weather';
 import { NgProgress } from 'ngx-progressbar';
+import { AlertService } from '../service/alert.service';
+
 
 @Component({
   selector: 'app-map',
@@ -23,7 +25,9 @@ export class MapComponent implements OnInit {
   constructor(
     private fs: ForecastService,
     private ws: WeatherService,
-    private progress: NgProgress) { }
+    private progress: NgProgress,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
@@ -47,7 +51,6 @@ export class MapComponent implements OnInit {
                 (data1) => {
                   this.progress.done();
                   this.loading = false;
-                  console.log(data);
                   // clean previous data
                   this.citiesWeather.splice(0, this.citiesWeather.length);
                   // show weather info around city
@@ -60,8 +63,19 @@ export class MapComponent implements OnInit {
                     );
                     this.citiesWeather.push(temporary);
                   }
-                });
-          });
+                }
+              );
+          },
+          error => {
+            if (error.status === 0) {
+              console.log('service down ', error);
+            } else {
+              console.log('error in response ', error);
+              this.alertService.error(error.statusText);
+            }
+            console.log('error', error);
+          }
+        );
     } else {
       this.lat = this.ws.lat;
       this.lon = this.ws.lon;
@@ -94,7 +108,17 @@ export class MapComponent implements OnInit {
                     this.citiesWeather.push(temporary);
                   }
                 });
-          });
+          },
+          error => {
+            if (error.status === 0) {
+              console.log('service down ', error);
+            } else {
+              console.log('error in response ', error);
+              this.alertService.error(error.statusText);
+            }
+            console.log('error', error);
+          }
+        );
     }
   }
 }

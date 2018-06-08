@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../service/forecast.service';
 import { NgProgress } from 'ngx-progressbar';
 import { Forecast } from '../models/forecast';
+import { AlertService } from '../service/alert.service';
 import * as moment from 'moment';
 
 @Component({
@@ -17,7 +18,8 @@ export class ForecastComponent implements OnInit {
 
   constructor(
     private fs: ForecastService,
-    private progress: NgProgress
+    private progress: NgProgress,
+    private alertService: AlertService,
   ) { }
 
   ngOnInit() {
@@ -59,6 +61,15 @@ export class ForecastComponent implements OnInit {
 
             this.fiveDaysForecast.push(temporary);
           }
+        },
+        error => {
+          if (error.status === 0) {
+            console.log('service down ', error);
+          } else {
+            console.log('error in response ', error);
+            this.alertService.error(error.statusText);
+          }
+          console.log('error', error);
         }
       );
   }
@@ -89,6 +100,15 @@ export class ForecastComponent implements OnInit {
               data.list[i].main.pressure);
             this.fiveDaysForecast.push(temporary);
           }
+        },
+        error => {
+          if (error.status === 0) {
+            console.log('service down ', error);
+          } else {
+            console.log('error in response ', error);
+            this.alertService.error(error.statusText);
+          }
+          console.log('error', error);
         }
       );
   }

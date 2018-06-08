@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ForecastService } from '../service/forecast.service';
 import * as moment from 'moment';
 import { NgProgress } from 'ngx-progressbar';
+import { AlertService } from '../service/alert.service';
+
 
 @Component({
   selector: 'app-wind-graph',
@@ -17,8 +19,11 @@ export class WindGraphComponent implements OnInit {
   timeValue = [];
   windValue = [];
 
-  constructor(private fs: ForecastService,
-    private progress: NgProgress) { }
+  constructor(
+    private fs: ForecastService,
+    private progress: NgProgress,
+    private alertService: AlertService
+  ) { }
 
   ngOnInit() {
     if (sessionStorage.getItem('city') != null) {
@@ -50,6 +55,15 @@ export class WindGraphComponent implements OnInit {
           }
           // Wind Graph
           this.getWChart(this.timeValue, this.windValue);
+        },
+        error => {
+          if (error.status === 0) {
+            console.log('service down ', error);
+          } else {
+            console.log('error in response ', error);
+            this.alertService.error(error.statusText);
+          }
+          console.log('error', error);
         }
       );
   }
@@ -73,6 +87,15 @@ export class WindGraphComponent implements OnInit {
           }
           // Wind Graph
           this.getWChart(this.timeValue, this.windValue);
+        },
+        error => {
+          if (error.status === 0) {
+            console.log('service down ', error);
+          } else {
+            console.log('error in response ', error);
+            this.alertService.error(error.statusText);
+          }
+          console.log('error', error);
         }
       );
   }
